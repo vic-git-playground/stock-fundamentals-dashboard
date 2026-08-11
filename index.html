@@ -59,6 +59,9 @@
   }
   .hint{ font-size:11px; color:var(--muted); font-weight:400; }
   footer{ color:var(--muted); font-size:12px; text-align:center; padding:20px; }
+  #buildStamp{ position:fixed; right:14px; bottom:14px; z-index:59; font-size:11px;
+    color:var(--muted); background:var(--panel); border:1px solid var(--border);
+    border-radius:6px; padding:4px 9px; pointer-events:none; }
 </style>
 </head>
 <body>
@@ -128,6 +131,7 @@
   </div>
 </main>
 <footer>資料每次由 Excel 手動匯出更新，非即時報價。</footer>
+<div id="buildStamp"></div>
 
 <script src="data/manifest.js"></script>
 <script src="data/chunks_index.js"></script>
@@ -173,6 +177,14 @@ async function loadAllChunks(){
     dataInfo.textContent = '載入股票資料中...';
     await Promise.all(chunks.map(c => loadScriptTag('data/' + c)));
     dataInfo.textContent = `已匯出 ${manifest.length} 檔股票`;
+    const stampEl = document.getElementById('buildStamp');
+    if(stampEl && manifestData.generated_at){
+      const d = new Date(manifestData.generated_at);
+      if(!isNaN(d)){
+        const pad = n => String(n).padStart(2,'0');
+        stampEl.textContent = `資料更新：${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      }
+    }
   }catch(e){
     dataInfo.textContent = '股票資料載入失敗，請重新整理頁面試試（' + e.message + '）';
   }finally{
