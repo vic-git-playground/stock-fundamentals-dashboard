@@ -20,6 +20,8 @@ import subprocess
 import datetime
 
 XLSM_FILENAME = "台灣篩選器_股期_ver.2.xlsm"
+# Excel 原始檔案的完整路徑（不在專案資料夾底下，另外放在這裡）
+XLSM_PATH = r"D:\工作區\主要工作檔\台灣篩選器_股期_ver.2.xlsm"
 CMONEY_UPDATE_ARG_TEMPLATE = "M4||{file_path}"  # 跟 process_etf.py 用的格式一樣，不確定的話請調整
 
 
@@ -83,10 +85,11 @@ def update_cmoney_excel(file_path):
 def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))     # tools/
     project_dir = os.path.dirname(base_dir)                    # 基本面數據網站/
-    xlsm_path = os.path.join(project_dir, XLSM_FILENAME)
+    xlsm_path = XLSM_PATH
 
     if not os.path.exists(xlsm_path):
-        log(f"找不到 {xlsm_path}，請確認這個 bat/py 是放在專案資料夾底下的 tools 資料夾裡執行。")
+        log(f"找不到 {xlsm_path}，請確認 Excel 檔案路徑正確"
+            f"（目前設定在 tools/update_from_cmoney.py 的 XLSM_PATH，如果檔案又搬家了要改這裡）。")
         sys.exit(1)
 
     log(f"目標檔案: {xlsm_path}")

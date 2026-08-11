@@ -44,7 +44,7 @@ PE Band、Fwd. PE 走勢（含可調整的目標PE）、PB、月營收、Margin�
 Claude 會執行：
 
 ```
-python tools/refresh_data.py "台灣篩選器_股期_ver.2.xlsm的路徑" data
+python tools/refresh_data.py "D:\工作區\主要工作檔\台灣篩選器_股期_ver.2.xlsm" data
 ```
 
 不加 `--codes` 參數時，預設會依照「統整」sheet 目前收錄的股票清單全部重新匯出並覆蓋 `data/*.json`、

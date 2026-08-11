@@ -40,7 +40,7 @@ exit /b 1
 echo 使用 Python: %PYTHON_EXE%
 echo.
 echo 重新匯出網站資料（讀取 Excel 目前內容，不會呼叫 CMoney 更新）...
-"%PYTHON_EXE%" "tools\refresh_data.py" "台灣篩選器_股期_ver.2.xlsm" "data"
+"%PYTHON_EXE%" "tools\refresh_data.py" "D:\工作區\主要工作檔\台灣篩選器_股期_ver.2.xlsm" "data"
 
 if errorlevel 1 (
   echo.
