@@ -50,6 +50,10 @@ python tools/refresh_data.py "台灣篩選器_股期_ver.2.xlsm的路徑" data
 不加 `--codes` 參數時，預設會依照「統整」sheet 目前收錄的股票清單全部重新匯出並覆蓋 `data/*.json`、
 `data/chunks/`、`data/manifest.json`。只想更新特定幾檔的話可以用 `--codes 2330,2454,3037`。
 
+如果你是自己手動在 Excel 裡更新完 CMoney 資料（沒有用下面的 `update_from_cmoney.bat`），存檔關閉
+Excel 後，直接雙擊 **`refresh_and_publish.bat`**：會重新匯出網站資料，然後自動幫你推送上網，
+不會再重複呼叫一次 CMoney 更新。
+
 ### 從 CMoney 抓新資料（要在裝了 CMoney 的那台電腦上跑）
 
 這個工作資料夾所在的電腦沒有裝 CMoney，所以下面這個更新流程沒辦法在這裡測試，是照你原本
