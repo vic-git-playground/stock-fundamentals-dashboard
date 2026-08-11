@@ -12,13 +12,11 @@ GitHub Pages 免費方案沒辦法加密碼、放上去就是公開給任何人�
 - 不要勾 "Add a README"，其他都不用選，直接建立
 
 ### 2. 把這個資料夾推上去
-在這個資料夾（`D:\工作區\主要工作檔\Claude專案\基本面數據網站`）打開命令提示字元或 PowerShell，依序執行：
+`git init`、第一次 commit、切到 `main` 分支這幾步我已經先幫你做好了，你只差「接上你剛建立的 GitHub 倉庫
+並 push」這一步。在這個資料夾（`D:\工作區\主要工作檔\Claude專案\基本面數據網站`）打開命令提示字元或
+PowerShell，執行：
 
 ```
-git init
-git add -A
-git commit -m "first commit"
-git branch -M main
 git remote add origin https://github.com/你的帳號/stock-dashboard.git
 git push -u origin main
 ```
