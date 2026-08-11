@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個股基本面圖表</title>
+<script src="lib/chart.umd.js"></script>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1e2229; --text:#e8e9ec; --muted:#9aa1ac;
+    --accent:#d4a017; --red:#d9453f; --blue:#3b7dd8; --border:#2a2f38;
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin:0; font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;
+    background:var(--bg); color:var(--text);
+  }
+  header{
+    padding:18px 24px; border-bottom:1px solid var(--border);
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap; position:sticky; top:0;
+    background:var(--bg); z-index:10;
+  }
+  header h1{ font-size:18px; margin:0; font-weight:600; white-space:nowrap; }
+  .search-wrap{ position:relative; display:flex; gap:8px; align-items:center; }
+  #codeInput{
+    background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:9px 12px; border-radius:6px; font-size:14px; width:220px; outline:none;
+  }
+  #codeInput:focus{ border-color:var(--accent); }
+  #searchBtn{
+    background:var(--accent); color:#141414; border:none; padding:9px 18px;
+    border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;
+  }
+  #searchBtn:hover{ opacity:.9; }
+  #suggestions{
+    position:absolute; top:44px; left:0; width:280px; background:var(--panel2);
+    border:1px solid var(--border); border-radius:6px; max-height:280px; overflow-y:auto;
+    display:none; z-index:20; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  #suggestions div{ padding:8px 12px; cursor:pointer; font-size:13px; }
+  #suggestions div:hover{ background:var(--panel); }
+  #suggestions div b{ color:var(--accent); }
+  .stat{ font-size:13px; color:var(--muted); }
+  #stockTitle{ font-size:20px; font-weight:700; }
+  #stockTitle .code{ color:var(--muted); font-weight:400; font-size:14px; }
+  #statBar{ display:flex; gap:20px; flex-wrap:wrap; padding:10px 24px 0; color:var(--muted); font-size:13px; }
+  #statBar b{ color:var(--text); }
+  main{ padding:16px 24px 60px; }
+  .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:16px; }
+  @media (max-width:1100px){ .grid{ grid-template-columns:1fr; } }
+  .card{ background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:14px 16px; }
+  .card h3{ margin:0 0 10px; font-size:14px; font-weight:600; color:var(--text); display:flex; justify-content:space-between; align-items:center; }
+  .card canvas{ max-height:280px; }
+  .empty, .loading, .err{ text-align:center; color:var(--muted); padding:80px 20px; font-size:14px; }
+  .err{ color:#e08585; }
+  .target-input{
+    background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    width:64px; padding:3px 6px; border-radius:4px; font-size:12px; text-align:center;
+  }
+  .hint{ font-size:11px; color:var(--muted); font-weight:400; }
+  footer{ color:var(--muted); font-size:12px; text-align:center; padding:20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>個股基本面圖表</h1>
+  <div class="search-wrap">
+    <input id="codeInput" type="text" placeholder="輸入股票代號或名稱，如 2330 或 台積電" autocomplete="off">
+    <div id="suggestions"></div>
+    <button id="searchBtn">查詢</button>
+  </div>
+  <span class="stat" id="dataInfo"></span>
+</header>
+<div id="statBar"></div>
+
+<main>
+  <div id="content" class="empty">請輸入股票代號查詢（資料來源：台灣篩選器_股期_ver.2.xlsm，由 Claude 匯出）</div>
+
+  <div id="toolsGrid" class="grid" style="display:none;">
+    <div class="card">
+      <h3>手動調整目前股價<span class="hint">留空＝用資料裡最新收盤價</span></h3>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <input id="priceOverrideInput" type="number" step="0.01" placeholder="例如 605" style="background:var(--panel2); border:1px solid var(--border); color:var(--text); padding:8px 10px; border-radius:6px; width:140px; font-size:14px;">
+        <button id="clearOverrideBtn" style="background:none; border:1px solid var(--border); color:var(--muted); border-radius:6px; padding:8px 12px; cursor:pointer; font-size:12px;">清除，改用原始收盤價</button>
+      </div>
+      <div id="overrideStatus" class="hint" style="margin-top:10px;"></div>
+      <div class="hint" style="margin-top:6px;">影響範圍：PE Band、Fwd. PE 走勢、PB 這三張圖「最新一點」＋下面的評價試算器。歷史資料本身不會被改動，只存在你這個瀏覽器裡（localStorage），換一台電腦或清瀏覽器資料就會消失。</div>
+    </div>
+    <div class="card">
+      <h3>評價試算器</h3>
+      <div style="display:grid; grid-template-columns:auto auto; gap:6px 16px; font-size:13px; color:var(--muted); margin-bottom:10px;">
+        <span>Fwd. EPS</span><b id="valFwdEps" style="color:var(--text);">-</b>
+        <span>Book Value (BVPS)</span><b id="valBvps" style="color:var(--text);">-</b>
+        <span>目前股價（計算用）</span><b id="valCurPrice" style="color:var(--text);">-</b>
+      </div>
+      <table style="width:100%; border-collapse:collapse; font-size:13px;">
+        <tr style="color:var(--muted);">
+          <td style="padding:4px 6px;"></td>
+          <td style="padding:4px 6px;">目標倍數</td>
+          <td style="padding:4px 6px;">目標價</td>
+          <td style="padding:4px 6px;">預期報酬率</td>
+        </tr>
+        <tr>
+          <td style="padding:4px 6px;">PE 法</td>
+          <td style="padding:4px 6px;"><input id="valPeMultInput" type="number" step="0.1" class="target-input" style="width:56px;"></td>
+          <td style="padding:4px 6px;"><b id="valPeTarget">-</b></td>
+          <td style="padding:4px 6px;"><b id="valPeReturn">-</b></td>
+        </tr>
+        <tr>
+          <td style="padding:4px 6px;">PB 法</td>
+          <td style="padding:4px 6px;"><input id="valPbMultInput" type="number" step="0.1" class="target-input" style="width:56px;"></td>
+          <td style="padding:4px 6px;"><b id="valPbTarget">-</b></td>
+          <td style="padding:4px 6px;"><b id="valPbReturn">-</b></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid" id="chartGrid" style="display:none;">
+    <div class="card"><h3>PE Band（過去三年周資料滾動）<span class="hint" id="peBandHint"></span></h3><canvas id="chart_peband"></canvas></div>
+    <div class="card"><h3>Fwd. PE 走勢<span class="hint">目標PE可自行調整 <input class="target-input" id="targetPeInput" type="number" step="0.1"></span></h3><canvas id="chart_fwdpe"></canvas></div>
+    <div class="card"><h3>PB<span class="hint" id="pbHint"></span></h3><canvas id="chart_pb"></canvas></div>
+    <div class="card"><h3>月營收</h3><canvas id="chart_rev"></canvas></div>
+    <div class="card"><h3>Margin<span class="hint" id="marginHint"></span></h3><canvas id="chart_margin"></canvas></div>
+    <div class="card"><h3>預估今年/明年 EPS 趨勢</h3><canvas id="chart_eps"></canvas></div>
+    <div class="card"><h3>法人持股比例(%)（近三年）</h3><canvas id="chart_holdings"></canvas></div>
+    <div class="card"><h3>PE 與 Fwd. EPS Y/Y</h3><canvas id="chart_peyoy"></canvas></div>
+  </div>
+</main>
+<footer>資料每次由 Excel 手動匯出更新，非即時報價。</footer>
+
+<script src="data/manifest.js"></script>
+<script src="data/chunks_index.js"></script>
+<script>
+const GOLD = '#c9a227', RED='#d9453f', BLUE='#3b7dd8', ORANGE='#e08a2b',
+      GRAY='#9aa1ac', BLACK='#e8e9ec', YELLOW='#e0c22b', GREEN='#4caf7d', PURPLE='#a56bd8';
+
+let manifest = [];
+let currentData = null;
+let currentEff = null;
+
+function fmtNum(v, d=2){
+  if(v===null||v===undefined||isNaN(v)) return '-';
+  return Number(v).toLocaleString('zh-TW', {maximumFractionDigits:d, minimumFractionDigits:0});
+}
+
+function loadScriptTag(src){
+  return new Promise((resolve, reject)=>{
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = ()=>resolve();
+    s.onerror = ()=>reject(new Error('載入失敗: ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+// 股票資料切成多個 chunk 檔（避免單一檔案太大），這裡動態把它們都載進來，
+// 跟原本單一 <script src> 一樣是本機檔案載入，不會有 file:// 的 CORS 問題
+async function loadAllChunks(){
+  const dataInfo = document.getElementById('dataInfo');
+  const codeInputEl = document.getElementById('codeInput');
+  const searchBtnEl = document.getElementById('searchBtn');
+  codeInputEl.disabled = true;
+  searchBtnEl.disabled = true;
+  try{
+    const manifestData = window.STOCK_MANIFEST || {stocks:[]};
+    manifest = manifestData.stocks || [];
+    const chunks = window.STOCK_CHUNKS || [];
+    if(!chunks.length){
+      dataInfo.textContent = '找不到股票資料（data/chunks_index.js 或 data/manifest.js 是否存在？）';
+      return;
+    }
+    dataInfo.textContent = '載入股票資料中...';
+    await Promise.all(chunks.map(c => loadScriptTag('data/' + c)));
+    dataInfo.textContent = `已匯出 ${manifest.length} 檔股票`;
+  }catch(e){
+    dataInfo.textContent = '股票資料載入失敗，請重新整理頁面試試（' + e.message + '）';
+  }finally{
+    codeInputEl.disabled = false;
+    searchBtnEl.disabled = false;
+  }
+}
+
+const input = document.getElementById('codeInput');
+const suggBox = document.getElementById('suggestions');
+
+input.addEventListener('input', () => {
+  const q = input.value.trim().toLowerCase();
+  if(!q){ suggBox.style.display='none'; return; }
+  const matches = manifest.filter(s => s.code.includes(q) || (s.name && s.name.toLowerCase().includes(q))).slice(0,15);
+  if(matches.length===0){ suggBox.style.display='none'; return; }
+  suggBox.innerHTML = matches.map(s => `<div data-code="${s.code}"><b>${s.code}</b> ${s.name||''}</div>`).join('');
+  suggBox.style.display='block';
+  suggBox.querySelectorAll('div').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      input.value = el.dataset.code;
+      suggBox.style.display='none';
+      doSearch();
+    });
+  });
+});
+document.addEventListener('click', (e)=>{ if(!e.target.closest('.search-wrap')) suggBox.style.display='none'; });
+document.getElementById('searchBtn').addEventListener('click', doSearch);
+input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ suggBox.style.display='none'; doSearch(); }});
+
+function resolveCode(q){
+  q = q.trim();
+  if(!q) return null;
+  const byCode = manifest.find(s=>s.code===q);
+  if(byCode) return byCode.code;
+  const byName = manifest.find(s=>s.name===q);
+  if(byName) return byName.code;
+  const partial = manifest.find(s=>s.name && s.name.includes(q));
+  if(partial) return partial.code;
+  return q; // fall through, let fetch fail with a friendly message
+}
+
+function doSearch(){
+  const q = input.value;
+  const code = resolveCode(q);
+  const content = document.getElementById('content');
+  const grid = document.getElementById('chartGrid');
+  const tools = document.getElementById('toolsGrid');
+  const store = window.STOCK_DATA || {};
+  if(code && store[code]){
+    const data = store[code];
+    content.style.display = 'none';
+    grid.style.display = 'grid';
+    tools.style.display = 'grid';
+    renderAll(data);
+  }else{
+    grid.style.display = 'none';
+    tools.style.display = 'none';
+    content.style.display = 'block';
+    content.className = 'err';
+    content.textContent = `找不到「${q}」的資料。這檔股票可能還沒匯出，請請 Claude 幫你重新匯出（把最新的 Excel 資料轉成網頁用的資料檔）。`;
+  }
+}
+
+const charts = {};
+function upsertChart(id, config){
+  if(charts[id]) charts[id].destroy();
+  const ctx = document.getElementById(id).getContext('2d');
+  charts[id] = new Chart(ctx, config);
+  return charts[id];
+}
+
+function baseOpts(extra={}){
+  return Object.assign({
+    responsive:true,
+    maintainAspectRatio:false,
+    interaction:{ mode:'index', intersect:false },
+    plugins:{
+      legend:{ labels:{ color: GRAY, boxWidth:14, font:{size:11} } },
+      tooltip:{ mode:'index', intersect:false }
+    },
+    scales:{
+      x:{ ticks:{ color: GRAY, maxTicksLimit:14, font:{size:10} }, grid:{ color:'#242832' } },
+      y:{ ticks:{ color: GRAY, font:{size:10} }, grid:{ color:'#242832' } }
+    }
+  }, extra);
+}
+
+function lineDs(label, data, color, opts={}){
+  return Object.assign({
+    label, data, borderColor:color, backgroundColor:color,
+    borderWidth: opts.width || 1.5, pointRadius:0, tension:0.05, spanGaps:true
+  }, opts);
+}
+
+function renderAll(d){
+  const switchedStock = !currentData || currentData.code !== d.code;
+  currentData = d;
+  if(switchedStock){
+    document.getElementById('valPeMultInput').value = '';
+    document.getElementById('valPbMultInput').value = '';
+  }
+  const eff = computeEffective(d);
+  currentEff = eff;
+
+  document.getElementById('statBar').innerHTML = `
+    <span><b>${d.name}</b> (${d.code})</span>
+    <span>股價 <b>${fmtNum(eff.price)}</b>${eff.overridden ? ' <span style="color:'+GOLD+'">(手動)</span>' : ''}</span>
+    <span>Fwd. PE <b>${fmtNum(eff.fwd_pe,1)}x</b></span>
+    <span>PB <b>${fmtNum(eff.pb,2)}x</b></span>
+    <span>資料時間 <b>${d.weekly.dates[d.weekly.dates.length-1]}</b></span>
+  `;
+  syncOverrideUI(d, eff);
+  renderValuation(d, eff);
+  renderPeBand(d, eff);
+  renderFwdPe(d, eff);
+  renderPb(d, eff);
+  renderRevenue(d);
+  renderMargin(d);
+  renderEpsTrend(d);
+  renderHoldings(d);
+  renderPeYoy(d);
+}
+
+/* ---- 手動調整股價：留空用資料最新收盤價，有填的話 PE Band / Fwd.PE / PB 最新一點跟評價試算器都跟著換算 ---- */
+function priceOverrideKey(code){ return 'priceOverride_' + code; }
+function getOverridePrice(code){
+  const v = localStorage.getItem(priceOverrideKey(code));
+  if(v===null || v==='') return null;
+  const f = parseFloat(v);
+  return isNaN(f) ? null : f;
+}
+function setOverridePrice(code, val){
+  if(val===null || val===undefined || val===''|| isNaN(val)){
+    localStorage.removeItem(priceOverrideKey(code));
+  }else{
+    localStorage.setItem(priceOverrideKey(code), String(val));
+  }
+}
+
+function withLast(arr, val){
+  const a = arr.slice();
+  if(a.length) a[a.length-1] = val;
+  return a;
+}
+
+// 把新的最新一筆數值接到序列尾端，重算「近三年(156週)滾動」的 min/max/median
+function rollLastStat(arr, newLast, window=156){
+  const a = arr.slice(0, Math.max(0, arr.length-1));
+  a.push(newLast);
+  const lo = Math.max(0, a.length-window);
+  const chunk = a.slice(lo).filter(v=>v!==null && v!==undefined && !isNaN(v));
+  if(!chunk.length) return {min:null,max:null,med:null};
+  const s = chunk.slice().sort((x,y)=>x-y);
+  const min=s[0], max=s[s.length-1];
+  const mid=Math.floor(s.length/2);
+  const med = s.length%2 ? s[mid] : (s[mid-1]+s[mid])/2;
+  return {min,max,med};
+}
+
+function computeEffective(d){
+  const w = d.weekly;
+  const basePrice = w.price[w.price.length-1];
+  const override = getOverridePrice(d.code);
+  const price = (override!=null) ? override : basePrice;
+  const epsLatest = d.latest.weekly_fwd_eps;
+  const bvps = d.latest.bvps;
+  const fwd_pe = (epsLatest) ? price/epsLatest : null;
+  const pb = (bvps) ? price/bvps : null;
+  const peStat = rollLastStat(w.fwd_pe, fwd_pe);
+  const pbStat = rollLastStat(w.pb, pb);
+  return {
+    overridden: override!=null,
+    basePrice, price, fwd_pe, pb, epsLatest, bvps,
+    pe_band_min_x: peStat.min, pe_band_max_x: peStat.max, pe_band_med_x: peStat.med,
+    pb_band_min_x: pbStat.min, pb_band_max_x: pbStat.max, pb_band_med_x: pbStat.med,
+    pe_band_min: (peStat.min!=null && epsLatest!=null) ? peStat.min*epsLatest : null,
+    pe_band_max: (peStat.max!=null && epsLatest!=null) ? peStat.max*epsLatest : null,
+    pe_band_med: (peStat.med!=null && epsLatest!=null) ? peStat.med*epsLatest : null,
+  };
+}
+
+const priceOverrideInput = document.getElementById('priceOverrideInput');
+document.getElementById('clearOverrideBtn').addEventListener('click', ()=>{
+  if(!currentData) return;
+  priceOverrideInput.value='';
+  setOverridePrice(currentData.code, null);
+  renderAll(currentData);
+});
+priceOverrideInput.addEventListener('change', ()=>{
+  if(!currentData) return;
+  const v = priceOverrideInput.value.trim();
+  setOverridePrice(currentData.code, v===''?null:parseFloat(v));
+  renderAll(currentData);
+});
+
+function syncOverrideUI(d, eff){
+  priceOverrideInput.value = eff.overridden ? eff.price : '';
+  document.getElementById('overrideStatus').textContent = eff.overridden
+    ? `目前用手動價格 ${fmtNum(eff.price,2)} 計算（原始收盤價 ${fmtNum(eff.basePrice,2)}）`
+    : `目前用原始收盤價 ${fmtNum(eff.basePrice,2)} 計算`;
+}
+
+function renderValuation(d, eff){
+  document.getElementById('valFwdEps').textContent = fmtNum(eff.epsLatest,2);
+  document.getElementById('valBvps').textContent = fmtNum(eff.bvps,2);
+  document.getElementById('valCurPrice').textContent = fmtNum(eff.price,2) + (eff.overridden?'（手動）':'（原始收盤）');
+  updateValuationCalc(eff);
+}
+
+function updateValuationCalc(eff){
+  const peMult = parseFloat(document.getElementById('valPeMultInput').value);
+  const pbMult = parseFloat(document.getElementById('valPbMultInput').value);
+  const price = eff.price;
+  const setPair = (targetId, retId, mult, base) => {
+    const targetEl = document.getElementById(targetId), retEl = document.getElementById(retId);
+    if(!isNaN(mult) && base!=null && price){
+      const target = mult * base;
+      const ret = (target/price - 1) * 100;
+      targetEl.textContent = fmtNum(target,1);
+      retEl.textContent = (ret>=0?'+':'') + fmtNum(ret,1) + '%';
+      retEl.style.color = ret>=0 ? '#e0605a' : '#4caf7d';
+    }else{
+      targetEl.textContent = '-';
+      retEl.textContent = '-';
+      retEl.style.color = 'var(--text)';
+    }
+  };
+  setPair('valPeTarget','valPeReturn', peMult, eff.epsLatest);
+  setPair('valPbTarget','valPbReturn', pbMult, eff.bvps);
+}
+document.getElementById('valPeMultInput').addEventListener('input', ()=>{ if(currentEff) updateValuationCalc(currentEff); });
+document.getElementById('valPbMultInput').addEventListener('input', ()=>{ if(currentEff) updateValuationCalc(currentEff); });
+
+function renderPeBand(d, eff){
+  const w = d.weekly;
+  document.getElementById('peBandHint').textContent =
+    `Min ${fmtNum(eff.pe_band_min_x,1)}x / Med ${fmtNum(eff.pe_band_med_x,1)}x / Max ${fmtNum(eff.pe_band_max_x,1)}x` +
+    (eff.overridden ? '（依手動股價重算最新一點）' : '');
+  upsertChart('chart_peband', {
+    type:'line',
+    data:{ labels:w.dates, datasets:[
+      lineDs(`Min PE`, withLast(w.pe_band_min, eff.pe_band_min), GOLD, {borderDash:[]}),
+      lineDs('股價', withLast(w.price, eff.price), RED, {width:2}),
+      lineDs(`Max PE`, withLast(w.pe_band_max, eff.pe_band_max), GOLD),
+      lineDs(`Med PE`, withLast(w.pe_band_med, eff.pe_band_med), ORANGE),
+    ]},
+    options: baseOpts()
+  });
+}
+
+function renderFwdPe(d, eff){
+  const w = d.weekly;
+  const latestPe = eff.fwd_pe;
+  const targetInput = document.getElementById('targetPeInput');
+  if(!targetInput.dataset.userSet){
+    targetInput.value = eff.pe_band_med_x ? eff.pe_band_med_x.toFixed(1) : (latestPe||0).toFixed(1);
+  }
+  const draw = () => {
+    const target = parseFloat(targetInput.value) || latestPe;
+    upsertChart('chart_fwdpe', {
+      type:'line',
+      data:{ labels:w.dates, datasets:[
+        lineDs('Fwd. PE_加權', withLast(w.fwd_pe, eff.fwd_pe), RED, {width:2}),
+        lineDs('目前PE', w.dates.map(()=>latestPe), GRAY, {borderDash:[6,4], width:1}),
+        lineDs('目標PE', w.dates.map(()=>target), BLUE, {width:1}),
+      ]},
+      options: baseOpts()
+    });
+  };
+  targetInput.oninput = () => { targetInput.dataset.userSet='1'; draw(); };
+  draw();
+}
+
+function renderPb(d, eff){
+  const w = d.weekly;
+  document.getElementById('pbHint').textContent = `目前PB ${fmtNum(eff.pb,2)}x` + (eff.overridden ? '（依手動股價重算）' : '');
+  upsertChart('chart_pb', {
+    type:'line',
+    data:{ labels:w.dates, datasets:[
+      lineDs('PB', withLast(w.pb, eff.pb), BLUE, {width:2}),
+      lineDs('目前PB', w.dates.map(()=>eff.pb), GRAY, {borderDash:[6,4], width:1}),
+    ]},
+    options: baseOpts()
+  });
+}
+
+function linregTrend(values){
+  const pts = values.map((v,i)=>[i,v]).filter(p=>p[1]!==null && p[1]!==undefined);
+  if(pts.length<2) return values.map(()=>null);
+  const n = pts.length;
+  const sx = pts.reduce((a,p)=>a+p[0],0), sy = pts.reduce((a,p)=>a+p[1],0);
+  const sxx = pts.reduce((a,p)=>a+p[0]*p[0],0), sxy = pts.reduce((a,p)=>a+p[0]*p[1],0);
+  const denom = (n*sxx - sx*sx) || 1;
+  const slope = (n*sxy - sx*sy)/denom;
+  const intercept = (sy - slope*sx)/n;
+  return values.map((_,i)=> slope*i + intercept);
+}
+
+function renderRevenue(d){
+  const m = d.monthly;
+  const trend = linregTrend(m.revenue);
+  upsertChart('chart_rev', {
+    data:{ labels:m.dates, datasets:[
+      { type:'bar', label:'月營收', data:m.revenue, backgroundColor:'#5b8fd6' },
+      { type:'line', label:'3MA Rev.', data:m.revenue_3ma, borderColor:ORANGE, borderWidth:2, pointRadius:0, tension:0.1 },
+      { type:'line', label:'趨勢線', data:trend, borderColor:GRAY, borderWidth:1, borderDash:[3,3], pointRadius:0 },
+    ]},
+    options: baseOpts()
+  });
+}
+
+function renderMargin(d){
+  const m = d.monthly;
+  document.getElementById('marginHint').textContent = `GPM ${fmtNum(d.latest.gpm,1)} / OPM ${fmtNum(d.latest.opm,1)}`;
+  upsertChart('chart_margin', {
+    type:'line',
+    data:{ labels:m.dates, datasets:[
+      lineDs('GPM', m.gpm, BLUE, {width:2, yAxisID:'y'}),
+      lineDs('OPM', m.opm, ORANGE, {width:2, yAxisID:'y'}),
+      lineDs('Bwd. EPS', m.bwd_eps, GRAY, {width:1.5, yAxisID:'y1'}),
+      lineDs('Fwd. EPS', m.fwd_eps, BLACK, {width:2, yAxisID:'y1'}),
+    ]},
+    options: baseOpts({
+      scales:{
+        x:{ ticks:{ color:GRAY, maxTicksLimit:14, font:{size:10} }, grid:{ color:'#242832' } },
+        y:{ position:'left', ticks:{ color:GRAY, font:{size:10} }, grid:{ color:'#242832' } },
+        y1:{ position:'right', ticks:{ color:GRAY, font:{size:10} }, grid:{ display:false } },
+      }
+    })
+  });
+}
+
+function renderEpsTrend(d){
+  const m = d.monthly;
+  upsertChart('chart_eps', {
+    type:'line',
+    data:{ labels:m.dates, datasets:[
+      lineDs('預估今年EPS', m.eps_this_year, BLACK, {width:2}),
+      lineDs('預估明年EPS', m.eps_next_year, BLUE, {width:2}),
+    ]},
+    options: baseOpts()
+  });
+}
+
+function renderHoldings(d){
+  const w = d.weekly;
+  const n = w.dates.length;
+  const lo = Math.max(0, n-156);
+  const dates = w.dates.slice(lo);
+  const trust = w.holdings_trust.slice(lo);
+  const foreign = w.holdings_foreign.slice(lo);
+  const dealer = w.holdings_dealer.slice(lo);
+  const total = w.holdings_total.slice(lo);
+  upsertChart('chart_holdings', {
+    data:{ labels:dates, datasets:[
+      { type:'bar', label:'投信持股', data:trust, backgroundColor:'#e0c22b', stack:'h' },
+      { type:'bar', label:'外資持股', data:foreign, backgroundColor:BLUE, stack:'h' },
+      { type:'bar', label:'自營持股', data:dealer, backgroundColor:GREEN, stack:'h' },
+      { type:'line', label:'三大法人持股', data:total, borderColor:RED, borderWidth:2, pointRadius:0 },
+    ]},
+    options: baseOpts({
+      scales:{
+        x:{ ticks:{ color:GRAY, maxTicksLimit:12, font:{size:10} }, grid:{ color:'#242832' } },
+        y:{ stacked:true, ticks:{ color:GRAY, font:{size:10} }, grid:{ color:'#242832' } },
+      }
+    })
+  });
+}
+
+function renderPeYoy(d){
+  const w = d.weekly;
+  upsertChart('chart_peyoy', {
+    data:{ labels:w.dates, datasets:[
+      { type:'bar', label:'預估今年EPS成長', data:w.eps_growth_this_year, backgroundColor:BLUE, yAxisID:'y' },
+      { type:'bar', label:'預估明年EPS成長', data:w.eps_growth_next_year, backgroundColor:YELLOW, yAxisID:'y' },
+      { type:'line', label:'Fwd. PE_加權', data:w.fwd_pe, borderColor:RED, borderWidth:2, pointRadius:0, yAxisID:'y1' },
+    ]},
+    options: baseOpts({
+      scales:{
+        x:{ ticks:{ color:GRAY, maxTicksLimit:14, font:{size:10} }, grid:{ color:'#242832' } },
+        y:{ position:'left', ticks:{ color:GRAY, font:{size:10} }, grid:{ color:'#242832' } },
+        y1:{ position:'right', ticks:{ color:GRAY, font:{size:10} }, grid:{ display:false } },
+      }
+    })
+  });
+}
+
+if(typeof Chart === 'undefined'){
+  document.getElementById('content').className = 'err';
+  document.getElementById('content').textContent = '找不到 lib/chart.umd.js，圖表套件沒有載入成功，請確認 index.html 跟 lib、data 資料夾在同一層。';
+} else {
+  loadAllChunks();
+}
+</script>
+</body>
+</html>

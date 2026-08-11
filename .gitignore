@@ -1,0 +1,13 @@
+# 原始 Excel（含 CMoney 付費資料，不放上網路/不進版控）
+*.xlsm
+*.xlsx
+
+# 匯出流程的暫存工作區
+tools/_xlsm_extract/
+tools/__pycache__/
+__pycache__/
+*.pyc
+
+# 系統雜項
+.DS_Store
+Thumbs.db
