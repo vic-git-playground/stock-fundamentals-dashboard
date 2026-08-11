@@ -1,10 +1,9 @@
 @echo off
-chcp 65001 >nul
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
-rem é€™å€‹ bat è¦åœ¨ã€Œæœ‰è£ CMoneyã€çš„é‚£å°é›»è…¦ä¸ŠåŸ·è¡Œï¼Œé€™å°å·¥ä½œæ©Ÿæ²’æœ‰è£ CMoney æ²’è¾¦æ³•è·‘ã€‚
-rem æµç¨‹ï¼šCMExcel.exe æ›´æ–° å°ç£ç¯©é¸å™¨_è‚¡æœŸ_ver.2.xlsm -> å­˜æª”é—œé–‰ -> é‡æ–°åŒ¯å‡ºç¶²ç«™è³‡æ–™ (data/all_data.js)
+rem ³o­Ó bat ­n¦b¡u¦³¸Ë CMoney¡vªº¨º¥x¹q¸£¤W°õ¦æ¡A³o¥x¤u§@¾÷¨S¦³¸Ë CMoney ¨S¿ìªk¶]¡C
+rem ¬yµ{¡GCMExcel.exe §ó·s ¥xÆW¿z¿ï¾¹_ªÑ´Á_ver.2.xlsm -> ¦sÀÉÃö³¬ -> ­«·s¶×¥Xºô¯¸¸ê®Æ (data/all_data.js)
 
 set "PYTHON_EXE="
 
@@ -31,20 +30,20 @@ for %%P in (
     )
 )
 
-echo æ‰¾ä¸åˆ° python.exeï¼Œè«‹æ‰“é–‹é€™å€‹æª”æ¡ˆï¼ŒæŠŠ PYTHON_EXE è¨­æˆä½ çš„ python.exe å®Œæ•´è·¯å¾‘ï¼Œä¾‹å¦‚ï¼š
+echo §ä¤£¨ì python.exe¡A½Ð¥´¶}³o­ÓÀÉ®×¡A§â PYTHON_EXE ³]¦¨§Aªº python.exe §¹¾ã¸ô®|¡A¨Ò¦p¡G
 echo     set "PYTHON_EXE=C:\Users\yourname\anaconda3\python.exe"
 pause
 exit /b 1
 
 :found
-echo ä½¿ç”¨ Python: %PYTHON_EXE%
+echo ¨Ï¥Î Python: %PYTHON_EXE%
 echo.
-echo éœ€è¦å…ˆå®‰è£ pywin32 æ‰èƒ½æŽ§åˆ¶ Excel å­˜æª”é—œé–‰ï¼ˆå¦‚æžœä¹‹å‰æ²’è£éŽï¼Œé€™è£¡å…ˆè£ä¸€æ¬¡ï¼Œå·²è£éŽæœƒç§’éŽï¼‰ï¼š
+echo »Ý­n¥ý¦w¸Ë pywin32 ¤~¯à±±¨î Excel ¦sÀÉÃö³¬¡]¦pªG¤§«e¨S¸Ë¹L¡A³o¸Ì¥ý¸Ë¤@¦¸¡A¤w¸Ë¹L·|¬í¹L¡^¡G
 "%PYTHON_EXE%" -m pip install --quiet pywin32
 
 echo.
-echo é–‹å§‹åŸ·è¡Œ CMoney æ›´æ–° + ç¶²ç«™è³‡æ–™é‡æ–°åŒ¯å‡º...
-echo ï¼ˆCMExcel.exe æ›´æ–°éŽç¨‹é€šå¸¸è¦æ•¸åç§’ï¼Œä¸­é–“ä¸è¦å‹• Excelï¼‰
+echo ¶}©l°õ¦æ CMoney §ó·s + ºô¯¸¸ê®Æ­«·s¶×¥X...
+echo ¡]CMExcel.exe §ó·s¹Lµ{³q±`­n¼Æ¤Q¬í¡A¤¤¶¡¤£­n°Ê Excel¡^
 echo.
 "%PYTHON_EXE%" "tools\update_from_cmoney.py"
 

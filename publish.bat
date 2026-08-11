@@ -1,28 +1,27 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
 
 if not exist ".git" (
-  echo é€™å€‹è³‡æ–™å¤¾é‚„æ²’åšéŽ git åˆå§‹åŒ–ï¼Œè«‹å…ˆç…§ DEPLOY.md çš„ã€Œç¬¬ä¸€æ¬¡è¨­å®šã€æ­¥é©Ÿåšä¸€æ¬¡ã€‚
+  echo ³o­Ó¸ê®Æ§¨ÁÙ¨S°µ¹L git ªì©l¤Æ¡A½Ð¥ý·Ó DEPLOY.md ªº¡u²Ä¤@¦¸³]©w¡v¨BÆJ°µ¤@¦¸¡C
   pause
   exit /b 1
 )
 
-echo æŽ¨é€è³‡æ–™æ›´æ–°åˆ° GitHubï¼ˆCloudflare Pages åµæ¸¬åˆ°å¾Œæœƒè‡ªå‹•é‡æ–°éƒ¨ç½²ï¼Œé€šå¸¸ 1~2 åˆ†é˜ï¼‰...
+echo ±À°e¸ê®Æ§ó·s¨ì GitHub¡]GitHub Pages °»´ú¨ì«á·|¦Û°Ê­«·s³¡¸p¡A³q±` 1 ¤ÀÄÁ¤º¡^...
 git add -A
 git commit -m "update data" >nul 2>nul
-rem ä¸Šé¢é€™è¡Œå¦‚æžœã€Œæ²’æœ‰è®Šæ›´å¯ä»¥ commitã€æœƒå›žå‚³éž 0ï¼Œé‚£æ˜¯æ­£å¸¸æƒ…æ³ï¼Œä¸ä»£è¡¨å‡ºéŒ¯ï¼Œæ‰€ä»¥ä¸æª¢æŸ¥å®ƒçš„çµæžœ
+rem ¤W­±³o¦æ¦pªG¡u¨S¦³ÅÜ§ó¥i¥H commit¡v·|¦^¶Ç«D 0¡A¨º¬O¥¿±`±¡ªp¡A¤£¥Nªí¥X¿ù¡A©Ò¥H¤£ÀË¬d¥¦ªºµ²ªG
 git push
 
 if errorlevel 1 (
   echo.
-  echo æŽ¨é€å¤±æ•—ã€‚å¸¸è¦‹åŽŸå› ï¼š
-  echo   1) é‚„æ²’ç…§ DEPLOY.md åšéŽã€Œç¬¬ä¸€æ¬¡è¨­å®šã€ï¼ˆgit remote add / ç¬¬ä¸€æ¬¡ç™»å…¥ï¼‰
-  echo   2) ç¶²è·¯é€£ä¸åˆ° GitHub
+  echo ±À°e¥¢±Ñ¡C±`¨£­ì¦]¡G
+  echo   1) ÁÙ¨S·Ó DEPLOY.md °µ¹L¡u²Ä¤@¦¸³]©w¡v¡]git remote add / ²Ä¤@¦¸µn¤J¡^
+  echo   2) ºô¸ô³s¤£¨ì GitHub
   pause
   exit /b 1
 )
 
 echo.
-echo å®Œæˆï¼ç­‰ 1~2 åˆ†é˜è®“ Cloudflare Pages éƒ¨ç½²å¥½å°±å¯ä»¥çœ‹åˆ°æœ€æ–°è³‡æ–™ã€‚
+echo §¹¦¨¡Iµ¥ 1 ¤ÀÄÁ¥ª¥kÅý GitHub Pages ³¡¸p¦n´N¥i¥H¬Ý¨ì³Ì·s¸ê®Æ¡C
 pause
