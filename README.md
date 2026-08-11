@@ -17,6 +17,12 @@ PE Band、Fwd. PE 走勢（含可調整的目標PE）、PB、月營收、Margin�
 
 目前已匯出「統整」sheet 收錄的全部 265 檔股票（`data/chunks/`）。
 
+## 線上分享版（Google 帳號登入限制）
+
+網站也部署在線上：`https://vic-git-playground.github.io/stock-fundamentals-dashboard/`，
+打開會先看到 Google 登入畫面，只有白名單裡的帳號能看到內容（跟你另一個「券商報告動態追蹤」網站
+做法一樣）。白名單、部署細節、以後怎麼加人/換人見 `DEPLOY.md`。
+
 ## 手動調整股價
 
 查詢一檔股票後，畫面上會有「手動調整目前股價」的輸入框。留空就用 Excel 匯出資料裡最新的收盤價；
