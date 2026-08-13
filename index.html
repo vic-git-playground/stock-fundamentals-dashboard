@@ -62,6 +62,58 @@
   #buildStamp{ position:fixed; right:14px; bottom:14px; z-index:59; font-size:11px;
     color:var(--muted); background:var(--panel); border:1px solid var(--border);
     border-radius:6px; padding:4px 9px; pointer-events:none; }
+
+  /* ---- 多重篩選 ---- */
+  #screenerToggle{ background:none; border:1px solid var(--border); color:var(--text);
+    padding:9px 16px; border-radius:6px; cursor:pointer; font-size:13px; }
+  #screenerToggle:hover{ border-color:var(--accent); color:var(--accent); }
+  #screenerToggle.on{ background:var(--accent); border-color:var(--accent); color:#141414; font-weight:600; }
+  #screenerPanel{ display:none; padding:16px 24px 22px; border-bottom:1px solid var(--border);
+    background:var(--panel); }
+  #screenerPanel.open{ display:block; }
+  .scr-head{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:12px; }
+  .scr-head h2{ font-size:15px; margin:0; font-weight:600; }
+  .scr-rules{ display:flex; flex-direction:column; gap:10px; }
+  .scr-row{ background:var(--panel2); border:1px solid var(--border); border-radius:8px; padding:10px 12px; }
+  .scr-row-top{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .scr-row-top b{ font-size:12px; color:var(--accent); }
+  .scr-conds{ display:flex; flex-wrap:wrap; gap:8px; }
+  .scr-cond{ display:flex; align-items:center; gap:5px; background:var(--panel);
+    border:1px solid var(--border); border-radius:6px; padding:4px 6px; }
+  .scr-cond select, .scr-cond input{ background:var(--bg); border:1px solid var(--border);
+    color:var(--text); border-radius:4px; padding:5px 7px; font-size:12px; outline:none; }
+  .scr-cond select{ max-width:170px; }
+  .scr-cond input{ width:100px; }
+  .scr-cond select:focus, .scr-cond input:focus{ border-color:var(--accent); }
+  .scr-x{ background:none; border:none; color:var(--muted); cursor:pointer; font-size:15px;
+    line-height:1; padding:0 2px; }
+  .scr-x:hover{ color:var(--red); }
+  .scr-add-cond{ background:none; border:1px dashed var(--border); color:var(--muted);
+    border-radius:6px; padding:5px 10px; cursor:pointer; font-size:12px; }
+  .scr-add-cond:hover{ border-color:var(--accent); color:var(--accent); }
+  .scr-actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:12px; }
+  #scrRun{ background:var(--accent); color:#141414; border:none; padding:8px 20px;
+    border-radius:6px; font-weight:600; cursor:pointer; font-size:13px; }
+  #scrRun:hover{ opacity:.9; }
+  .btn-ghost{ background:none; border:1px solid var(--border); color:var(--muted);
+    border-radius:6px; padding:8px 14px; cursor:pointer; font-size:12px; }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+  .scr-syntax{ margin-top:10px; line-height:1.8; }
+  .scr-syntax code{ background:var(--panel2); border:1px solid var(--border); border-radius:3px;
+    padding:1px 5px; color:var(--text); }
+  #scrResult{ margin-top:14px; }
+  .scr-table-wrap{ overflow-x:auto; border:1px solid var(--border); border-radius:8px; }
+  table.scr-table{ border-collapse:collapse; width:100%; font-size:12px; white-space:nowrap; }
+  table.scr-table th, table.scr-table td{ padding:7px 10px; border-bottom:1px solid var(--border);
+    text-align:right; }
+  table.scr-table th{ background:var(--panel2); color:var(--muted); font-weight:600;
+    position:sticky; top:0; cursor:pointer; user-select:none; }
+  table.scr-table th:hover{ color:var(--accent); }
+  table.scr-table th.sorted{ color:var(--accent); }
+  table.scr-table td.t-left, table.scr-table th.t-left{ text-align:left; }
+  table.scr-table tbody tr:hover{ background:var(--panel2); }
+  table.scr-table a.code-link{ color:var(--accent); text-decoration:none; font-weight:600; }
+  table.scr-table a.code-link:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -72,8 +124,31 @@
     <div id="suggestions"></div>
     <button id="searchBtn">查詢</button>
   </div>
+  <button id="screenerToggle">多重篩選</button>
   <span class="stat" id="dataInfo"></span>
 </header>
+
+<section id="screenerPanel">
+  <div class="scr-head">
+    <h2>多重篩選</h2>
+    <span class="hint">跟 Excel「統整」sheet 的多重篩選同一套規則：同一列的條件要全部同時成立（AND），
+      不同列之間只要符合任一列就會被選出（OR）。留空＝不限制。</span>
+  </div>
+  <div class="scr-rules" id="scrRules"></div>
+  <div class="scr-actions">
+    <button id="scrAddRow" class="btn-ghost">＋ 新增一組條件（OR）</button>
+    <button id="scrRun">執行篩選</button>
+    <button id="scrReset" class="btn-ghost">清空條件</button>
+    <span class="hint" id="scrCount"></span>
+  </div>
+  <div class="scr-syntax hint">
+    數值欄位可以填 <code>&gt;10</code>、<code>&lt;=25</code>、<code>=3</code>、<code>&lt;&gt;0</code>、
+    <code>5~20</code>（介於，含端點）；文字欄位（股票代號／名稱／產業名稱）直接填字，比照 Excel 用「開頭符合」，
+    例如產業填 <code>電子</code> 會包含「電子–半導體」「電子–光電」等等。
+  </div>
+  <div id="scrResult"></div>
+</section>
+
 <div id="statBar"></div>
 
 <main>
@@ -135,6 +210,7 @@
 
 <script src="data/manifest.js"></script>
 <script src="data/chunks_index.js"></script>
+<script src="data/screener.js"></script>
 <script>
 const GOLD = '#c9a227', RED='#d9453f', BLUE='#3b7dd8', ORANGE='#e08a2b',
       GRAY='#9aa1ac', BLACK='#e8e9ec', YELLOW='#e0c22b', GREEN='#4caf7d', PURPLE='#a56bd8';
@@ -573,11 +649,272 @@ function renderPeYoy(d){
   });
 }
 
+/* ============================================================
+   多重篩選（比照 Excel「統整」sheet 的 AdvancedFilter 巨集）
+   - 一列（rule）內的多個條件 => AND
+   - 多列之間 => OR
+   - 文字欄位比照 Excel：開頭符合即算通過
+   ============================================================ */
+const SCR = window.SCREENER || null;
+const SCR_COLS = SCR ? SCR.columns : [];
+const scrColMap = {};
+SCR_COLS.forEach(c => { scrColMap[c.key] = c; });
+
+// 預設帶入的欄位（對應你 Excel 裡常用的那幾個條件）
+const SCR_DEFAULT_FIELDS = ['pe_rank', 'eps_yoy_cur', 'analysts'];
+let scrRules = [];          // [[{field, value}, ...], ...]
+let scrSort = {key:null, dir:1};
+let scrLastRows = null;
+
+function scrNewCond(field){
+  const fallback = SCR_COLS.length ? SCR_COLS[Math.min(3, SCR_COLS.length-1)].key : '';
+  return {field: field || fallback, value:''};
+}
+
+function scrRenderRules(){
+  const box = document.getElementById('scrRules');
+  box.innerHTML = '';
+  scrRules.forEach((conds, ri) => {
+    const row = document.createElement('div');
+    row.className = 'scr-row';
+
+    const top = document.createElement('div');
+    top.className = 'scr-row-top';
+    top.innerHTML = `<b>條件組 ${ri+1}</b><span class="hint">${ri===0?'（以下條件同時成立）':'或者，符合以下條件也算'}</span>`;
+    if(scrRules.length > 1){
+      const del = document.createElement('button');
+      del.className = 'scr-x';
+      del.textContent = '✕';
+      del.title = '刪除這一組條件';
+      del.onclick = () => { scrRules.splice(ri,1); scrRenderRules(); };
+      top.appendChild(del);
+    }
+    row.appendChild(top);
+
+    const cbox = document.createElement('div');
+    cbox.className = 'scr-conds';
+    conds.forEach((cond, ci) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'scr-cond';
+
+      const sel = document.createElement('select');
+      SCR_COLS.forEach(c => {
+        const o = document.createElement('option');
+        o.value = c.key; o.textContent = c.label;
+        if(c.key === cond.field) o.selected = true;
+        sel.appendChild(o);
+      });
+      sel.onchange = e => { cond.field = e.target.value; };
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = cond.value;
+      inp.placeholder = (scrColMap[cond.field] && scrColMap[cond.field].type === 'text') ? '例：電子' : '例：>10';
+      inp.oninput = e => { cond.value = e.target.value; };
+      inp.onkeydown = e => { if(e.key === 'Enter') scrRun(); };
+      sel.addEventListener('change', () => {
+        inp.placeholder = (scrColMap[cond.field] && scrColMap[cond.field].type === 'text') ? '例：電子' : '例：>10';
+      });
+
+      const del = document.createElement('button');
+      del.className = 'scr-x';
+      del.textContent = '✕';
+      del.title = '刪除這個條件';
+      del.onclick = () => { conds.splice(ci,1); scrRenderRules(); };
+
+      wrap.appendChild(sel); wrap.appendChild(inp);
+      if(conds.length > 1) wrap.appendChild(del);
+      cbox.appendChild(wrap);
+    });
+
+    const add = document.createElement('button');
+    add.className = 'scr-add-cond';
+    add.textContent = '＋ 條件';
+    add.onclick = () => { conds.push(scrNewCond()); scrRenderRules(); };
+    cbox.appendChild(add);
+
+    row.appendChild(cbox);
+    box.appendChild(row);
+  });
+}
+
+// 解析單一條件字串，回傳 true/false
+function scrMatchOne(rawVal, expr, type){
+  expr = (expr || '').trim();
+  if(expr === '') return true;               // 留空＝不限制
+
+  if(type === 'text'){
+    const s = String(rawVal === undefined || rawVal === null ? '' : rawVal).trim().toLowerCase();
+    const target = expr.toLowerCase();
+    // 文字欄位也支援 <> 排除
+    if(target.startsWith('<>')) return !s.startsWith(target.slice(2).trim());
+    return s.startsWith(target);             // 比照 Excel AdvancedFilter：開頭符合
+  }
+
+  // 數值欄位
+  if(rawVal === undefined || rawVal === null || rawVal === '') return false;
+  const v = Number(rawVal);
+  if(isNaN(v)) return false;
+
+  // 區間寫法 a~b
+  const range = expr.match(/^(-?[\d.]+)\s*~\s*(-?[\d.]+)$/);
+  if(range){
+    const lo = Number(range[1]), hi = Number(range[2]);
+    return v >= Math.min(lo,hi) && v <= Math.max(lo,hi);
+  }
+
+  const m = expr.match(/^(>=|<=|<>|!=|>|<|=)?\s*(-?[\d.]+)$/);
+  if(!m) return false;                        // 看不懂的寫法一律不通過
+  const op = m[1] || '=';
+  const n = Number(m[2]);
+  switch(op){
+    case '>':  return v >  n;
+    case '<':  return v <  n;
+    case '>=': return v >= n;
+    case '<=': return v <= n;
+    case '<>':
+    case '!=': return v !== n;
+    default:   return v === n;
+  }
+}
+
+function scrRun(){
+  const countEl = document.getElementById('scrCount');
+  const resEl = document.getElementById('scrResult');
+  if(!SCR){
+    resEl.innerHTML = '<div class="err" style="padding:30px 10px;">找不到篩選器資料（data/screener.js），請重新匯出一次網站資料。</div>';
+    return;
+  }
+
+  // 每一組條件裡，只有填了值的條件才算數；整組都沒填 => 這組不參與（避免變成全通過）
+  const activeRules = scrRules
+    .map(conds => conds.filter(c => (c.value || '').trim() !== ''))
+    .filter(conds => conds.length > 0);
+
+  let rows;
+  if(activeRules.length === 0){
+    rows = SCR.rows.slice();                 // 完全沒設條件就顯示全部
+  }else{
+    rows = SCR.rows.filter(r =>
+      activeRules.some(conds =>              // 不同組之間 OR
+        conds.every(c => {                   // 同一組內 AND
+          const col = scrColMap[c.field];
+          return col ? scrMatchOne(r[c.field], c.value, col.type) : true;
+        })
+      )
+    );
+  }
+
+  scrLastRows = rows;
+  countEl.textContent = `符合 ${rows.length} 檔（共 ${SCR.rows.length} 檔）`;
+  scrRenderTable();
+}
+
+function scrRenderTable(){
+  const resEl = document.getElementById('scrResult');
+  const rows = scrLastRows || [];
+  if(!rows.length){
+    resEl.innerHTML = '<div class="empty" style="padding:40px 10px;">沒有符合條件的股票，試著把條件放寬一點。</div>';
+    return;
+  }
+
+  const sorted = rows.slice();
+  if(scrSort.key){
+    const type = scrColMap[scrSort.key] ? scrColMap[scrSort.key].type : 'num';
+    sorted.sort((a,b) => {
+      let x = a[scrSort.key], y = b[scrSort.key];
+      const xe = (x===undefined||x===null||x===''), ye = (y===undefined||y===null||y==='');
+      if(xe && ye) return 0;
+      if(xe) return 1;                        // 空值一律排最後
+      if(ye) return -1;
+      if(type === 'text') return String(x).localeCompare(String(y),'zh-Hant') * scrSort.dir;
+      return (Number(x) - Number(y)) * scrSort.dir;
+    });
+  }
+
+  let html = '<div class="scr-table-wrap"><table class="scr-table"><thead><tr>';
+  SCR_COLS.forEach(c => {
+    const cls = (c.type === 'text' ? 't-left' : '') + (scrSort.key === c.key ? ' sorted' : '');
+    const arrow = scrSort.key === c.key ? (scrSort.dir === 1 ? ' ↑' : ' ↓') : '';
+    html += `<th class="${cls}" data-key="${c.key}">${c.label}${arrow}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+
+  sorted.forEach(r => {
+    html += '<tr>';
+    SCR_COLS.forEach(c => {
+      let v = r[c.key];
+      if(c.key === 'code'){
+        html += `<td class="t-left"><a class="code-link" href="#" data-code="${v}">${v}</a></td>`;
+        return;
+      }
+      if(c.type === 'text'){
+        html += `<td class="t-left">${v === undefined || v === null ? '-' : v}</td>`;
+        return;
+      }
+      html += `<td>${(v === undefined || v === null || v === '') ? '-' : fmtNum(v, 2)}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div>';
+  resEl.innerHTML = html;
+
+  resEl.querySelectorAll('th[data-key]').forEach(th => {
+    th.onclick = () => {
+      const k = th.dataset.key;
+      if(scrSort.key === k) scrSort.dir = -scrSort.dir;
+      else { scrSort.key = k; scrSort.dir = (scrColMap[k].type === 'text') ? 1 : -1; }
+      scrRenderTable();
+    };
+  });
+  // 點代號直接跳去看那檔的圖表
+  resEl.querySelectorAll('a.code-link').forEach(a => {
+    a.onclick = e => {
+      e.preventDefault();
+      const code = a.dataset.code;
+      document.getElementById('codeInput').value = code;
+      document.getElementById('searchBtn').click();
+      document.getElementById('screenerPanel').classList.remove('open');
+      document.getElementById('screenerToggle').classList.remove('on');
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+  });
+}
+
+function scrInit(){
+  const toggle = document.getElementById('screenerToggle');
+  if(!SCR){
+    toggle.title = '找不到 data/screener.js，請重新匯出一次網站資料';
+  }
+  scrRules = [ SCR_DEFAULT_FIELDS.map(f => scrNewCond(f)) ];
+  scrRenderRules();
+
+  toggle.onclick = () => {
+    const p = document.getElementById('screenerPanel');
+    const open = p.classList.toggle('open');
+    toggle.classList.toggle('on', open);
+    if(open && scrLastRows === null) scrRun();
+  };
+  document.getElementById('scrAddRow').onclick = () => {
+    scrRules.push([scrNewCond()]);
+    scrRenderRules();
+  };
+  document.getElementById('scrRun').onclick = scrRun;
+  document.getElementById('scrReset').onclick = () => {
+    scrRules = [ SCR_DEFAULT_FIELDS.map(f => scrNewCond(f)) ];
+    scrRenderRules();
+    scrLastRows = null;
+    document.getElementById('scrResult').innerHTML = '';
+    document.getElementById('scrCount').textContent = '';
+  };
+}
+
 if(typeof Chart === 'undefined'){
   document.getElementById('content').className = 'err';
   document.getElementById('content').textContent = '找不到 lib/chart.umd.js，圖表套件沒有載入成功，請確認 index.html 跟 lib、data 資料夾在同一層。';
 } else {
   loadAllChunks();
+  scrInit();
 }
 </script>
 </body>

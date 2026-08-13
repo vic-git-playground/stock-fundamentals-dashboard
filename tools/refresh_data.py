@@ -105,6 +105,13 @@ def main():
     import build_web_data
     result = build_web_data.build(args.out_dir)
 
+    # 篩選器用的「統整」sheet 資料表（跟圖表資料是分開的一份）
+    try:
+        import export_screener
+        export_screener.export(args.xlsm_path, args.out_dir)
+    except Exception as e:
+        print(f'（警告）篩選器資料匯出失敗，網頁的篩選器會沒有資料：{e}')
+
     print(f"完成：成功 {len(ok)} 檔，失敗 {len(fail)} 檔，manifest 共 {result['stocks']} 檔，"
           f"切成 {result['chunks']} 個 chunk 檔案。")
     if fail:
