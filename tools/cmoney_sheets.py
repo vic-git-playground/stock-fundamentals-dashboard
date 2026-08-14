@@ -180,7 +180,8 @@ def read_series(extract_dir, ss, sheets, series):
         if code is None:
             continue
         code = str(code).strip()
-        if not code:
+        # 台股代號是 4~6 位數字；表格最後常有 0 或空白的殘留列，濾掉
+        if not code or not code.isdigit() or not (4 <= len(code) <= 6):
             continue
         names[code] = (name or '').strip()
         data[code] = vals

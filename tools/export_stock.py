@@ -17,8 +17,8 @@ Logic replicated from the "個股" sheet formulas (reverse engineered):
   - Monthly Fwd EPS (weighted) from 加權Fwd.EPS (already monthly-native).
   - Monthly EPS estimates (this-year / next-year) from 今年Est.EPS / 明年Est.EPS (monthly-native).
 """
-import sys, json, re, statistics, datetime
-sys.path.insert(0, '/sessions/affectionate-sweet-lamport/mnt/outputs')
+import sys, os, json, re, statistics, datetime
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from xhelp2 import find_rows, row_series, shared_strings
 
 SHEETS = {
@@ -39,7 +39,19 @@ SHEETS = {
 }
 
 
+# 資料來源：None = 照舊直接讀 Excel；設成 ArchiveSource 物件 = 改讀歷史資料倉。
+# refresh_data.py 會在資料倉存在時自動指定，這樣 Excel 只要留最新一期就好。
+SOURCE = None
+
+
+def set_source(src):
+    global SOURCE
+    SOURCE = src
+
+
 def get_series(sheet_key, code, header_row):
+    if SOURCE is not None:
+        return SOURCE.get_series(sheet_key, code, header_row)
     headers, row, rn = find_rows(SHEETS[sheet_key], header_rows=(header_row,), code_col='A', code_value=code)
     if row is None:
         return None, None
@@ -101,6 +113,8 @@ def forward_fill_onto(monthly_axis_ym, src_pairs_ym):
 def margin_series(code):
     """Margin sheet: 3 blocks (GPM, OPM, pretax) of same quarter columns, OPM block offset +40 cols from GPM.
     Returns dict ym(quarter-end month int e.g. 202606) -> (gpm, opm)."""
+    if SOURCE is not None:
+        return SOURCE.margin_series(code)
     headers, row, rn = find_rows(SHEETS['Margin'], header_rows=(4,), code_col='A', code_value=code)
     if row is None:
         return {}
