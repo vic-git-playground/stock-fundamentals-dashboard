@@ -2,6 +2,9 @@
 *.xlsm
 *.xlsx
 
+# 歷史資料倉（CMoney 付費原始資料，不上 GitHub；請自行另外備份這個資料夾）
+archive/
+
 # 匯出流程的暫存工作區
 tools/_xlsm_extract/
 tools/__pycache__/
