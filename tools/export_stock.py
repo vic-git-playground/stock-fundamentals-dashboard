@@ -39,19 +39,7 @@ SHEETS = {
 }
 
 
-# 資料來源：None = 照舊直接讀 Excel；設成 ArchiveSource 物件 = 改讀歷史資料倉。
-# refresh_data.py 會在資料倉存在時自動指定，這樣 Excel 只要留最新一期就好。
-SOURCE = None
-
-
-def set_source(src):
-    global SOURCE
-    SOURCE = src
-
-
 def get_series(sheet_key, code, header_row):
-    if SOURCE is not None:
-        return SOURCE.get_series(sheet_key, code, header_row)
     headers, row, rn = find_rows(SHEETS[sheet_key], header_rows=(header_row,), code_col='A', code_value=code)
     if row is None:
         return None, None
@@ -111,36 +99,37 @@ def forward_fill_onto(monthly_axis_ym, src_pairs_ym):
 
 
 def margin_series(code):
-    """Margin sheet: 3 blocks (GPM, OPM, pretax) of same quarter columns, OPM block offset +40 cols from GPM.
-    Returns dict ym(quarter-end month int e.g. 202606) -> (gpm, opm)."""
-    if SOURCE is not None:
-        return SOURCE.margin_series(code)
+    """Margin sheet 一張表裡橫向排了三個欄位區塊：毛利率、營業利益率、稅前純益率，
+    三個區塊用的是同一組季別，所以同一個季別在第 4 列會重複出現三次
+    （由左到右：第 1 次=毛利率、第 2 次=營業利益率、第 3 次=稅前純益率）。
+
+    這裡就是靠「同一個季別第幾次出現」來分辨是哪個欄位，不依賴區塊寬度，
+    以後 CMoney 調整期數也不會錯位。
+
+    回傳 {季別(int, 例 202606): [毛利率, 營業利益率]}。
+    """
     headers, row, rn = find_rows(SHEETS['Margin'], header_rows=(4,), code_col='A', code_value=code)
     if row is None:
         return {}
     from xhelp2 import col_num, col_letters
     hdr = headers[4]
-    # sort header cells by column number
     items = sorted(((col_num(c), c, v) for c, v in hdr.items() if v is not None), key=lambda x: x[0])
     data_by_col = {col_letters(c): val for c, val in row.items()}
+
     out = {}
-    n = len(items)
-    for idx, (cn, coord, key) in enumerate(items):
+    seen = {}
+    for cn, coord, key in items:
         try:
             ymq = int(str(key))
         except Exception:
             continue
-        gpm_col = col_letters(coord)
-        gpm = data_by_col.get(gpm_col)
-        # OPM lives 40 columns to the right (same relative row); find header entry ~40 later in this sorted list
-        opm = None
-        if idx + 40 < n:
-            opm_coord = items[idx + 40][1]
-            opm = data_by_col.get(col_letters(opm_coord))
-        if gpm is not None:
-            out.setdefault(ymq, [None, None])[0] = gpm
-        if opm is not None:
-            out.setdefault(ymq, [None, None])[1] = opm
+        occurrence = seen.get(ymq, 0)
+        seen[ymq] = occurrence + 1
+        if occurrence > 1:
+            continue                      # 第 3 次出現是稅前純益率，圖表用不到
+        val = data_by_col.get(col_letters(coord))
+        if val is not None:
+            out.setdefault(ymq, [None, None])[occurrence] = val
     return out
 
 

@@ -80,47 +80,7 @@ def load_shared_strings(extract_dir):
     return out
 
 
-# 這幾個欄位需要「長歷史」才算得出來，Excel 把 CMoney 縮到只抓最新一期之後就會失真，
-# 所以只要歷史資料倉存在，一律改用 Python 從資料倉重算後覆蓋掉 Excel 的值。
-HISTORY_FIELDS = [
-    'pe_rank', 'pb_rank', 'rev_rank', 'eps_yoy_4q',
-    'gpm_4q', 'opm_4q', 'nim_4q', 'eps_yoy_cur', 'eps_yoy_nxt',
-]
-
-
-def apply_archive_overrides(rows, archive_dir):
-    """用資料倉重算歷史統計欄位，回傳實際覆蓋的檔數。找不到資料倉就原封不動。"""
-    if not archive_dir or not os.path.isdir(archive_dir):
-        return 0
-    try:
-        import archive_source
-        import screener_calc
-        src = archive_source.ArchiveSource(archive_dir)
-        calc = screener_calc.ScreenerCalc(src)
-    except Exception as e:
-        print(f'（警告）讀不到歷史資料倉，篩選器沿用 Excel 現成的值：{e}')
-        return 0
-
-    n = 0
-    for r in rows:
-        try:
-            vals = calc.compute(r['code'], fwd_pe=r.get('fwd_pe'), fwd_pb=r.get('fwd_pb'))
-        except Exception:
-            continue
-        touched = False
-        for f in HISTORY_FIELDS:
-            if f in vals:
-                if vals[f] is None:
-                    r.pop(f, None)
-                else:
-                    r[f] = vals[f]
-                touched = True
-        if touched:
-            n += 1
-    return n
-
-
-def export(xlsm_path, out_dir, archive_dir=None):
+def export(xlsm_path, out_dir):
     tmp = tempfile.mkdtemp(prefix='screener_')
     try:
         with zipfile.ZipFile(xlsm_path) as z:
@@ -175,10 +135,6 @@ def export(xlsm_path, out_dir, archive_dir=None):
             rec['code'] = str(rec['code']).strip()
             rows.append(rec)
 
-        n_over = apply_archive_overrides(rows, archive_dir)
-        if n_over:
-            print(f'篩選器：已用歷史資料倉重算 {n_over} 檔的歷史統計欄位'
-                  f'（{"、".join(HISTORY_FIELDS[:4])} 等）')
 
         result = {
             'generated_at': datetime.datetime.now().isoformat(),
@@ -204,11 +160,9 @@ def export(xlsm_path, out_dir, archive_dir=None):
 
 def main():
     if len(sys.argv) < 3:
-        print('用法: python tools/export_screener.py <xlsm路徑> <輸出資料夾> [歷史資料倉資料夾]')
+        print('用法: python tools/export_screener.py <xlsm路徑> <輸出資料夾>')
         sys.exit(1)
-    archive = sys.argv[3] if len(sys.argv) > 3 else os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'archive')
-    export(sys.argv[1], sys.argv[2], archive)
+    export(sys.argv[1], sys.argv[2])
 
 
 if __name__ == '__main__':
