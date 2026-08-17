@@ -160,6 +160,16 @@ def export(code, code_name_hint=None):
         else:
             fwd_pe_weekly.append(None)
 
+    # 網頁上的「EPS 基準」可以切換成今年預估／明年預估，所以三種 EPS 的週序列都先匯出，
+    # 讓網頁那邊可以直接換分母重算 PE Band 與 Fwd. PE 走勢（月頻率的預估值對應到該週所屬月份）
+    _, eps_ty_weekly_src = get_series('今年Est.EPS', code, 4)
+    _, eps_ny_weekly_src = get_series('明年Est.EPS', code, 4)
+    eps_ty_by_ym_all = {int(k): v for k, v in (eps_ty_weekly_src or []) if v is not None}
+    eps_ny_by_ym_all = {int(k): v for k, v in (eps_ny_weekly_src or []) if v is not None}
+    eps_weighted_weekly = [fwdeps_by_ym.get(to_ym(wk)) for wk in weeks]
+    eps_this_year_weekly = [eps_ty_by_ym_all.get(to_ym(wk)) for wk in weeks]
+    eps_next_year_weekly = [eps_ny_by_ym_all.get(to_ym(wk)) for wk in weeks]
+
     # PB weekly, forward-filled
     _, pb_series = get_series('PB', code, 4)
     pb_by_date = {k: v for k, v in (pb_series or [])}
@@ -225,6 +235,10 @@ def export(code, code_name_hint=None):
         'pb_roll_med_x': pb_med,
         'eps_growth_this_year': growth_ty_weekly,
         'eps_growth_next_year': growth_ny_weekly,
+        # 三種可切換的 EPS 基準（週頻率，值來自該週所屬月份的預估）
+        'eps_weighted': eps_weighted_weekly,
+        'eps_this_year': eps_this_year_weekly,
+        'eps_next_year': eps_next_year_weekly,
         'holdings_total': hold_total,
         'holdings_trust': hold_trust,
         'holdings_foreign': hold_foreign,
@@ -303,6 +317,10 @@ def export(code, code_name_hint=None):
         # 給網頁「手動調整股價」與「評價試算器」用：最新一週 PE 分母用的加權 Fwd EPS，以及推回來的每股淨值
         'weekly_fwd_eps': latest_weekly_fwd_eps,
         'bvps': latest_bvps,
+        # 三種 EPS 基準各自的最新值，給網頁的 EPS 選擇器顯示用
+        'eps_weighted': last_non_none(eps_weighted_weekly),
+        'eps_this_year': last_non_none(eps_this_year_weekly),
+        'eps_next_year': last_non_none(eps_next_year_weekly),
     }
 
     return result, None
