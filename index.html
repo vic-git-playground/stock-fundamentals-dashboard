@@ -68,6 +68,9 @@
     color:var(--text); border-radius:4px; padding:3px 6px; width:74px; font-size:12px; outline:none; }
   .eps-opt input[type=number]:focus{ border-color:var(--accent); }
   .eps-opt.on{ border-color:var(--accent); color:var(--text); background:var(--panel); }
+  .eps-sub{ display:flex; align-items:center; gap:4px; margin-left:4px;
+    padding-left:8px; border-left:1px solid var(--border); font-size:11px; }
+  .eps-sub input[type=number]{ width:46px; text-align:center; }
   footer{ color:var(--muted); font-size:12px; text-align:center; padding:20px; }
   #buildStamp{ position:fixed; right:14px; bottom:14px; z-index:59; font-size:11px;
     color:var(--muted); background:var(--panel); border:1px solid var(--border);
@@ -174,16 +177,24 @@
       <div id="overrideStatus" class="hint" style="margin-top:10px;"></div>
       <div class="hint" style="margin-top:6px;">影響範圍：PE Band、Fwd. PE 走勢、PB 這三張圖「最新一點」＋下面的評價試算器。歷史資料本身不會被改動，只存在你這個瀏覽器裡（localStorage），換一台電腦或清瀏覽器資料就會消失。</div>
 
-      <h3 style="margin-top:18px;">EPS 基準<span class="hint">決定 PE 的分母</span></h3>
+      <h3 style="margin-top:18px;">EPS 基準<span class="hint">決定 PE 的分母（整條序列）</span></h3>
       <div id="epsModeWrap" style="display:flex; gap:6px; flex-wrap:wrap;">
         <label class="eps-opt"><input type="radio" name="epsMode" value="weighted" checked><span>加權 EPS</span><b id="epsValWeighted">-</b></label>
-        <label class="eps-opt"><input type="radio" name="epsMode" value="this_year"><span>今年預估</span><b id="epsValThis">-</b></label>
+        <label class="eps-opt"><input type="radio" name="epsMode" value="this_year"><span>今年預估</span><b id="epsValThis">-</b>
+          <span class="eps-sub">轉換月<input id="epsSwitchMonthInput" type="number" min="1" max="12" step="1" placeholder="—"></span></label>
         <label class="eps-opt"><input type="radio" name="epsMode" value="next_year"><span>明年預估</span><b id="epsValNext">-</b></label>
-        <label class="eps-opt"><input type="radio" name="epsMode" value="manual"><span>自行填寫</span>
-          <input id="epsManualInput" type="number" step="0.01" placeholder="EPS"></label>
       </div>
       <div id="epsModeStatus" class="hint" style="margin-top:10px;"></div>
-      <div class="hint" style="margin-top:6px;">切換後 PE Band 與 Fwd. PE 走勢會用新的 EPS 當分母「整條重算」（含三年滾動的高中低），評價試算器的 PE 法也會跟著換基準。選「自行填寫」時，整段歷史都用你填的那個固定 EPS 計算。</div>
+      <div class="hint" style="margin-top:6px;">切換後 PE Band 與 Fwd. PE 走勢會用新的 EPS 當分母「整條重算」（含三年滾動的高中低），評價試算器的 PE 法也會跟著換基準。<br>
+        「今年預估」旁邊的<b>轉換月</b>：填數字 N 表示每年 N 月（含）以後改用明年預估、N 月之前用今年預估；留空就整年都用今年預估。例如填 6，6~12 月用明年、1~5 月用今年。</div>
+
+      <h3 style="margin-top:18px;">自行填寫最新一期 EPS<span class="hint">留空＝用上面選的基準</span></h3>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <input id="epsManualInput" type="number" step="0.01" placeholder="例如 60" style="background:var(--panel2); border:1px solid var(--border); color:var(--text); padding:8px 10px; border-radius:6px; width:140px; font-size:14px;">
+        <button id="clearEpsManualBtn" style="background:none; border:1px solid var(--border); color:var(--muted); border-radius:6px; padding:8px 12px; cursor:pointer; font-size:12px;">清除</button>
+      </div>
+      <div id="epsManualStatus" class="hint" style="margin-top:10px;"></div>
+      <div class="hint" style="margin-top:6px;">只會取代<b>最新一期</b>的 EPS，歷史那幾期還是照上面選的基準（加權／今年／明年）計算。用法跟上面的手動股價一樣，是拿來試算「如果 EPS 變成這個數字，現在的 PE 與合理價會是多少」。</div>
     </div>
     <div class="card">
       <h3>評價試算器</h3>
@@ -448,14 +459,31 @@ function rollLastStat(arr, newLast, window=156){
    切換基準時，PE 的分母整條換掉，所以 Fwd. PE 走勢與 PE Band（含三年滾動高中低）
    都要重算，不能沿用匯出時算好的值。                                        */
 const EPS_MODE_KEY = 'epsMode_v1';
-const EPS_LABELS = { weighted:'加權 EPS', this_year:'今年預估 EPS',
-                     next_year:'明年預估 EPS', manual:'自行填寫 EPS' };
+const EPS_SWITCH_MONTH_KEY = 'epsSwitchMonth_v1';
+const EPS_LABELS = { weighted:'加權 EPS', this_year:'今年預估 EPS', next_year:'明年預估 EPS' };
 
 function getEpsMode(){
   const m = localStorage.getItem(EPS_MODE_KEY);
   return EPS_LABELS[m] ? m : 'weighted';
 }
 function setEpsMode(m){ localStorage.setItem(EPS_MODE_KEY, m); }
+
+// 「今年預估」的轉換月：填 N 表示每年 N 月(含)以後改用明年預估，N 月之前用今年預估。
+// 留空 = 整年都用今年預估。
+function getSwitchMonth(){
+  const v = localStorage.getItem(EPS_SWITCH_MONTH_KEY);
+  if(v===null || v==='') return null;
+  const n = parseInt(v, 10);
+  return (isNaN(n) || n<1 || n>12) ? null : n;
+}
+function setSwitchMonth(val){
+  if(val===null || val===undefined || val==='' || isNaN(val)){
+    localStorage.removeItem(EPS_SWITCH_MONTH_KEY);
+  }else{
+    localStorage.setItem(EPS_SWITCH_MONTH_KEY, String(val));
+  }
+}
+
 function epsManualKey(code){ return 'epsManual_' + code; }
 function getManualEps(code){
   const v = localStorage.getItem(epsManualKey(code));
@@ -471,17 +499,25 @@ function setManualEps(code, val){
   }
 }
 
-// 依照目前選的基準，取得「逐週的 EPS 序列」
-function epsSeriesFor(d, mode, manual){
+// 依照目前選的基準，取得「逐週的 EPS 序列」。
+// 自行填寫的 EPS 不在這裡處理——它只蓋掉最新一期，不影響歷史序列。
+function epsSeriesFor(d, mode, switchMonth){
   const w = d.weekly, n = w.price.length;
-  if(mode==='manual') return new Array(n).fill(manual);
-  const key = mode==='this_year' ? 'eps_this_year'
-            : mode==='next_year' ? 'eps_next_year' : 'eps_weighted';
-  // 舊版匯出的資料沒有這些欄位，退回加權（用 fwd_pe 反推）
-  if(!w[key]){
-    return w.price.map((p,i)=> (p!=null && w.fwd_pe[i]) ? p/w.fwd_pe[i] : null);
+  const fallback = () => w.price.map((p,i)=> (p!=null && w.fwd_pe[i]) ? p/w.fwd_pe[i] : null);
+  const pick = key => w[key] || fallback();   // 舊版匯出的資料沒有這些欄位時退回反推
+
+  if(mode==='next_year') return pick('eps_next_year');
+  if(mode==='this_year'){
+    const ty = pick('eps_this_year');
+    if(switchMonth==null) return ty;
+    // 每年 switchMonth 月(含)以後改用明年預估
+    const ny = pick('eps_next_year');
+    return w.dates.map((iso, i) => {
+      const m = parseInt(String(iso).slice(5,7), 10);
+      return (m >= switchMonth) ? ny[i] : ty[i];
+    });
   }
-  return w[key];
+  return pick('eps_weighted');
 }
 
 // 整條序列的 156 週滾動 min/max/median（切換 EPS 基準時必須整條重算）
@@ -513,10 +549,15 @@ function computeEffective(d){
   const bvps = d.latest.bvps;
 
   const mode = getEpsMode();
-  const manual = getManualEps(d.code);
-  const modeOk = (mode!=='manual') || (manual!=null);
-  const epsSeries = epsSeriesFor(d, modeOk?mode:'weighted', manual);
+  const switchMonth = getSwitchMonth();
+  const manualEps = getManualEps(d.code);
+
+  // 基準序列（歷史全部照這個算），自填的 EPS 只蓋掉最新一期
+  const baseSeries = epsSeriesFor(d, mode, switchMonth);
+  const epsSeries = baseSeries.slice();
+  if(manualEps!=null && n) epsSeries[n-1] = manualEps;
   const epsLatest = epsSeries[n-1];
+  const epsLatestBase = baseSeries[n-1];
 
   // 用選定的 EPS 當分母，重算整條 Fwd. PE（最後一點套用手動股價）
   const peSeries = [];
@@ -540,10 +581,11 @@ function computeEffective(d){
   return {
     overridden: override!=null,
     basePrice, price, bvps,
-    epsMode: modeOk ? mode : 'weighted',
-    epsModeRequested: mode,
-    epsManualMissing: (mode==='manual' && manual==null),
-    epsLatest,
+    epsMode: mode,
+    epsSwitchMonth: switchMonth,
+    epsManual: manualEps,
+    epsOverridden: manualEps!=null,
+    epsLatest, epsLatestBase,
     fwd_pe: peSeries[n-1],
     pb,
     peSeries, peBandMin, peBandMax, peBandMed,
@@ -576,25 +618,40 @@ function syncOverrideUI(d, eff){
 
 // ---- EPS 基準的 UI ----
 const epsManualInput = document.getElementById('epsManualInput');
+const epsSwitchMonthInput = document.getElementById('epsSwitchMonthInput');
+
 document.querySelectorAll('input[name="epsMode"]').forEach(r=>{
   r.addEventListener('change', ()=>{
     setEpsMode(r.value);
     if(currentData) renderAll(currentData);
   });
 });
+
+// 轉換月：只有在「今年預估」這個基準下才有作用，填了就自動幫你切到那個基準
+epsSwitchMonthInput.addEventListener('input', ()=>{
+  const v = epsSwitchMonthInput.value.trim();
+  setSwitchMonth(v===''?null:parseInt(v,10));
+  if(v!=='' && getEpsMode()!=='this_year'){
+    setEpsMode('this_year');
+    const radio = document.querySelector('input[name="epsMode"][value="this_year"]');
+    if(radio) radio.checked = true;
+  }
+  if(currentData) renderAll(currentData);
+});
+epsSwitchMonthInput.addEventListener('click', e=>e.stopPropagation());
+
 epsManualInput.addEventListener('input', ()=>{
   if(!currentData) return;
   const v = epsManualInput.value.trim();
   setManualEps(currentData.code, v===''?null:parseFloat(v));
-  // 一填數字就自動切到「自行填寫」，不用再多點一次
-  if(v!=='' && getEpsMode()!=='manual'){
-    setEpsMode('manual');
-    const radio = document.querySelector('input[name="epsMode"][value="manual"]');
-    if(radio) radio.checked = true;
-  }
   renderAll(currentData);
 });
-epsManualInput.addEventListener('click', e=>e.stopPropagation());
+document.getElementById('clearEpsManualBtn').addEventListener('click', ()=>{
+  if(!currentData) return;
+  epsManualInput.value='';
+  setManualEps(currentData.code, null);
+  renderAll(currentData);
+});
 
 function syncEpsUI(d, eff){
   const L = d.latest || {};
@@ -602,31 +659,52 @@ function syncEpsUI(d, eff){
   document.getElementById('epsValThis').textContent = fmtNum(L.eps_this_year, 2);
   document.getElementById('epsValNext').textContent = fmtNum(L.eps_next_year, 2);
 
-  const mode = eff.epsModeRequested;
-  const radio = document.querySelector(`input[name="epsMode"][value="${mode}"]`);
+  const radio = document.querySelector(`input[name="epsMode"][value="${eff.epsMode}"]`);
   if(radio) radio.checked = true;
   document.querySelectorAll('.eps-opt').forEach(el=>{
     const r = el.querySelector('input[type=radio]');
     el.classList.toggle('on', !!(r && r.checked));
   });
 
-  const manual = getManualEps(d.code);
+  if(document.activeElement !== epsSwitchMonthInput){
+    epsSwitchMonthInput.value = (eff.epsSwitchMonth!=null) ? eff.epsSwitchMonth : '';
+  }
   if(document.activeElement !== epsManualInput){
-    epsManualInput.value = (manual!=null) ? manual : '';
+    epsManualInput.value = (eff.epsManual!=null) ? eff.epsManual : '';
   }
 
+  // 基準的狀態列
   const st = document.getElementById('epsModeStatus');
-  if(eff.epsManualMissing){
-    st.textContent = '選了「自行填寫」但還沒填數字，目前暫時用加權 EPS 計算。';
-  }else if(eff.epsLatest==null){
-    st.textContent = `${EPS_LABELS[eff.epsMode]} 這檔沒有資料，PE 相關數字會是空的。`;
+  let baseDesc = EPS_LABELS[eff.epsMode];
+  if(eff.epsMode==='this_year' && eff.epsSwitchMonth!=null){
+    baseDesc = `今年預估 EPS（每年 ${eff.epsSwitchMonth} 月起改用明年預估）`;
+  }
+  if(eff.epsLatestBase==null){
+    st.textContent = `${baseDesc}：這檔沒有資料，PE 相關數字會是空的。`;
   }else{
-    st.textContent = `目前用 ${EPS_LABELS[eff.epsMode]} = ${fmtNum(eff.epsLatest,2)} 當 PE 分母`;
+    st.textContent = `基準：${baseDesc}，最新一期 = ${fmtNum(eff.epsLatestBase,2)}`;
+  }
+
+  // 自行填寫的狀態列
+  const ms = document.getElementById('epsManualStatus');
+  if(eff.epsOverridden){
+    ms.textContent = `最新一期改用 ${fmtNum(eff.epsLatest,2)} 計算`
+      + (eff.epsLatestBase!=null ? `（基準原本是 ${fmtNum(eff.epsLatestBase,2)}）` : '')
+      + '，歷史各期不受影響。';
+  }else{
+    ms.textContent = '沒有填，最新一期也用上面的基準計算。';
   }
 }
 
+function epsModeLabel(eff){
+  return (eff.epsMode==='this_year' && eff.epsSwitchMonth!=null)
+    ? `今年預估→${eff.epsSwitchMonth}月起明年`
+    : EPS_LABELS[eff.epsMode];
+}
+
 function renderValuation(d, eff){
-  document.getElementById('valEpsLabel').textContent = EPS_LABELS[eff.epsMode];
+  document.getElementById('valEpsLabel').textContent =
+    epsModeLabel(eff) + (eff.epsOverridden ? '，最新一期自填' : '');
   document.getElementById('valFwdEps').textContent = fmtNum(eff.epsLatest,2);
   document.getElementById('valBvps').textContent = fmtNum(eff.bvps,2);
   document.getElementById('valCurPrice').textContent = fmtNum(eff.price,2) + (eff.overridden?'（手動）':'（原始收盤）');
@@ -660,7 +738,7 @@ document.getElementById('valPbMultInput').addEventListener('input', ()=>{ if(cur
 function renderPeBand(d, eff){
   const w = d.weekly;
   document.getElementById('peBandHint').textContent =
-    `${EPS_LABELS[eff.epsMode]}｜Min ${fmtNum(eff.pe_band_min_x,1)}x / Med ${fmtNum(eff.pe_band_med_x,1)}x / Max ${fmtNum(eff.pe_band_max_x,1)}x` +
+    `${epsModeLabel(eff)}｜Min ${fmtNum(eff.pe_band_min_x,1)}x / Med ${fmtNum(eff.pe_band_med_x,1)}x / Max ${fmtNum(eff.pe_band_max_x,1)}x` +
     (eff.overridden ? '（依手動股價重算最新一點）' : '');
   upsertChart('chart_peband', {
     type:'line',
@@ -686,7 +764,7 @@ function renderFwdPe(d, eff){
     upsertChart('chart_fwdpe', {
       type:'line',
       data:{ labels:w.dates, datasets:[
-        lineDs(`Fwd. PE（${EPS_LABELS[eff.epsMode]}）`, eff.peSeries, RED, {width:2}),
+        lineDs(`Fwd. PE（${epsModeLabel(eff)}）`, eff.peSeries, RED, {width:2}),
         lineDs('目前PE', w.dates.map(()=>latestPe), GRAY, {borderDash:[6,4], width:1}),
         lineDs('目標PE', w.dates.map(()=>target), BLUE, {width:1}),
       ]},
