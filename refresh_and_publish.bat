@@ -45,8 +45,8 @@ echo 重新匯出網站資料（讀取 Excel 目前內容重新計算）...
 if errorlevel 1 (
   echo.
   echo 匯出失敗，詳細錯誤請看上面那幾行紅字。常見原因：
-  echo   1) Excel 檔案還開著或被鎖住 -^> 存檔關閉後再跑一次
-  echo   2) 有檔案總管開著 data\chunks 資料夾 -^> 關掉那個視窗再跑一次
+  echo   1. Excel 檔案還開著或被鎖住 -^> 存檔關閉後再跑一次
+  echo   2. 有檔案總管開著 data\chunks 資料夾 -^> 關掉那個視窗再跑一次
   pause
   exit /b 1
 )

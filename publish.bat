@@ -16,8 +16,8 @@ git push
 if errorlevel 1 (
   echo.
   echo 推送失敗。常見原因：
-  echo   1) 還沒照 DEPLOY.md 做過「第一次設定」（git remote add / 第一次登入）
-  echo   2) 網路連不到 GitHub
+  echo   1. 還沒設定過 git remote，或第一次登入 GitHub 沒完成
+  echo   2. 網路連不到 GitHub
   pause
   exit /b 1
 )
