@@ -10,10 +10,52 @@
   python refresh_data.py <xlsm路徑> <輸出data資料夾> [--codes 2330,2454,...]
   不帶 --codes 時，預設匯出「統整」sheet 目前收錄的全部股票。
 """
-import sys, os, zipfile, shutil, json, argparse, importlib, tempfile
+import sys, os, time, datetime, zipfile, shutil, json, argparse, importlib, tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fsutil import force_rmtree
+
+
+class _Tee:
+    """同時輸出到畫面和 log 檔。
+
+    畫面要即時看得到進度（不然使用者會以為當掉），
+    但出問題時又希望有一份完整記錄可以事後查，所以兩邊都寫。
+    """
+    def __init__(self, stream, fh):
+        self.stream = stream
+        self.fh = fh
+
+    def write(self, s):
+        self.stream.write(s)
+        try:
+            self.fh.write(s)
+        except Exception:
+            pass
+        return len(s)
+
+    def flush(self):
+        try:
+            self.stream.flush()
+        except Exception:
+            pass
+        try:
+            self.fh.flush()
+        except Exception:
+            pass
+
+
+def _start_logging(project_dir):
+    """把這次執行的訊息另外寫一份到 refresh_log.txt，回傳檔案物件（失敗就回 None）。"""
+    try:
+        path = os.path.join(project_dir, 'refresh_log.txt')
+        fh = open(path, 'w', encoding='utf-8')
+        fh.write(f'=== 執行時間 {datetime.datetime.now():%Y-%m-%d %H:%M:%S} ===\n')
+        sys.stdout = _Tee(sys.stdout, fh)
+        sys.stderr = _Tee(sys.stderr, fh)
+        return fh
+    except Exception:
+        return None
 
 
 def main():
@@ -25,6 +67,7 @@ def main():
     args = ap.parse_args()
 
     work = os.path.dirname(os.path.abspath(__file__))
+    _log_fh = _start_logging(os.path.dirname(work))
 
     # 每次都解壓到一個全新的暫存資料夾。
     # 以前是固定用 tools/_xlsm_extract，但在 Windows 上重複刪同一個資料夾很容易踩到
@@ -112,16 +155,27 @@ def main():
 
         os.makedirs(args.out_dir, exist_ok=True)
         ok, fail = [], []
-        for code, name_hint in codes:
+        total = len(codes)
+        print(f'共 {total} 檔股票要匯出，開始計算...', flush=True)
+        t_start = time.time()
+        for i, (code, name_hint) in enumerate(codes, 1):
             try:
                 data, err = export_stock.export(code)
                 if err or data is None:
-                    fail.append((code, name_hint, err)); continue
-                with open(os.path.join(args.out_dir, f'{code}.json'), 'w', encoding='utf-8') as f:
-                    json.dump(data, f, ensure_ascii=False, separators=(',', ':'), default=str)
-                ok.append((code, data.get('name') or name_hint))
+                    fail.append((code, name_hint, err))
+                else:
+                    with open(os.path.join(args.out_dir, f'{code}.json'), 'w', encoding='utf-8') as f:
+                        json.dump(data, f, ensure_ascii=False, separators=(',', ':'), default=str)
+                    ok.append((code, data.get('name') or name_hint))
             except Exception as e:
                 fail.append((code, name_hint, str(e)))
+
+            # 每 10 檔回報一次進度，讓畫面看得出程式還活著、還要等多久
+            if i % 10 == 0 or i == total:
+                elapsed = time.time() - t_start
+                eta = (elapsed / i) * (total - i)
+                print(f'  進度 {i}/{total}（成功 {len(ok)}、失敗 {len(fail)}）'
+                      f' 已花 {elapsed/60:.1f} 分，預估還要 {eta/60:.1f} 分', flush=True)
 
         # rebuild manifest + chunked data files the webpage loads (見 build_web_data.py 說明：
         # 用多個 <script src> chunk 檔取代單一 all_data.js，因為 Cloudflare Pages 單檔上限 25MB)

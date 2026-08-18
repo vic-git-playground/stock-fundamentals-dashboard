@@ -12,3 +12,7 @@ __pycache__/
 # 系統雜項
 .DS_Store
 Thumbs.db
+
+# 執行紀錄（每次跑都會覆蓋，不需要進版控）
+refresh_log.txt
+publish_log.txt
