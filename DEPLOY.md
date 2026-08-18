@@ -28,3 +28,13 @@ CMoney 資料，再重新匯出網站資料，最後自動幫你 `git push`（�
   `data/*.json`／`data/chunks/` 會上去，這些數字理論上任何知道網址的人都拿得到。
 - 股票資料存成 `data/chunks/chunk_XXXX.js`，每個約 2MB，GitHub 對單一檔案的限制是 100MB，
   遠遠夠用。
+
+## 為什麼有一個空的 .nojekyll 檔案
+
+GitHub Pages 預設會把整個 repo 丟給 Jekyll 處理過一遍才發佈。我們是純靜態網站，
+不需要 Jekyll，而且 `data/` 底下有 265 個 json 加 19 個約 2MB 的 js，Jekyll 光是掃這些
+就可能讓建置失敗（症狀是：push 成功了，但網站內容一直停在舊版，信箱會收到
+「pages build and deployment: Some jobs were not successful」的通知信）。
+
+根目錄放一個**空的 `.nojekyll`** 就是告訴 Pages「跳過 Jekyll，原樣發佈」，
+可以避開這個問題，部署也快很多。這個檔案不能刪。
