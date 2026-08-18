@@ -236,6 +236,10 @@
     <div class="card"><h3>法人持股比例(%)（近三年）</h3><canvas id="chart_holdings"></canvas></div>
     <div class="card"><h3>PE 與 Fwd. EPS Y/Y</h3><canvas id="chart_peyoy"></canvas></div>
   </div>
+  <div id="chartHelp" class="hint" style="display:none; margin-top:12px; text-align:center; line-height:1.9;">
+    Y 軸看不清楚時：<b>在左右兩側的刻度上上下拖曳</b>可以放大縮小（以你按住的那個刻度為中心，往上推＝範圍變小）；
+    <b>在圖上拖曳</b>可以整段上下平移；<b>點兩下</b>回到自動縮放。每張圖分開調整，不會影響資料本身。
+  </div>
 </main>
 <footer>資料每次由 Excel 手動匯出更新，非即時報價。</footer>
 <div id="buildStamp"></div>
@@ -341,27 +345,147 @@ function doSearch(){
   const content = document.getElementById('content');
   const grid = document.getElementById('chartGrid');
   const tools = document.getElementById('toolsGrid');
+  const help = document.getElementById('chartHelp');
   const store = window.STOCK_DATA || {};
   if(code && store[code]){
     const data = store[code];
     content.style.display = 'none';
     grid.style.display = 'grid';
     tools.style.display = 'grid';
+    if(help) help.style.display = 'block';
     renderAll(data);
   }else{
     grid.style.display = 'none';
     tools.style.display = 'none';
+    if(help) help.style.display = 'none';
     content.style.display = 'block';
     content.className = 'err';
     content.textContent = `找不到「${q}」的資料。這檔股票可能還沒匯出，請請 Claude 幫你重新匯出（把最新的 Excel 資料轉成網頁用的資料檔）。`;
   }
 }
 
+/* ---------- Y 軸縮放（滑鼠拖曳）----------
+   有些圖表偶爾會出現極端值（例如某一期 EPS 接近 0，Fwd. PE 衝到 800 倍），
+   自動縮放之後其他年份的走勢會被壓成一條線看不出來。這裡讓你用滑鼠直接調整上下界：
+     在「Y 軸刻度上」上下拖曳 -> 放大／縮小範圍（往下拉＝範圍變大、往上推＝範圍變小）
+     在「圖表區域內」上下拖曳 -> 整段範圍平移
+     在圖上點兩下              -> 回到自動縮放
+   這幾個函式是純計算，方便單獨驗證。                                      */
+const Y_SCALE_MIN_FACTOR = 0.02, Y_SCALE_MAX_FACTOR = 50;
+
+// 在座標軸上拖曳：以「你按下去的那個刻度」為支點放大縮小。
+// 用按下去的位置當支點（而不是中間）很重要：像 Fwd. PE 這種被離群值撐到 -100~900 的圖，
+// 你想看的 0~40 區間是在最下面，如果以中心為支點放大，會一直卡在 400 附近那片空白。
+function scaleBounds(startMin, startMax, dyPx, heightPx, pivot){
+  if(!(heightPx>0) || !isFinite(startMin) || !isFinite(startMax)) return null;
+  let factor = 1 + (dyPx / heightPx) * 2;
+  factor = Math.min(Y_SCALE_MAX_FACTOR, Math.max(Y_SCALE_MIN_FACTOR, factor));
+  const p = (isFinite(pivot) && pivot!==null && pivot!==undefined)
+    ? pivot : (startMax + startMin) / 2;
+  const min = p - (p - startMin) * factor;
+  const max = p + (startMax - p) * factor;
+  if(!(max > min)) return null;
+  return { min, max };
+}
+
+// 在圖表區域拖曳：整段平移（往下拉＝看到比較大的數值）
+function panBounds(startMin, startMax, dyPx, heightPx){
+  if(!(heightPx>0) || !isFinite(startMin) || !isFinite(startMax)) return null;
+  const perPx = (startMax - startMin) / heightPx;
+  const shift = dyPx * perPx;
+  return { min: startMin + shift, max: startMax + shift };
+}
+
+// 滑鼠位置落在哪一條 Y 軸的刻度區（左邊的 y、右邊的 y1）；都不是就回 null
+function yAxisAtPoint(chart, x){
+  const area = chart.chartArea;
+  if(!area) return null;
+  if(x < area.left){
+    return chart.scales.y ? 'y' : null;
+  }
+  if(x > area.right){
+    return chart.scales.y1 ? 'y1' : (chart.scales.y ? 'y' : null);
+  }
+  return null;
+}
+
+function enableYDrag(chart, canvas){
+  let drag = null;
+
+  const bounds = sid => {
+    const s = chart.scales[sid];
+    return s ? { min: s.min, max: s.max } : null;
+  };
+
+  canvas.addEventListener('mousedown', e => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+    const area = chart.chartArea;
+    if(!area) return;
+    const onAxis = yAxisAtPoint(chart, x);
+    // 圖表區域外（上下留白）不處理，避免誤觸
+    if(!onAxis && (y < area.top || y > area.bottom)) return;
+    const scaleId = onAxis || (chart.scales.y ? 'y' : null);
+    if(!scaleId) return;
+    const b = bounds(scaleId);
+    if(!b || !isFinite(b.min) || !isFinite(b.max)) return;
+    let pivot = null;
+    const sc = chart.scales[scaleId];
+    if(sc && typeof sc.getValueForPixel === 'function'){
+      const v = sc.getValueForPixel(y);
+      if(isFinite(v)) pivot = v;
+    }
+    drag = { mode: onAxis ? 'scale' : 'pan', scaleId, startY: y, pivot,
+             startMin: b.min, startMax: b.max, height: area.bottom - area.top,
+             moved: false };
+    canvas.style.cursor = onAxis ? 'ns-resize' : 'grabbing';
+    e.preventDefault();
+  });
+
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    if(!drag){
+      // 游標移到軸上時給個提示
+      canvas.style.cursor = yAxisAtPoint(chart, x) ? 'ns-resize' : 'default';
+      return;
+    }
+    const y = e.clientY - rect.top;
+    const dy = y - drag.startY;
+    if(Math.abs(dy) > 1) drag.moved = true;
+    const nb = drag.mode === 'scale'
+      ? scaleBounds(drag.startMin, drag.startMax, dy, drag.height, drag.pivot)
+      : panBounds(drag.startMin, drag.startMax, dy, drag.height);
+    if(!nb) return;
+    const sc = chart.options.scales[drag.scaleId];
+    if(!sc) return;
+    sc.min = nb.min; sc.max = nb.max;
+    chart.update('none');
+    e.preventDefault();
+  });
+
+  const stop = () => { if(drag){ drag = null; canvas.style.cursor = 'default'; } };
+  canvas.addEventListener('mouseup', stop);
+  canvas.addEventListener('mouseleave', stop);
+
+  // 點兩下回到自動縮放
+  canvas.addEventListener('dblclick', () => {
+    ['y','y1'].forEach(sid => {
+      const sc = chart.options.scales && chart.options.scales[sid];
+      if(sc){ delete sc.min; delete sc.max; }
+    });
+    chart.update('none');
+  });
+}
+
 const charts = {};
 function upsertChart(id, config){
   if(charts[id]) charts[id].destroy();
-  const ctx = document.getElementById(id).getContext('2d');
+  const el = document.getElementById(id);
+  const ctx = el.getContext('2d');
   charts[id] = new Chart(ctx, config);
+  el.title = '拖曳 Y 軸刻度可放大縮小、在圖上拖曳可平移、點兩下回到自動縮放';
+  enableYDrag(charts[id], el);
   return charts[id];
 }
 
