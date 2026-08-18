@@ -13,9 +13,13 @@ data/chunks_index.js 記錄有哪些 chunk 檔，動態把它們都插入 <scrip
   data/chunks_index.js   window.STOCK_CHUNKS = ['chunks/chunk_0001.js', ...]
 """
 import os
+import sys
 import json
 import datetime
 import shutil
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import fsutil
 
 TARGET_CHUNK_BYTES = 2_000_000  # 每個 chunk 大約抓 2MB 上下（遠低於 Cloudflare 25MB 上限）
 
@@ -46,10 +50,16 @@ def build(data_dir):
         f.write('window.STOCK_MANIFEST = ' + json.dumps(manifest_obj, ensure_ascii=False) + ';\n')
 
     # chunks
+    # 只清掉裡面的 chunk 檔，不刪資料夾本身。
+    # （Windows 上如果檔案總管正好開著 data\chunks，刪資料夾會 PermissionError，
+    #   但刪裡面的檔案沒問題，所以不要整個 rmtree。）
     chunks_dir = os.path.join(data_dir, 'chunks')
-    if os.path.exists(chunks_dir):
-        shutil.rmtree(chunks_dir)
-    os.makedirs(chunks_dir, exist_ok=True)
+    _, failed = fsutil.clean_dir(chunks_dir, 'chunk_*.js')
+    if failed:
+        print(f'（提醒）有 {len(failed)} 個舊的 chunk 檔刪不掉，可能被其他程式開著：')
+        for p in failed[:5]:
+            print(f'    {p}')
+        print('    新的資料還是會正常寫入，但建議關掉可能開著這些檔案的程式後再跑一次。')
 
     chunk_files = []
     buf = []
@@ -84,7 +94,14 @@ def build(data_dir):
     # 舊版殘留的單一大檔，若還在就清掉，避免跟新架構搞混
     old_all_data = os.path.join(data_dir, 'all_data.js')
     if os.path.exists(old_all_data):
-        os.remove(old_all_data)
+        try:
+            os.remove(old_all_data)
+        except Exception:
+            fsutil.make_writable(old_all_data)
+            try:
+                os.remove(old_all_data)
+            except Exception:
+                pass   # 刪不掉就算了，這只是舊版殘留檔，不影響新架構運作
 
     return {'stocks': len(items), 'chunks': len(chunk_files)}
 

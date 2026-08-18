@@ -10,49 +10,10 @@
   python refresh_data.py <xlsm路徑> <輸出data資料夾> [--codes 2330,2454,...]
   不帶 --codes 時，預設匯出「統整」sheet 目前收錄的全部股票。
 """
-import sys, os, stat, time, zipfile, shutil, json, argparse, importlib, tempfile
+import sys, os, zipfile, shutil, json, argparse, importlib, tempfile
 
-
-def force_rmtree(path, retries=3):
-    """Windows 上刪暫存資料夾常常失敗（解壓出來的檔案／資料夾帶唯讀屬性，
-    或被防毒、搜尋索引程式短暫鎖住）。這裡先把整棵樹的唯讀屬性都拔掉再刪，
-    失敗就等一下重試。真的刪不掉也只回傳 False，不會讓整個匯出中斷。"""
-    def make_writable(p):
-        # 資料夾一定要保留執行權限，否則之後就進不去、反而更刪不掉
-        try:
-            os.chmod(p, 0o700 if os.path.isdir(p) else 0o600)
-        except Exception:
-            pass
-
-    def clear_readonly(root):
-        make_writable(root)
-        # 由上往下走，先讓每層資料夾可進入，才有辦法處理裡面的東西
-        for dirpath, dirnames, filenames in os.walk(root, topdown=True):
-            for name in dirnames:
-                make_writable(os.path.join(dirpath, name))
-            for name in filenames:
-                make_writable(os.path.join(dirpath, name))
-
-    def on_error(func, p, exc_info):
-        try:
-            make_writable(os.path.dirname(p))
-            make_writable(p)
-            func(p)
-        except Exception:
-            pass
-
-    for i in range(retries):
-        if not os.path.exists(path):
-            return True
-        try:
-            clear_readonly(path)
-            shutil.rmtree(path, onerror=on_error)
-        except Exception:
-            pass
-        if not os.path.exists(path):
-            return True
-        time.sleep(0.4 * (i + 1))
-    return not os.path.exists(path)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fsutil import force_rmtree
 
 
 def main():
