@@ -1,0 +1,5 @@
+# 不要自動轉換換行字元。
+# 這個專案只在 Windows 上跑，讓檔案維持原樣即可；
+# 不設定的話每次 git add 都會噴一整排「LF will be replaced by CRLF」的警告，
+# 把真正重要的錯誤訊息淹沒掉。
+* -text
