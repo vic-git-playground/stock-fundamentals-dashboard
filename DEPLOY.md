@@ -38,3 +38,20 @@ GitHub Pages 預設會把整個 repo 丟給 Jekyll 處理過一遍才發佈。�
 
 根目錄放一個**空的 `.nojekyll`** 就是告訴 Pages「跳過 Jekyll，原樣發佈」，
 可以避開這個問題，部署也快很多。這個檔案不能刪。
+
+## push 時跳出「Deletion of directory '.git/objects/xx' failed. Should I try again? (y/n)」
+
+git 累積一定數量的物件後會自動跑垃圾回收（`git gc`），而 Windows 上 `.git/objects` 裡的檔案
+常被防毒或搜尋索引短暫鎖住，刪不掉就會跳出這個詢問，把推送卡在那裡（症狀：commit 成功了，
+但 GitHub 上沒有更新）。
+
+當下先按 `n` 再 Enter 跳過，然後重新 `git push` 即可。已經用下面的設定關掉自動 gc，
+正常不會再出現：
+
+```
+git config gc.auto 0
+git config gc.autoDetach false
+git config core.fscache true
+```
+
+這些設定存在 `.git/config`，不會進版控。**如果哪天重新 clone 這個 repo，記得再執行一次。**
