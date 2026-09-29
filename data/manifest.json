@@ -1,59 +1,59 @@
 {
- "generated_at": "2026-09-19T16:20:01.140114",
+ "generated_at": "2026-09-29T22:27:33.268203",
  "stocks": [
   {
    "code": "1101",
    "name": "台泥",
-   "latest_pe": 24.931740614334476,
-   "latest_pb": 0.79
+   "latest_pe": 25.904436860068262,
+   "latest_pb": 0.82
   },
   {
    "code": "1102",
    "name": "亞泥",
-   "latest_pe": 12.079037800687285,
+   "latest_pe": 12.13058419243986,
    "latest_pb": 0.68
   },
   {
    "code": "1210",
    "name": "大成",
-   "latest_pe": 16.265432098765434,
-   "latest_pb": 1.85
+   "latest_pe": 15.925925925925927,
+   "latest_pb": 1.81
   },
   {
    "code": "1215",
    "name": "卜蜂",
-   "latest_pe": 14.522546419098143,
-   "latest_pb": 2.95
+   "latest_pe": 12.431264728986646,
+   "latest_pb": 2.84
   },
   {
    "code": "1216",
    "name": "統一",
-   "latest_pe": 17.537022603273574,
-   "latest_pb": 3.13
+   "latest_pe": 17.279812938425565,
+   "latest_pb": 3.08
   },
   {
    "code": "1229",
    "name": "聯華",
-   "latest_pe": 16.6734693877551,
-   "latest_pb": 1.19
+   "latest_pe": 16.14285714285714,
+   "latest_pb": 1.15
   },
   {
    "code": "1301",
    "name": "台塑",
-   "latest_pe": 20.249221183800625,
+   "latest_pe": 20.12461059190031,
    "latest_pb": 0.72
   },
   {
    "code": "1303",
    "name": "南亞",
-   "latest_pe": 14.993700125997481,
-   "latest_pb": 3.95
+   "latest_pe": 14.945542557482856,
+   "latest_pb": 4.1
   },
   {
    "code": "1312",
    "name": "國喬",
-   "latest_pe": -4.8999999999999995,
-   "latest_pb": 0.66
+   "latest_pe": -4.816666666666666,
+   "latest_pb": 0.65
   },
   {
    "code": "1314",
@@ -64,25 +64,25 @@
   {
    "code": "1319",
    "name": "東陽",
-   "latest_pe": 11.711930164888459,
-   "latest_pb": 1.76
+   "latest_pe": 11.319107662463628,
+   "latest_pb": 1.7
   },
   {
    "code": "1326",
    "name": "台化",
-   "latest_pe": 20.450450450450447,
-   "latest_pb": 0.77
+   "latest_pe": 20.250000000000004,
+   "latest_pb": 0.76
   },
   {
    "code": "1402",
    "name": "遠東新",
-   "latest_pe": 13.380952380952381,
-   "latest_pb": 0.65
+   "latest_pe": 13.214285714285714,
+   "latest_pb": 0.64
   },
   {
    "code": "1409",
    "name": "新纖",
-   "latest_pe": 9.8,
+   "latest_pe": 9.74,
    "latest_pb": 0.83
   },
   {
@@ -94,26 +94,26 @@
   {
    "code": "1476",
    "name": "儒鴻",
-   "latest_pe": 10.801838610827375,
-   "latest_pb": 2.67
+   "latest_pe": 10.478505629477993,
+   "latest_pb": 2.58
   },
   {
    "code": "1477",
    "name": "聚陽",
-   "latest_pe": 11.470240441466299,
-   "latest_pb": 3.47
+   "latest_pe": 11.260371394705649,
+   "latest_pb": 3.4
   },
   {
    "code": "1503",
    "name": "士電",
-   "latest_pe": 19.312681510164573,
-   "latest_pb": 2.69
+   "latest_pe": 18.780251694094872,
+   "latest_pb": 2.61
   },
   {
    "code": "1504",
    "name": "東元",
-   "latest_pe": 21.039354187689206,
-   "latest_pb": 1.72
+   "latest_pe": 20.653266331658294,
+   "latest_pb": 1.69
   },
   {
    "code": "1513",
@@ -124,26 +124,26 @@
   {
    "code": "1514",
    "name": "亞力",
-   "latest_pe": 23.49537037037037,
-   "latest_pb": 4.52
+   "latest_pe": 23.61111111111111,
+   "latest_pb": 4.54
   },
   {
    "code": "1519",
    "name": "華城",
-   "latest_pe": 32.73800514605721,
-   "latest_pb": 28.35
+   "latest_pe": 31.239594369607993,
+   "latest_pb": 27.05
   },
   {
    "code": "1536",
    "name": "和大",
-   "latest_pe": 35.745501285347046,
-   "latest_pb": 1.74
+   "latest_pe": 35.89974293059126,
+   "latest_pb": 1.75
   },
   {
    "code": "1560",
    "name": "中砂",
-   "latest_pe": 48.16341157498657,
-   "latest_pb": 14.86
+   "latest_pe": 50.51964065527568,
+   "latest_pb": 15.86
   },
   {
    "code": "1565",
@@ -154,32 +154,32 @@
   {
    "code": "1590",
    "name": "亞德客-KY",
-   "latest_pe": 18.627850162866448,
-   "latest_pb": 4.45
+   "latest_pe": 18.47516286644951,
+   "latest_pb": 4.41
   },
   {
    "code": "1597",
    "name": "直得",
-   "latest_pe": 56.45380434782609,
-   "latest_pb": 5.01
+   "latest_pe": 53.01568154402894,
+   "latest_pb": 5.3
   },
   {
    "code": "1605",
    "name": "華新",
-   "latest_pe": 5.218002812939522,
-   "latest_pb": 0.8
+   "latest_pe": 5.112517580872012,
+   "latest_pb": 0.79
   },
   {
    "code": "1608",
    "name": "華榮",
-   "latest_pe": 7.174348697394788,
-   "latest_pb": 2
+   "latest_pe": 7.054108216432866,
+   "latest_pb": 1.97
   },
   {
    "code": "1609",
    "name": "大亞",
-   "latest_pe": 12.337662337662337,
-   "latest_pb": 1.6
+   "latest_pe": 12.5,
+   "latest_pb": 1.62
   },
   {
    "code": "1707",
@@ -190,98 +190,98 @@
   {
    "code": "1708",
    "name": "東鹼",
-   "latest_pe": 13.000000000000002,
-   "latest_pb": 1.66
+   "latest_pe": 13.333333333333334,
+   "latest_pb": 1.7
   },
   {
    "code": "1709",
    "name": "和益",
-   "latest_pe": 13.56401384083045,
-   "latest_pb": 2.08
+   "latest_pe": 15.224913494809687,
+   "latest_pb": 2.33
   },
   {
    "code": "1710",
    "name": "東聯",
-   "latest_pe": -32.7,
-   "latest_pb": 1.31
+   "latest_pe": -33.1,
+   "latest_pb": 1.32
   },
   {
    "code": "1711",
    "name": "永光",
-   "latest_pe": 65.66666666666667,
-   "latest_pb": 2.42
+   "latest_pe": 67.58333333333333,
+   "latest_pb": 2.49
   },
   {
    "code": "1714",
    "name": "和桐",
-   "latest_pe": 8.722222222222221,
-   "latest_pb": 1.17
+   "latest_pe": 8.75,
+   "latest_pb": 1.18
   },
   {
    "code": "1717",
    "name": "長興",
-   "latest_pe": 21.63636363636364,
-   "latest_pb": 2.88
+   "latest_pe": 21.969696969696972,
+   "latest_pb": 2.92
   },
   {
    "code": "1718",
    "name": "中纖",
-   "latest_pe": 17.666666666666668,
-   "latest_pb": 0.76
+   "latest_pe": 17.583333333333336,
+   "latest_pb": 0.75
   },
   {
    "code": "1722",
    "name": "台肥",
-   "latest_pe": 42.4,
-   "latest_pb": 0.78
+   "latest_pe": 41.15,
+   "latest_pb": 0.76
   },
   {
    "code": "1727",
    "name": "中華化",
-   "latest_pe": 72.6027397260274,
-   "latest_pb": 6.28
+   "latest_pe": 81.16438356164383,
+   "latest_pb": 7.02
   },
   {
    "code": "1773",
    "name": "勝一",
-   "latest_pe": 17.240773286467487,
-   "latest_pb": 4.29
+   "latest_pe": 17.662565905096663,
+   "latest_pb": 4.39
   },
   {
    "code": "1785",
    "name": "光洋科",
-   "latest_pe": 7.8190630048465275,
-   "latest_pb": 3.56
+   "latest_pe": 7.915993537964459,
+   "latest_pb": 3.6
   },
   {
    "code": "1795",
    "name": "美時",
-   "latest_pe": 8.66356489651853,
-   "latest_pb": 2.03
+   "latest_pe": 8.543237606289106,
+   "latest_pb": 2
   },
   {
    "code": "1802",
    "name": "台玻",
-   "latest_pe": 18.092307692307692,
-   "latest_pb": 3.31
+   "latest_pe": 17.723076923076924,
+   "latest_pb": 3.24
   },
   {
    "code": "1809",
    "name": "中釉",
-   "latest_pe": 40.91872791519435,
-   "latest_pb": 2.2
+   "latest_pe": 47.70318021201414,
+   "latest_pb": 2.57
   },
   {
    "code": "1810",
    "name": "和成",
-   "latest_pe": 6.5,
-   "latest_pb": 0.85
+   "latest_pe": 6.405405405405405,
+   "latest_pb": 0.84
   },
   {
    "code": "1815",
    "name": "富喬",
-   "latest_pe": 17.27710843373494,
-   "latest_pb": 5.38
+   "latest_pe": 16.051660516605168,
+   "latest_pb": 5.22
   },
   {
    "code": "1904",
@@ -310,14 +310,14 @@
   {
    "code": "2002",
    "name": "中鋼",
-   "latest_pe": 39.0625,
-   "latest_pb": 0.99
+   "latest_pe": 44.0625,
+   "latest_pb": 1
   },
   {
    "code": "2006",
    "name": "東和鋼鐵",
-   "latest_pe": 11.7847533632287,
-   "latest_pb": 1.87
+   "latest_pe": 11.488789237668163,
+   "latest_pb": 1.82
   },
   {
    "code": "2014",
@@ -328,56 +328,56 @@
   {
    "code": "2027",
    "name": "大成鋼",
-   "latest_pe": 8.126430205949658,
-   "latest_pb": 1.54
+   "latest_pe": 8.092105263157896,
+   "latest_pb": 1.53
   },
   {
    "code": "2049",
    "name": "上銀",
-   "latest_pe": 31.666140738403286,
-   "latest_pb": 3.02
+   "latest_pe": 31.760807825812563,
+   "latest_pb": 3.03
   },
   {
    "code": "2059",
    "name": "川湖",
-   "latest_pe": 32.177070457354766,
-   "latest_pb": 35.28
+   "latest_pe": 31.19849608570252,
+   "latest_pb": 34.21
   },
   {
    "code": "2061",
    "name": "風青",
-   "latest_pe": 23.185840707964605,
-   "latest_pb": 4.43
+   "latest_pe": 26.283185840707965,
+   "latest_pb": 5.02
   },
   {
    "code": "2103",
    "name": "台橡",
-   "latest_pe": 9.200000000000001,
-   "latest_pb": 1.03
+   "latest_pe": 9.133333333333333,
+   "latest_pb": 1.02
   },
   {
    "code": "2105",
    "name": "正新",
-   "latest_pe": 15.0,
+   "latest_pe": 15.05,
    "latest_pb": 1.12
   },
   {
    "code": "2201",
    "name": "裕隆",
-   "latest_pe": 17.76,
-   "latest_pb": 0.49
+   "latest_pe": 17.52,
+   "latest_pb": 0.48
   },
   {
    "code": "2206",
    "name": "三陽工業",
-   "latest_pe": 10.901360544217686,
-   "latest_pb": 1.92
+   "latest_pe": 10.629251700680273,
+   "latest_pb": 1.87
   },
   {
    "code": "2207",
    "name": "和泰車",
-   "latest_pe": 13.989232372351509,
-   "latest_pb": 3.49
+   "latest_pe": 13.18166029871483,
+   "latest_pb": 3.29
   },
   {
    "code": "2231",
@@ -388,56 +388,56 @@
   {
    "code": "2233",
    "name": "宇隆",
-   "latest_pe": 16.45783948526922,
-   "latest_pb": 2.36
+   "latest_pe": 17.067389095834745,
+   "latest_pb": 2.45
   },
   {
    "code": "2301",
    "name": "光寶科",
-   "latest_pe": 22.380952380952383,
-   "latest_pb": 6.82
+   "latest_pe": 22.3015873015873,
+   "latest_pb": 6.79
   },
   {
    "code": "2302",
    "name": "麗正",
-   "latest_pe": 33.63636363636363,
-   "latest_pb": 4.02
+   "latest_pe": 34.31818181818181,
+   "latest_pb": 4.1
   },
   {
    "code": "2303",
    "name": "聯電",
-   "latest_pe": 22.349570200573066,
-   "latest_pb": 4.42
+   "latest_pe": 21.991404011461317,
+   "latest_pb": 4.35
   },
   {
    "code": "2305",
    "name": "全友",
-   "latest_pe": 57.54901960784314,
-   "latest_pb": 4.95
+   "latest_pe": 67.74509803921568,
+   "latest_pb": 5.83
   },
   {
    "code": "2308",
    "name": "台達電",
-   "latest_pe": 30.45284343552539,
-   "latest_pb": 15.34
+   "latest_pe": 32.208050549964895,
+   "latest_pb": 16.23
   },
   {
    "code": "2312",
    "name": "金寶",
-   "latest_pe": 22.142857142857146,
-   "latest_pb": 1.92
+   "latest_pe": 21.92857142857143,
+   "latest_pb": 1.91
   },
   {
    "code": "2313",
    "name": "華通",
-   "latest_pe": 19.732297063903285,
-   "latest_pb": 5.08
+   "latest_pe": 19.516407599309158,
+   "latest_pb": 5.03
   },
   {
    "code": "2316",
    "name": "楠梓電",
-   "latest_pe": 11.170592433975731,
-   "latest_pb": 1.98
+   "latest_pe": 11.563169164882227,
+   "latest_pb": 2.05
   },
   {
    "code": "2317",
@@ -454,32 +454,32 @@
   {
    "code": "2324",
    "name": "仁寶",
-   "latest_pe": 14.352791878172589,
-   "latest_pb": 1.2
+   "latest_pe": 13.7246192893401,
+   "latest_pb": 1.15
   },
   {
    "code": "2327",
    "name": "國巨*",
-   "latest_pe": 21.153846153846153,
-   "latest_pb": 6.41
+   "latest_pe": 20.794333417657477,
+   "latest_pb": 6.38
   },
   {
    "code": "2328",
    "name": "廣宇",
-   "latest_pe": -38.666666666666664,
-   "latest_pb": 1.65
+   "latest_pe": -39.16666666666667,
+   "latest_pb": 1.67
   },
   {
    "code": "2329",
    "name": "華泰",
-   "latest_pe": 17.740000000000002,
-   "latest_pb": 1.78
+   "latest_pe": 17.52,
+   "latest_pb": 1.76
   },
   {
    "code": "2330",
    "name": "台積電",
-   "latest_pe": 18.820769152300315,
-   "latest_pb": 9.92
+   "latest_pe": 18.936495791889826,
+   "latest_pb": 9.98
   },
   {
    "code": "2331",
@@ -490,320 +490,320 @@
   {
    "code": "2332",
    "name": "友訊",
-   "latest_pe": -64.83333333333333,
-   "latest_pb": 1.43
+   "latest_pe": -67.00000000000001,
+   "latest_pb": 1.47
   },
   {
    "code": "2337",
    "name": "旺宏",
-   "latest_pe": 3.8906752411575565,
-   "latest_pb": 3.88
+   "latest_pe": 3.8102893890675245,
+   "latest_pb": 3.8
   },
   {
    "code": "2338",
    "name": "光罩",
-   "latest_pe": 49.504950495049506,
-   "latest_pb": 2.98
+   "latest_pe": 46.633663366336634,
+   "latest_pb": 2.81
   },
   {
    "code": "2340",
    "name": "台亞",
-   "latest_pe": -16.91542288557214,
-   "latest_pb": 2.35
+   "latest_pe": -18.905472636815922,
+   "latest_pb": 2.62
   },
   {
    "code": "2342",
    "name": "茂矽",
-   "latest_pe": -72.01754385964912,
-   "latest_pb": 2.81
+   "latest_pe": -87.89473684210527,
+   "latest_pb": 3.43
   },
   {
    "code": "2344",
    "name": "華邦電",
-   "latest_pe": 4.285032227261876,
-   "latest_pb": 4.9
+   "latest_pe": 4.153735975173072,
+   "latest_pb": 4.75
   },
   {
    "code": "2345",
    "name": "智邦",
-   "latest_pe": 18.002717391304348,
-   "latest_pb": 15.08
+   "latest_pe": 17.565993788819878,
+   "latest_pb": 14.71
   },
   {
    "code": "2347",
    "name": "聯強",
-   "latest_pe": 8.821243523316062,
-   "latest_pb": 1.75
+   "latest_pe": 8.963009800822004,
+   "latest_pb": 1.82
   },
   {
    "code": "2351",
    "name": "順德",
-   "latest_pe": 28.99159663865547,
-   "latest_pb": 5.76
+   "latest_pe": 25.870348139255707,
+   "latest_pb": 5.14
   },
   {
    "code": "2352",
    "name": "佳世達",
-   "latest_pe": 20.95693779904306,
-   "latest_pb": 1.16
+   "latest_pe": 20.813397129186605,
+   "latest_pb": 1.15
   },
   {
    "code": "2353",
    "name": "宏碁",
-   "latest_pe": 18.36206896551724,
-   "latest_pb": 1.26
+   "latest_pe": 18.04597701149425,
+   "latest_pb": 1.24
   },
   {
    "code": "2354",
    "name": "鴻準",
-   "latest_pe": 31.285714285714285,
-   "latest_pb": 0.82
+   "latest_pe": 30.999999999999996,
+   "latest_pb": 0.81
   },
   {
    "code": "2355",
    "name": "敬鵬",
-   "latest_pe": 18.330849478390466,
-   "latest_pb": 0.93
+   "latest_pe": 18.599105812220568,
+   "latest_pb": 0.94
   },
   {
    "code": "2356",
    "name": "英業達",
-   "latest_pe": 15.209531635168448,
-   "latest_pb": 2.85
+   "latest_pe": 14.593262119967132,
+   "latest_pb": 2.73
   },
   {
    "code": "2357",
    "name": "華碩",
-   "latest_pe": 12.680521310320536,
+   "latest_pe": 12.720147939415288,
    "latest_pb": 2.37
   },
   {
    "code": "2359",
    "name": "所羅門",
-   "latest_pe": 53.42465753424657,
-   "latest_pb": 3.49
+   "latest_pe": 52.80821917808219,
+   "latest_pb": 3.45
   },
   {
    "code": "2360",
    "name": "致茂",
-   "latest_pe": 39.07849829351536,
-   "latest_pb": 29.52
+   "latest_pe": 37.28668941979522,
+   "latest_pb": 28.16
   },
   {
    "code": "2363",
    "name": "矽統",
-   "latest_pe": 33.77358490566038,
-   "latest_pb": 0.57
+   "latest_pe": 37.23270440251572,
+   "latest_pb": 0.62
   },
   {
    "code": "2367",
    "name": "燿華",
-   "latest_pe": -59.05797101449276,
-   "latest_pb": 2.34
+   "latest_pe": -61.23188405797102,
+   "latest_pb": 2.42
   },
   {
    "code": "2368",
    "name": "金像電",
-   "latest_pe": 17.926186291739896,
-   "latest_pb": 12.8
+   "latest_pe": 19.32144910868315,
+   "latest_pb": 14.06
   },
   {
    "code": "2369",
    "name": "菱生",
-   "latest_pe": 43.66197183098592,
-   "latest_pb": 2.4
+   "latest_pe": 44.50704225352113,
+   "latest_pb": 2.44
   },
   {
    "code": "2371",
    "name": "大同",
-   "latest_pe": 29.2,
-   "latest_pb": 1.3
+   "latest_pe": 29.35,
+   "latest_pb": 1.31
   },
   {
    "code": "2374",
    "name": "佳能",
-   "latest_pe": 19.508670520231213,
-   "latest_pb": 2.56
+   "latest_pe": 19.132947976878615,
+   "latest_pb": 2.51
   },
   {
    "code": "2375",
    "name": "凱美",
-   "latest_pe": 30.17676767676768,
-   "latest_pb": 1.22
+   "latest_pe": 29.671717171717173,
+   "latest_pb": 1.2
   },
   {
    "code": "2376",
    "name": "技嘉",
-   "latest_pe": 9.668658337859858,
-   "latest_pb": 3.59
+   "latest_pe": 9.831613253666486,
+   "latest_pb": 3.65
   },
   {
    "code": "2377",
    "name": "微星",
-   "latest_pe": 12.985199664898072,
-   "latest_pb": 2.26
+   "latest_pe": 12.650097738061993,
+   "latest_pb": 2.2
   },
   {
    "code": "2379",
    "name": "瑞昱",
-   "latest_pe": 20.692599620493358,
-   "latest_pb": 7.43
+   "latest_pe": 21.51958470976876,
+   "latest_pb": 7.77
   },
   {
    "code": "2382",
    "name": "廣達",
-   "latest_pe": 11.827586206896552,
-   "latest_pb": 4.49
+   "latest_pe": 11.60344827586207,
+   "latest_pb": 4.4
   },
   {
    "code": "2383",
    "name": "台光電",
-   "latest_pe": 26.82048375596468,
-   "latest_pb": 30.03
+   "latest_pe": 26.985026601093296,
+   "latest_pb": 30.22
   },
   {
    "code": "2385",
    "name": "群光",
-   "latest_pe": 13.07565789473684,
-   "latest_pb": 1.81
+   "latest_pe": 12.890624999999998,
+   "latest_pb": 1.78
   },
   {
    "code": "2388",
    "name": "威盛",
-   "latest_pe": 118.47457627118645,
-   "latest_pb": 1.75
+   "latest_pe": 120.67796610169492,
+   "latest_pb": 1.78
   },
   {
    "code": "2392",
    "name": "正崴",
-   "latest_pe": 4.1991991991991995,
-   "latest_pb": 0.75
+   "latest_pe": 4.089089089089089,
+   "latest_pb": 0.73
   },
   {
    "code": "2393",
    "name": "億光",
-   "latest_pe": 13.510489510489512,
-   "latest_pb": 1.49
+   "latest_pe": 13.342657342657343,
+   "latest_pb": 1.47
   },
   {
    "code": "2395",
    "name": "研華",
-   "latest_pe": 30.285296269202632,
-   "latest_pb": 10.84
+   "latest_pe": 32.04096561814191,
+   "latest_pb": 11.46
   },
   {
    "code": "2399",
    "name": "映泰",
-   "latest_pe": 10.79064587973274,
-   "latest_pb": 3.05
+   "latest_pe": 10.957683741648108,
+   "latest_pb": 3.1
   },
   {
    "code": "2401",
    "name": "凌陽",
-   "latest_pe": 49.90196078431372,
-   "latest_pb": 1.78
+   "latest_pe": 51.07843137254902,
+   "latest_pb": 1.82
   },
   {
    "code": "2402",
    "name": "毅嘉",
-   "latest_pe": 11.94260485651214,
-   "latest_pb": 2.29
+   "latest_pe": 12.560706401766003,
+   "latest_pb": 2.4
   },
   {
    "code": "2404",
    "name": "漢唐",
-   "latest_pe": 11.96045077610036,
-   "latest_pb": 11.97
+   "latest_pe": 12.97044439719328,
+   "latest_pb": 12.98
   },
   {
    "code": "2406",
    "name": "國碩",
-   "latest_pe": 38.943661971830984,
-   "latest_pb": 2.62
+   "latest_pe": 42.676056338028175,
+   "latest_pb": 2.87
   },
   {
    "code": "2408",
    "name": "南亞科",
-   "latest_pe": 5.8794982828132,
-   "latest_pb": 6.67
+   "latest_pe": 5.582318979149046,
+   "latest_pb": 6.43
   },
   {
    "code": "2409",
    "name": "友達",
-   "latest_pe": 53.245614035087726,
-   "latest_pb": 1.48
+   "latest_pe": 61.49122807017544,
+   "latest_pb": 1.71
   },
   {
    "code": "2412",
    "name": "中華電",
-   "latest_pe": 27.061376317420955,
-   "latest_pb": 3.08
+   "latest_pe": 26.782393056416613,
+   "latest_pb": 3.05
   },
   {
    "code": "2421",
    "name": "建準",
-   "latest_pe": 14.69208211143695,
-   "latest_pb": 4.55
+   "latest_pe": 14.384164222873899,
+   "latest_pb": 4.46
   },
   {
    "code": "2425",
    "name": "承啟",
-   "latest_pe": 22.289156626506024,
-   "latest_pb": 1.42
+   "latest_pe": 22.560240963855424,
+   "latest_pb": 1.44
   },
   {
    "code": "2426",
    "name": "鼎元",
-   "latest_pe": 127.5,
-   "latest_pb": 8
+   "latest_pe": 124.74999999999999,
+   "latest_pb": 7.82
   },
   {
    "code": "2428",
    "name": "興勤",
-   "latest_pe": 17.15794104707435,
-   "latest_pb": 2.82
+   "latest_pe": 16.59700835899692,
+   "latest_pb": 2.73
   },
   {
    "code": "2436",
    "name": "偉詮電",
-   "latest_pe": 19.60538979788258,
-   "latest_pb": 3.02
+   "latest_pe": 21.915303176130898,
+   "latest_pb": 3.37
   },
   {
    "code": "2439",
    "name": "美律",
-   "latest_pe": 12.366895097522406,
+   "latest_pe": 12.351080653663681,
    "latest_pb": 1.16
   },
   {
    "code": "2441",
    "name": "超豐",
-   "latest_pe": 22.014260249554365,
-   "latest_pb": 2.56
+   "latest_pe": 21.74688057040998,
+   "latest_pb": 2.52
   },
   {
    "code": "2449",
    "name": "京元電子",
-   "latest_pe": 22.342871742462954,
-   "latest_pb": 6.09
+   "latest_pe": 22.57281553398058,
+   "latest_pb": 6.15
   },
   {
    "code": "2451",
    "name": "創見",
-   "latest_pe": 3.6724630158318194,
-   "latest_pb": 3.17
+   "latest_pe": 3.71139371917986,
+   "latest_pb": 3.21
   },
   {
    "code": "2454",
    "name": "聯發科",
-   "latest_pe": 41.28199135210939,
-   "latest_pb": 17.81
+   "latest_pe": 42.95587763553119,
+   "latest_pb": 18.57
   },
   {
    "code": "2455",
    "name": "全新",
-   "latest_pe": 67.58508914100486,
-   "latest_pb": 28.21
+   "latest_pe": 64.54041204437402,
+   "latest_pb": 27.55
   },
   {
    "code": "2457",
@@ -814,218 +814,218 @@
   {
    "code": "2458",
    "name": "義隆",
-   "latest_pe": 13.432835820895523,
-   "latest_pb": 3.53
+   "latest_pe": 13.83989145183175,
+   "latest_pb": 3.64
   },
   {
    "code": "2464",
    "name": "盟立",
-   "latest_pe": 59.57661290322581,
-   "latest_pb": 6.49
+   "latest_pe": 58.064516129032256,
+   "latest_pb": 6.32
   },
   {
    "code": "2465",
    "name": "麗臺",
-   "latest_pe": 20.492170022371365,
-   "latest_pb": 6.31
+   "latest_pe": 20.5592841163311,
+   "latest_pb": 6.33
   },
   {
    "code": "2466",
    "name": "冠西電",
-   "latest_pe": 365.51724137931035,
-   "latest_pb": 9.49
+   "latest_pe": 391.3793103448276,
+   "latest_pb": 10.17
   },
   {
    "code": "2467",
    "name": "志聖",
-   "latest_pe": 25.984251968503937,
-   "latest_pb": 5.4
+   "latest_pe": 26.771653543307085,
+   "latest_pb": 5.56
   },
   {
    "code": "2472",
    "name": "立隆電",
-   "latest_pe": 16.179775280898877,
-   "latest_pb": 3.73
+   "latest_pe": 15.955056179775282,
+   "latest_pb": 3.68
   },
   {
    "code": "2474",
    "name": "可成",
-   "latest_pe": 17.91619156214367,
-   "latest_pb": 0.82
+   "latest_pe": 17.57411630558723,
+   "latest_pb": 0.8
   },
   {
    "code": "2476",
    "name": "鉅祥",
-   "latest_pe": 18.759455370650528,
-   "latest_pb": 2.98
+   "latest_pe": 18.835098335854763,
+   "latest_pb": 2.99
   },
   {
    "code": "2478",
    "name": "大毅",
-   "latest_pe": 18.17496229260935,
-   "latest_pb": 2.4
+   "latest_pe": 17.722473604826547,
+   "latest_pb": 2.34
   },
   {
    "code": "2481",
    "name": "強茂",
-   "latest_pe": 24.88921713441654,
-   "latest_pb": 4.28
+   "latest_pe": 25.9231905465288,
+   "latest_pb": 4.45
   },
   {
    "code": "2483",
    "name": "百容",
-   "latest_pe": 58.92857142857142,
-   "latest_pb": 1.31
+   "latest_pe": 58.03571428571428,
+   "latest_pb": 1.29
   },
   {
    "code": "2484",
    "name": "希華",
-   "latest_pe": 35.02487562189055,
-   "latest_pb": 2.74
+   "latest_pe": 38.258706467661696,
+   "latest_pb": 2.99
   },
   {
    "code": "2485",
    "name": "兆赫",
-   "latest_pe": 39.15841584158416,
-   "latest_pb": 2.35
+   "latest_pe": 39.35643564356435,
+   "latest_pb": 2.36
   },
   {
    "code": "2486",
    "name": "一詮",
-   "latest_pe": 32.22523744911805,
-   "latest_pb": 9.37
+   "latest_pe": 32.15739484396201,
+   "latest_pb": 9.35
   },
   {
    "code": "2489",
    "name": "瑞軒",
-   "latest_pe": 40.13636363636363,
-   "latest_pb": 2.04
+   "latest_pe": 37.36363636363636,
+   "latest_pb": 1.9
   },
   {
    "code": "2492",
    "name": "華新科",
-   "latest_pe": 28.110808356039964,
-   "latest_pb": 2.26
+   "latest_pe": 27.42960944595822,
+   "latest_pb": 2.21
   },
   {
    "code": "2493",
    "name": "揚博",
-   "latest_pe": 32.136894824707845,
-   "latest_pb": 7.91
+   "latest_pe": 32.721202003338895,
+   "latest_pb": 8.06
   },
   {
    "code": "2495",
    "name": "普安",
-   "latest_pe": 28.82575757575757,
-   "latest_pb": 2.3
+   "latest_pe": 29.507575757575758,
+   "latest_pb": 2.35
   },
   {
    "code": "2498",
    "name": "宏達電",
-   "latest_pe": 75.09493670886076,
-   "latest_pb": 1.26
+   "latest_pe": 81.64556962025317,
+   "latest_pb": 1.37
   },
   {
    "code": "2515",
    "name": "中工",
-   "latest_pe": 14.34,
-   "latest_pb": 0.87
+   "latest_pe": 14.160000000000002,
+   "latest_pb": 0.86
   },
   {
    "code": "2520",
    "name": "冠德",
-   "latest_pe": 10.27027027027027,
-   "latest_pb": 0.97
+   "latest_pe": 10.0,
+   "latest_pb": 0.94
   },
   {
    "code": "2542",
    "name": "興富發",
-   "latest_pe": 7.235116044399595,
-   "latest_pb": 2.08
+   "latest_pe": 5.842583249243188,
+   "latest_pb": 1.68
   },
   {
    "code": "2548",
    "name": "華固",
-   "latest_pe": 10.659057437407954,
-   "latest_pb": 1.57
+   "latest_pe": 10.184094256259206,
+   "latest_pb": 1.5
   },
   {
    "code": "2603",
    "name": "長榮",
-   "latest_pe": 10.746201966041108,
-   "latest_pb": 0.93
+   "latest_pe": 10.634495084897228,
+   "latest_pb": 0.92
   },
   {
    "code": "2605",
    "name": "新興",
-   "latest_pe": 9.062761506276152,
-   "latest_pb": 1.09
+   "latest_pe": 8.887029288702928,
+   "latest_pb": 1.07
   },
   {
    "code": "2606",
    "name": "裕民",
-   "latest_pe": 11.709531013615736,
-   "latest_pb": 1.62
+   "latest_pe": 10.586538461538462,
+   "latest_pb": 1.54
   },
   {
    "code": "2609",
    "name": "陽明",
-   "latest_pe": 16.804407713498623,
-   "latest_pb": 0.65
+   "latest_pe": 11.43603133159269,
+   "latest_pb": 0.62
   },
   {
    "code": "2610",
    "name": "華航",
-   "latest_pe": 9.145234493192133,
-   "latest_pb": 1.24
+   "latest_pe": 9.122541603630864,
+   "latest_pb": 1.23
   },
   {
    "code": "2615",
    "name": "萬海",
-   "latest_pe": 11.608863198458575,
-   "latest_pb": 1.17
+   "latest_pe": 10.69364161849711,
+   "latest_pb": 1.08
   },
   {
    "code": "2618",
    "name": "長榮航",
-   "latest_pe": 9.854445318646736,
-   "latest_pb": 1.62
+   "latest_pe": 9.795436664044061,
+   "latest_pb": 1.61
   },
   {
    "code": "2630",
    "name": "亞航",
-   "latest_pe": 163.10344827586206,
-   "latest_pb": 2.93
+   "latest_pe": 159.6551724137931,
+   "latest_pb": 2.86
   },
   {
    "code": "2633",
    "name": "台灣高鐵",
-   "latest_pe": 21.458333333333336,
-   "latest_pb": 2.07
+   "latest_pe": 21.208333333333332,
+   "latest_pb": 2.04
   },
   {
    "code": "2634",
    "name": "漢翔",
-   "latest_pe": 28.374816983894583,
-   "latest_pb": 3.31
+   "latest_pe": 27.715959004392392,
+   "latest_pb": 3.23
   },
   {
    "code": "2637",
    "name": "慧洋-KY",
-   "latest_pe": 11.810111925897337,
-   "latest_pb": 1.54
+   "latest_pe": 10.999614048629873,
+   "latest_pb": 1.43
   },
   {
    "code": "2645",
    "name": "長榮航太",
-   "latest_pe": 17.17105263157895,
-   "latest_pb": 4.86
+   "latest_pe": 17.040951122853368,
+   "latest_pb": 4.8
   },
   {
    "code": "2646",
    "name": "星宇航空",
-   "latest_pe": 40.12987012987013,
-   "latest_pb": 2.01
+   "latest_pe": 39.05844155844155,
+   "latest_pb": 1.96
   },
   {
    "code": "2723",
@@ -1036,8 +1036,8 @@
   {
    "code": "2727",
    "name": "王品",
-   "latest_pe": 12.411153635866594,
-   "latest_pb": 4.42
+   "latest_pe": 12.098850180195642,
+   "latest_pb": 4.58
   },
   {
    "code": "2801",
@@ -1126,8 +1126,8 @@
   {
    "code": "2912",
    "name": "統一超",
-   "latest_pe": 17.789646672144617,
-   "latest_pb": 5.49
+   "latest_pe": 17.41988496302383,
+   "latest_pb": 5.38
   },
   {
    "code": "2913",
@@ -1138,26 +1138,26 @@
   {
    "code": "2915",
    "name": "潤泰全",
-   "latest_pe": 4.538461538461538,
-   "latest_pb": 0.4
+   "latest_pe": 4.5,
+   "latest_pb": 0.39
   },
   {
    "code": "3005",
    "name": "神基",
-   "latest_pe": 12.104187946884576,
-   "latest_pb": 2.9
+   "latest_pe": 11.950970377936668,
+   "latest_pb": 2.87
   },
   {
    "code": "3006",
    "name": "晶豪科",
-   "latest_pe": 4.849191801366439,
-   "latest_pb": 4.57
+   "latest_pe": 4.749208465255791,
+   "latest_pb": 4.47
   },
   {
    "code": "3008",
    "name": "大立光",
-   "latest_pe": 31.482055717852887,
-   "latest_pb": 4.39
+   "latest_pe": 29.47464625528373,
+   "latest_pb": 4.11
   },
   {
    "code": "3010",
@@ -1168,134 +1168,134 @@
   {
    "code": "3013",
    "name": "晟銘電",
-   "latest_pe": 14.350086655112651,
-   "latest_pb": 3.22
+   "latest_pe": 14.558058925476605,
+   "latest_pb": 3.27
   },
   {
    "code": "3014",
    "name": "聯陽",
-   "latest_pe": 12.880228136882128,
-   "latest_pb": 3.06
+   "latest_pe": 13.640684410646386,
+   "latest_pb": 3.24
   },
   {
    "code": "3016",
    "name": "嘉晶",
-   "latest_pe": 37.78378378378378,
-   "latest_pb": 6.28
+   "latest_pe": 42.87489643744823,
+   "latest_pb": 9.29
   },
   {
    "code": "3017",
    "name": "奇鋐",
-   "latest_pe": 25.092664845883725,
-   "latest_pb": 24.4
+   "latest_pe": 24.782545313183345,
+   "latest_pb": 24.18
   },
   {
    "code": "3019",
    "name": "亞光",
-   "latest_pe": 17.33445803458456,
-   "latest_pb": 2.57
+   "latest_pe": 17.144664698439474,
+   "latest_pb": 2.55
   },
   {
    "code": "3022",
    "name": "威強電",
-   "latest_pe": 14.270778881338213,
-   "latest_pb": 1.41
+   "latest_pe": 14.584422373235757,
+   "latest_pb": 1.44
   },
   {
    "code": "3023",
    "name": "信邦",
-   "latest_pe": 19.36342136381553,
-   "latest_pb": 4.84
+   "latest_pe": 18.180922349231373,
+   "latest_pb": 4.54
   },
   {
    "code": "3026",
    "name": "禾伸堂",
-   "latest_pe": 36.54287024300779,
-   "latest_pb": 12.8
+   "latest_pe": 36.49701971572673,
+   "latest_pb": 12.78
   },
   {
    "code": "3028",
    "name": "增你強",
-   "latest_pe": 7.573529411764706,
-   "latest_pb": 1.87
+   "latest_pe": 7.6838235294117645,
+   "latest_pb": 1.9
   },
   {
    "code": "3029",
    "name": "零壹",
-   "latest_pe": 15.47029702970297,
-   "latest_pb": 3.99
+   "latest_pe": 14.542079207920793,
+   "latest_pb": 3.75
   },
   {
    "code": "3030",
    "name": "德律",
-   "latest_pe": 17.81187458305537,
-   "latest_pb": 6.48
+   "latest_pe": 18.412274849899934,
+   "latest_pb": 6.7
   },
   {
    "code": "3033",
    "name": "威健",
-   "latest_pe": 6.341463414634147,
-   "latest_pb": 1.73
+   "latest_pe": 6.402439024390245,
+   "latest_pb": 1.74
   },
   {
    "code": "3034",
    "name": "聯詠",
-   "latest_pe": 15.879339783722253,
-   "latest_pb": 4.92
+   "latest_pe": 15.367103016505407,
+   "latest_pb": 4.76
   },
   {
    "code": "3035",
    "name": "智原",
-   "latest_pe": 34.40698374473209,
-   "latest_pb": 2.9
+   "latest_pe": 37.92895845875978,
+   "latest_pb": 3.2
   },
   {
    "code": "3036",
    "name": "文曄",
-   "latest_pe": 7.015248065543923,
-   "latest_pb": 2.03
+   "latest_pe": 7.083522985889849,
+   "latest_pb": 2.05
   },
   {
    "code": "3037",
    "name": "欣興",
-   "latest_pe": 31.892067620286088,
-   "latest_pb": 9.64
+   "latest_pe": 37.8738621586476,
+   "latest_pb": 11.44
   },
   {
    "code": "3042",
    "name": "晶技",
-   "latest_pe": 20.792637114951166,
-   "latest_pb": 4.02
+   "latest_pe": 23.497370398196846,
+   "latest_pb": 4.54
   },
   {
    "code": "3044",
    "name": "健鼎",
-   "latest_pe": 14.621753857734285,
-   "latest_pb": 4.89
+   "latest_pe": 14.706435829883326,
+   "latest_pb": 4.92
   },
   {
    "code": "3045",
    "name": "台灣大",
-   "latest_pe": 26.51461154668567,
-   "latest_pb": 5.47
+   "latest_pe": 25.87312900926586,
+   "latest_pb": 5.33
   },
   {
    "code": "3048",
    "name": "益登",
-   "latest_pe": 8.5,
+   "latest_pe": 8.516666666666667,
    "latest_pb": 1.87
   },
   {
    "code": "3055",
    "name": "蔚華科",
-   "latest_pe": -1900.0,
-   "latest_pb": 12.12
+   "latest_pe": -2261.1111111111113,
+   "latest_pb": 14.43
   },
   {
    "code": "3059",
    "name": "華晶科",
-   "latest_pe": 31.791666666666668,
-   "latest_pb": 1.15
+   "latest_pe": 31.541666666666668,
+   "latest_pb": 1.14
   },
   {
    "code": "3078",
@@ -1306,62 +1306,62 @@
   {
    "code": "3081",
    "name": "聯亞",
-   "latest_pe": 80.65720687079911,
-   "latest_pb": 62.92
+   "latest_pe": 74.21583271097835,
+   "latest_pb": 57.89
   },
   {
    "code": "3088",
    "name": "艾訊",
-   "latest_pe": 13.539065287192294,
-   "latest_pb": 2.56
+   "latest_pe": 14.555833036032821,
+   "latest_pb": 2.75
   },
   {
    "code": "3090",
    "name": "日電貿",
-   "latest_pe": 11.965192168237854,
-   "latest_pb": 2.55
+   "latest_pe": 11.6751269035533,
+   "latest_pb": 2.49
   },
   {
    "code": "3094",
    "name": "聯傑",
-   "latest_pe": 53.85416666666667,
-   "latest_pb": 4.14
+   "latest_pe": 62.18750000000001,
+   "latest_pb": 4.78
   },
   {
    "code": "3105",
    "name": "穩懋",
-   "latest_pe": 53.57142857142857,
-   "latest_pb": 4.84
+   "latest_pe": 52.82142857142857,
+   "latest_pb": 4.77
   },
   {
    "code": "3131",
    "name": "弘塑",
-   "latest_pe": 27.518289251547554,
-   "latest_pb": 23.27
+   "latest_pe": 28.24267782426778,
+   "latest_pb": 23.56
   },
   {
    "code": "3135",
    "name": "凌航",
-   "latest_pe": 3.137593552101324,
-   "latest_pb": 3.61
+   "latest_pe": 3.0032623296872,
+   "latest_pb": 3.46
   },
   {
    "code": "3141",
    "name": "晶宏",
-   "latest_pe": 18.628230616302186,
-   "latest_pb": 2.56
+   "latest_pe": 16.938369781312126,
+   "latest_pb": 2.33
   },
   {
    "code": "3147",
    "name": "大綜",
-   "latest_pe": 10.43010752688172,
-   "latest_pb": 5.48
+   "latest_pe": 10.451612903225806,
+   "latest_pb": 5.49
   },
   {
    "code": "3149",
    "name": "正達",
-   "latest_pe": -832.1739130434781,
-   "latest_pb": 3.03
+   "latest_pe": -877.8260869565216,
+   "latest_pb": 3.2
   },
   {
    "code": "3152",
@@ -1372,254 +1372,254 @@
   {
    "code": "3163",
    "name": "波若威",
-   "latest_pe": 73.97107897664071,
-   "latest_pb": 19.32
+   "latest_pe": 71.85761957730811,
+   "latest_pb": 18.76
   },
   {
    "code": "3167",
    "name": "大量",
-   "latest_pe": 32.05226748654881,
-   "latest_pb": 17.53
+   "latest_pe": 16.23906006474044,
+   "latest_pb": 18.99
   },
   {
    "code": "3189",
    "name": "景碩",
-   "latest_pe": 41.03238533618281,
-   "latest_pb": 9.86
+   "latest_pe": 46.04628736740598,
+   "latest_pb": 11.32
   },
   {
    "code": "3209",
    "name": "全科",
-   "latest_pe": 7.495908346972176,
-   "latest_pb": 2.03
+   "latest_pe": 7.446808510638298,
+   "latest_pb": 2.01
   },
   {
    "code": "3211",
    "name": "順達",
-   "latest_pe": 21.07272380225234,
-   "latest_pb": 6.34
+   "latest_pe": 22.103454857797292,
+   "latest_pb": 6.65
   },
   {
    "code": "3217",
    "name": "優群",
-   "latest_pe": 9.64998767562238,
+   "latest_pe": 9.61301454276559,
    "latest_pb": 2.42
   },
   {
    "code": "3221",
    "name": "台嘉碩",
-   "latest_pe": 21.78899082568807,
-   "latest_pb": 2.31
+   "latest_pe": 23.302752293577978,
+   "latest_pb": 2.47
   },
   {
    "code": "3227",
    "name": "原相",
-   "latest_pe": 14.289372599231756,
-   "latest_pb": 1.87
+   "latest_pe": 14.250960307298337,
+   "latest_pb": 1.86
   },
   {
    "code": "3231",
    "name": "緯創",
-   "latest_pe": 8.94484412470024,
-   "latest_pb": 2.66
+   "latest_pe": 8.864287989805671,
+   "latest_pb": 2.64
   },
   {
    "code": "3234",
    "name": "光環",
-   "latest_pe": -206.89655172413794,
-   "latest_pb": 9.71
+   "latest_pe": -200.57471264367817,
+   "latest_pb": 9.41
   },
   {
    "code": "3236",
    "name": "千如",
-   "latest_pe": 90.3125,
-   "latest_pb": 2.54
+   "latest_pe": 91.875,
+   "latest_pb": 2.59
   },
   {
    "code": "3260",
    "name": "威剛",
-   "latest_pe": 4.537651636530098,
-   "latest_pb": 3.37
+   "latest_pe": 4.437382297551789,
+   "latest_pb": 2.96
   },
   {
    "code": "3264",
    "name": "欣銓",
-   "latest_pe": 20.78173374613003,
-   "latest_pb": 6.71
+   "latest_pe": 18.534151957022257,
+   "latest_pb": 6.03
   },
   {
    "code": "3265",
    "name": "台星科",
-   "latest_pe": 22.5,
-   "latest_pb": 3.88
+   "latest_pe": 22.5625,
+   "latest_pb": 3.89
   },
   {
    "code": "3289",
    "name": "宜特",
-   "latest_pe": 19.306930693069305,
-   "latest_pb": 2.49
+   "latest_pe": 19.73125884016973,
+   "latest_pb": 2.55
   },
   {
    "code": "3293",
    "name": "鈊象",
-   "latest_pe": 14.386264965136167,
-   "latest_pb": 13.59
+   "latest_pe": 15.290499869144204,
+   "latest_pb": 14.52
   },
   {
    "code": "3305",
    "name": "昇貿",
-   "latest_pe": 12.701363073110285,
-   "latest_pb": 2.43
+   "latest_pe": 12.949194547707558,
+   "latest_pb": 2.48
   },
   {
    "code": "3312",
    "name": "弘憶股",
-   "latest_pe": 12.775,
-   "latest_pb": 2.32
+   "latest_pe": 12.725,
+   "latest_pb": 2.31
   },
   {
    "code": "3317",
    "name": "尼克森",
-   "latest_pe": 15.786516853932584,
-   "latest_pb": 1.54
+   "latest_pe": 18.370786516853933,
+   "latest_pb": 1.79
   },
   {
    "code": "3324",
    "name": "雙鴻",
-   "latest_pe": 20.898051397910198,
-   "latest_pb": 10.39
+   "latest_pe": 22.748418310383325,
+   "latest_pb": 11.44
   },
   {
    "code": "3357",
    "name": "臺慶科",
-   "latest_pe": 15.090909090909092,
-   "latest_pb": 2.13
+   "latest_pe": 14.763636363636364,
+   "latest_pb": 2.09
   },
   {
    "code": "3362",
    "name": "先進光",
-   "latest_pe": -71.11553784860558,
-   "latest_pb": 6.41
+   "latest_pe": -68.12749003984064,
+   "latest_pb": 6.14
   },
   {
    "code": "3363",
    "name": "上詮",
-   "latest_pe": 62.43144424131627,
-   "latest_pb": 13.57
+   "latest_pe": 59.59780621572212,
+   "latest_pb": 12.96
   },
   {
    "code": "3374",
    "name": "精材",
-   "latest_pe": 53.1486648066959,
-   "latest_pb": 12.24
+   "latest_pe": 54.40414507772021,
+   "latest_pb": 12.52
   },
   {
    "code": "3376",
    "name": "新日興",
-   "latest_pe": 16.687383467992543,
-   "latest_pb": 2.12
+   "latest_pe": 17.144285238253914,
+   "latest_pb": 2.03
   },
   {
    "code": "3380",
    "name": "明泰",
-   "latest_pe": 335.0,
-   "latest_pb": 1.78
+   "latest_pe": 351.11111111111114,
+   "latest_pb": 1.87
   },
   {
    "code": "3406",
    "name": "玉晶光",
-   "latest_pe": 24.795918367346935,
-   "latest_pb": 4.05
+   "latest_pe": 22.5,
+   "latest_pb": 3.67
   },
   {
    "code": "3413",
    "name": "京鼎",
-   "latest_pe": 10.610573343261356,
-   "latest_pb": 1.91
+   "latest_pe": 10.833953834698436,
+   "latest_pb": 1.95
   },
   {
    "code": "3441",
    "name": "聯一光",
-   "latest_pe": 74.2,
-   "latest_pb": 8.95
+   "latest_pe": 74.0,
+   "latest_pb": 8.93
   },
   {
    "code": "3443",
    "name": "創意",
-   "latest_pe": 71.90988635220758,
-   "latest_pb": 71.15
+   "latest_pe": 73.52713777640328,
+   "latest_pb": 78.87
   },
   {
    "code": "3450",
    "name": "聯鈞",
-   "latest_pe": 38.54788631478385,
-   "latest_pb": 14.04
+   "latest_pe": 37.61643181275376,
+   "latest_pb": 13.7
   },
   {
    "code": "3455",
    "name": "由田",
-   "latest_pe": 84.88372093023257,
-   "latest_pb": 6.38
+   "latest_pe": 88.70431893687709,
+   "latest_pb": 6.66
   },
   {
    "code": "3479",
    "name": "安勤",
-   "latest_pe": 13.238255033557047,
-   "latest_pb": 2.89
+   "latest_pe": 13.942953020134228,
+   "latest_pb": 3.04
   },
   {
    "code": "3481",
    "name": "群創",
-   "latest_pe": 36.46095717884131,
-   "latest_pb": 1.71
+   "latest_pe": 37.594458438287155,
+   "latest_pb": 1.77
   },
   {
    "code": "3491",
    "name": "昇達科",
-   "latest_pe": 50.2784322124652,
-   "latest_pb": 23.71
+   "latest_pe": 48.51145855643607,
+   "latest_pb": 22.88
   },
   {
    "code": "3498",
    "name": "陽程",
-   "latest_pe": 27.81740370898716,
-   "latest_pb": 4.79
+   "latest_pe": 33.523537803138375,
+   "latest_pb": 5.78
   },
   {
    "code": "3504",
    "name": "揚明光",
-   "latest_pe": 447.22222222222223,
-   "latest_pb": 3.23
+   "latest_pe": 441.6666666666667,
+   "latest_pb": 3.19
   },
   {
    "code": "3515",
    "name": "華擎",
-   "latest_pe": 9.723283901544105,
-   "latest_pb": 2.25
+   "latest_pe": 9.67741935483871,
+   "latest_pb": 2.24
   },
   {
    "code": "3526",
    "name": "凡甲",
-   "latest_pe": 10.78535420535951,
-   "latest_pb": 4.43
+   "latest_pe": 10.765455027858847,
+   "latest_pb": 4.42
   },
   {
    "code": "3529",
    "name": "力旺",
-   "latest_pe": 71.47642575998661,
-   "latest_pb": 60.93
+   "latest_pe": 83.0332467967507,
+   "latest_pb": 70.78
   },
   {
    "code": "3532",
    "name": "台勝科",
-   "latest_pe": 443.0693069306931,
-   "latest_pb": 7.14
+   "latest_pe": 449.5049504950495,
+   "latest_pb": 7.25
   },
   {
    "code": "3533",
    "name": "嘉澤",
-   "latest_pe": 15.067972240707292,
-   "latest_pb": 4.35
+   "latest_pe": 16.359461700363546,
+   "latest_pb": 4.7
   },
   {
    "code": "3552",
@@ -1630,163 +1630,163 @@
   {
    "code": "3563",
    "name": "牧德",
-   "latest_pe": 22.344322344322343,
-   "latest_pb": 7.74
+   "latest_pe": 26.44022644022644,
+   "latest_pb": 9.16
   },
   {
    "code": "3576",
    "name": "聯合再生",
-   "latest_pe": 34.2,
-   "latest_pb": 2.16
+   "latest_pe": 35.9,
+   "latest_pb": 2.27
   },
   {
    "code": "3583",
    "name": "辛耘",
-   "latest_pe": 27.332900713822195,
-   "latest_pb": 5.8
+   "latest_pe": 27.761194029850746,
+   "latest_pb": 5.89
   },
   {
    "code": "3587",
    "name": "閎康",
-   "latest_pe": 16.79026651216686,
-   "latest_pb": 2.91
+   "latest_pe": 16.651216685979144,
+   "latest_pb": 2.89
   },
   {
    "code": "3592",
    "name": "瑞鼎",
-   "latest_pe": 11.855307164231649,
+   "latest_pe": 11.881710966379158,
    "latest_pb": 1.5
   },
   {
    "code": "3596",
    "name": "智易",
-   "latest_pe": 10.614334470989762,
-   "latest_pb": 2.08
+   "latest_pe": 10.477815699658704,
+   "latest_pb": 2.06
   },
   {
    "code": "3605",
    "name": "宏致",
-   "latest_pe": 23.227752639517345,
-   "latest_pb": 3.15
+   "latest_pe": 27.637556789500252,
+   "latest_pb": 3.73
   },
   {
    "code": "3617",
    "name": "碩天",
-   "latest_pe": 11.011638316920322,
-   "latest_pb": 2.36
+   "latest_pe": 10.76544315129812,
+   "latest_pb": 2.31
   },
   {
    "code": "3624",
    "name": "光頡",
-   "latest_pe": 19.454451878538343,
-   "latest_pb": 4.14
+   "latest_pe": 21.61605764282038,
+   "latest_pb": 4.6
   },
   {
    "code": "3645",
    "name": "達邁",
-   "latest_pe": 20.88145896656535,
-   "latest_pb": 2.81
+   "latest_pe": 22.09726443768997,
+   "latest_pb": 2.97
   },
   {
    "code": "3653",
    "name": "健策",
-   "latest_pe": 48.356040493625464,
-   "latest_pb": 34.38
+   "latest_pe": 57.27537034473211,
+   "latest_pb": 42.9
   },
   {
    "code": "3661",
    "name": "世芯-KY",
-   "latest_pe": 21.143585251254283,
-   "latest_pb": 4.94
+   "latest_pe": 22.009636059568372,
+   "latest_pb": 5.14
   },
   {
    "code": "3665",
    "name": "貿聯-KY",
-   "latest_pe": 22.652726527265273,
-   "latest_pb": 7.39
+   "latest_pe": 24.497361565693673,
+   "latest_pb": 8.17
   },
   {
    "code": "3673",
    "name": "TPK-KY",
-   "latest_pe": 25.69721115537849,
-   "latest_pb": 0.65
+   "latest_pe": 27.370517928286855,
+   "latest_pb": 0.69
   },
   {
    "code": "3675",
    "name": "德微",
-   "latest_pe": 32.522123893805315,
-   "latest_pb": 5.31
+   "latest_pe": 33.38887037654115,
+   "latest_pb": 6.03
   },
   {
    "code": "3680",
    "name": "家登",
-   "latest_pe": 26.204523107177973,
-   "latest_pb": 3.95
+   "latest_pe": 26.941986234021634,
+   "latest_pb": 4.06
   },
   {
    "code": "3689",
    "name": "湧德",
-   "latest_pe": 12.732558139534884,
+   "latest_pe": 12.790697674418606,
    "latest_pb": 1.95
   },
   {
    "code": "3691",
    "name": "碩禾",
-   "latest_pe": 19.46107784431138,
-   "latest_pb": 1.48
+   "latest_pe": 23.652694610778443,
+   "latest_pb": 1.8
   },
   {
    "code": "3693",
    "name": "營邦",
-   "latest_pe": 29.39457202505219,
-   "latest_pb": 5.76
+   "latest_pe": 29.31106471816284,
+   "latest_pb": 5.75
   },
   {
    "code": "3702",
    "name": "大聯大",
-   "latest_pe": 6.605769230769231,
-   "latest_pb": 2.08
+   "latest_pe": 6.634615384615385,
+   "latest_pb": 2.09
   },
   {
    "code": "3704",
    "name": "合勤控",
-   "latest_pe": 13.67109634551495,
-   "latest_pb": 1.41
+   "latest_pe": 13.372093023255815,
+   "latest_pb": 1.38
   },
   {
    "code": "3706",
    "name": "神達",
-   "latest_pe": 10.058309037900875,
-   "latest_pb": 1.54
+   "latest_pe": 9.858392336526448,
+   "latest_pb": 1.51
   },
   {
    "code": "3707",
    "name": "漢磊",
-   "latest_pe": -42.7891156462585,
-   "latest_pb": 2.89
+   "latest_pe": -49.591836734693885,
+   "latest_pb": 3.35
   },
   {
    "code": "3711",
    "name": "日月光投控",
-   "latest_pe": 25.83693304535637,
-   "latest_pb": 7.33
+   "latest_pe": 27.542429506882268,
+   "latest_pb": 7.89
   },
   {
    "code": "3714",
    "name": "富采",
-   "latest_pe": 748.888888888889,
-   "latest_pb": 1.15
+   "latest_pe": 756.6666666666666,
+   "latest_pb": 1.16
   },
   {
    "code": "3715",
    "name": "定穎投控",
-   "latest_pe": 14.191616766467066,
-   "latest_pb": 3.21
+   "latest_pe": 14.910179640718564,
+   "latest_pb": 3.37
   },
   {
    "code": "4123",
    "name": "晟德",
-   "latest_pe": -3.238993710691824,
+   "latest_pe": -3.2494758909853254,
    "latest_pb": 1.46
   },
   {
@@ -1804,20 +1804,20 @@
   {
    "code": "4540",
    "name": "全球傳動",
-   "latest_pe": 49.14364640883977,
-   "latest_pb": 1.96
+   "latest_pe": 51.87845303867403,
+   "latest_pb": 2.07
   },
   {
    "code": "4541",
    "name": "晟田",
-   "latest_pe": 12.164813603662525,
-   "latest_pb": 2.25
+   "latest_pe": 11.635055591890124,
+   "latest_pb": 2.15
   },
   {
    "code": "4542",
    "name": "科嶠",
-   "latest_pe": 89.86928104575163,
-   "latest_pb": 10.21
+   "latest_pe": 110.7843137254902,
+   "latest_pb": 12.59
   },
   {
    "code": "4549",
@@ -1828,32 +1828,32 @@
   {
    "code": "4551",
    "name": "智伸科",
-   "latest_pe": 12.409232365145229,
-   "latest_pb": 1.99
+   "latest_pe": 13.965248962655604,
+   "latest_pb": 2.23
   },
   {
    "code": "4566",
    "name": "時碩工業",
-   "latest_pe": 16.51023890784983,
-   "latest_pb": 1.41
+   "latest_pe": 18.737201365187715,
+   "latest_pb": 1.59
   },
   {
    "code": "4576",
    "name": "大銀微系統",
-   "latest_pe": 39.473684210526315,
-   "latest_pb": 6.7
+   "latest_pe": 39.63815789473684,
+   "latest_pb": 6.73
   },
   {
    "code": "4707",
    "name": "磐亞",
-   "latest_pe": 19.047619047619047,
-   "latest_pb": 1.4
+   "latest_pe": 20.170068027210885,
+   "latest_pb": 1.48
   },
   {
    "code": "4722",
    "name": "國精化",
-   "latest_pe": 25.94705613874943,
-   "latest_pb": 5.69
+   "latest_pe": 26.01551802829758,
+   "latest_pb": 5.71
   },
   {
    "code": "4736",
@@ -1864,266 +1864,266 @@
   {
    "code": "4739",
    "name": "康普",
-   "latest_pe": 12.082066869300911,
-   "latest_pb": 1.54
+   "latest_pe": 12.644376899696049,
+   "latest_pb": 1.61
   },
   {
    "code": "4743",
    "name": "合一",
-   "latest_pe": -151.7241379310345,
-   "latest_pb": 2.06
+   "latest_pe": -157.58620689655174,
+   "latest_pb": 2.14
   },
   {
    "code": "4749",
    "name": "新應材",
-   "latest_pe": 37.86407766990291,
-   "latest_pb": 6.73
+   "latest_pe": 39.03934593765968,
+   "latest_pb": 6.94
   },
   {
    "code": "4760",
    "name": "勤凱",
-   "latest_pe": 19.050466395599138,
-   "latest_pb": 6.44
+   "latest_pe": 18.65582396555848,
+   "latest_pb": 6.31
   },
   {
    "code": "4763",
    "name": "材料*-KY",
-   "latest_pe": 126.25,
-   "latest_pb": 2.55
+   "latest_pe": 117.125,
+   "latest_pb": 2.37
   },
   {
    "code": "4764",
    "name": "雙鍵",
-   "latest_pe": 43.51063829787234,
-   "latest_pb": 5.25
+   "latest_pe": 38.93617021276596,
+   "latest_pb": 4.7
   },
   {
    "code": "4766",
    "name": "南寶",
-   "latest_pe": 13.4665282823041,
-   "latest_pb": 2.94
+   "latest_pe": 13.271925272444214,
+   "latest_pb": 2.9
   },
   {
    "code": "4768",
    "name": "晶呈科技",
-   "latest_pe": -189.75903614457832,
-   "latest_pb": 10.68
+   "latest_pe": -215.36144578313255,
+   "latest_pb": 12.13
   },
   {
    "code": "4772",
    "name": "台特化",
-   "latest_pe": 28.560548362528557,
-   "latest_pb": 9.98
+   "latest_pe": 30.95963442498096,
+   "latest_pb": 10.82
   },
   {
    "code": "4904",
    "name": "遠傳",
-   "latest_pe": 23.260869565217394,
-   "latest_pb": 4.48
+   "latest_pe": 22.717391304347828,
+   "latest_pb": 4.38
   },
   {
    "code": "4906",
    "name": "正文",
-   "latest_pe": -52.11267605633803,
-   "latest_pb": 1.48
+   "latest_pe": -56.61971830985916,
+   "latest_pb": 1.61
   },
   {
    "code": "4908",
    "name": "前鼎",
-   "latest_pe": 82.82312925170068,
-   "latest_pb": 10.79
+   "latest_pe": 69.89795918367346,
+   "latest_pb": 9.11
   },
   {
    "code": "4915",
    "name": "致伸",
-   "latest_pe": 11.133144475920679,
-   "latest_pb": 1.51
+   "latest_pe": 10.793201133144475,
+   "latest_pb": 1.47
   },
   {
    "code": "4916",
    "name": "事欣科",
-   "latest_pe": 20.327552986512522,
-   "latest_pb": 3.63
+   "latest_pe": 15.286144578313255,
+   "latest_pb": 3.49
   },
   {
    "code": "4919",
    "name": "新唐",
-   "latest_pe": 114.65256797583085,
-   "latest_pb": 3.42
+   "latest_pe": 122.80966767371605,
+   "latest_pb": 3.67
   },
   {
    "code": "4927",
    "name": "泰鼎-KY",
-   "latest_pe": -101.33587786259524,
-   "latest_pb": 2.79
+   "latest_pe": -100.19083969465632,
+   "latest_pb": 2.76
   },
   {
    "code": "4931",
    "name": "新盛力",
-   "latest_pe": 26.418242491657395,
-   "latest_pb": 9.67
+   "latest_pe": 27.363737486095662,
+   "latest_pb": 10.02
   },
   {
    "code": "4938",
    "name": "和碩",
-   "latest_pe": 13.093281778637023,
+   "latest_pe": 13.165780570323827,
    "latest_pb": 1.17
   },
   {
    "code": "4939",
    "name": "亞電",
-   "latest_pe": 76.76470588235294,
-   "latest_pb": 5.07
+   "latest_pe": 73.8235294117647,
+   "latest_pb": 4.87
   },
   {
    "code": "4958",
    "name": "臻鼎-KY",
-   "latest_pe": 21.389810069339767,
-   "latest_pb": 3.43
+   "latest_pe": 22.61454710418872,
+   "latest_pb": 3.61
   },
   {
    "code": "4961",
    "name": "天鈺",
-   "latest_pe": 13.8212402711524,
-   "latest_pb": 1.29
+   "latest_pe": 13.896560381621894,
+   "latest_pb": 1.3
   },
   {
    "code": "4966",
    "name": "譜瑞-KY",
-   "latest_pe": 14.637917704664547,
+   "latest_pe": 14.663688686538956,
    "latest_pb": 2.03
   },
   {
    "code": "4967",
    "name": "十銓",
-   "latest_pe": 2.716751667320518,
-   "latest_pb": 2.45
+   "latest_pe": 2.66771282856022,
+   "latest_pb": 2.4
   },
   {
    "code": "4971",
    "name": "IET-KY",
-   "latest_pe": 63.86192017259979,
-   "latest_pb": 6.33
+   "latest_pe": 58.25242718446602,
+   "latest_pb": 5.77
   },
   {
    "code": "4973",
    "name": "廣穎",
-   "latest_pe": 4.754601226993866,
-   "latest_pb": 2.63
+   "latest_pe": 4.601226993865032,
+   "latest_pb": 2.54
   },
   {
    "code": "4976",
    "name": "佳凌",
-   "latest_pe": -12.323232323232324,
-   "latest_pb": 2.56
+   "latest_pe": -11.952861952861952,
+   "latest_pb": 2.48
   },
   {
    "code": "4977",
    "name": "眾達-KY",
-   "latest_pe": 63.63636363636363,
-   "latest_pb": 3.08
+   "latest_pe": 61.27272727272727,
+   "latest_pb": 2.97
   },
   {
    "code": "4979",
    "name": "華星光",
-   "latest_pe": 46.4168143833882,
-   "latest_pb": 19.61
+   "latest_pe": 43.074195998987086,
+   "latest_pb": 18.2
   },
   {
    "code": "4989",
    "name": "榮科",
-   "latest_pe": -62.244897959183675,
-   "latest_pb": 2.94
+   "latest_pe": -60.714285714285715,
+   "latest_pb": 2.87
   },
   {
    "code": "4991",
    "name": "環宇-KY",
-   "latest_pe": 44.985763998734576,
-   "latest_pb": 12.93
+   "latest_pe": 45.033217336285986,
+   "latest_pb": 12.94
   },
   {
    "code": "5009",
    "name": "榮剛",
-   "latest_pe": 11.497005988023952,
-   "latest_pb": 1.11
+   "latest_pe": 11.712574850299402,
+   "latest_pb": 1.13
   },
   {
    "code": "5234",
    "name": "達興材料",
-   "latest_pe": 27.475247524752476,
-   "latest_pb": 9.17
+   "latest_pe": 29.888613861386137,
+   "latest_pb": 9.98
   },
   {
    "code": "5243",
    "name": "乙盛-KY",
-   "latest_pe": 10.074377091855709,
-   "latest_pb": 1.76
+   "latest_pe": 9.895872071402009,
+   "latest_pb": 1.73
   },
   {
    "code": "5269",
    "name": "祥碩",
-   "latest_pe": 14.186303969634668,
-   "latest_pb": 3.09
+   "latest_pe": 13.996520638937215,
+   "latest_pb": 3.05
   },
   {
    "code": "5274",
    "name": "信驊",
-   "latest_pe": 67.34629752470062,
-   "latest_pb": 108.97
+   "latest_pe": 68.29786484805089,
+   "latest_pb": 109.56
   },
   {
    "code": "5284",
    "name": "jpp-KY",
-   "latest_pe": 14.92462311557789,
-   "latest_pb": 3.81
+   "latest_pe": 15.075376884422111,
+   "latest_pb": 3.85
   },
   {
    "code": "5285",
    "name": "界霖",
-   "latest_pe": 19.11885245901639,
-   "latest_pb": 3.09
+   "latest_pe": 18.545081967213115,
+   "latest_pb": 2.99
   },
   {
    "code": "5289",
    "name": "宜鼎",
-   "latest_pe": 3.544315170028301,
-   "latest_pb": 5.59
+   "latest_pe": 3.449979785274696,
+   "latest_pb": 5.44
   },
   {
    "code": "5309",
    "name": "系統電",
-   "latest_pe": 59.883720930232556,
-   "latest_pb": 2.23
+   "latest_pe": 68.72093023255815,
+   "latest_pb": 2.56
   },
   {
    "code": "5314",
    "name": "世紀*",
-   "latest_pe": 76.25,
-   "latest_pb": 20.54
+   "latest_pe": 68.625,
+   "latest_pb": 18.48
   },
   {
    "code": "5328",
    "name": "華容",
-   "latest_pe": 57.096774193548384,
-   "latest_pb": 4.04
+   "latest_pe": 56.23655913978494,
+   "latest_pb": 3.98
   },
   {
    "code": "5340",
    "name": "建榮",
-   "latest_pe": 41.55,
-   "latest_pb": 6.83
+   "latest_pe": 40.25,
+   "latest_pb": 6.61
   },
   {
    "code": "5347",
    "name": "世界",
-   "latest_pe": 24.454976303317537,
-   "latest_pb": 5.13
+   "latest_pe": 25.42735042735043,
+   "latest_pb": 5.32
   },
   {
    "code": "5351",
    "name": "鈺創",
-   "latest_pe": 8.177233429394812,
-   "latest_pb": 5.17
+   "latest_pe": 7.889048991354467,
+   "latest_pb": 4.99
   },
   {
    "code": "5371",
@@ -2134,26 +2134,26 @@
   {
    "code": "5386",
    "name": "青雲",
-   "latest_pe": 3.6649214659685865,
-   "latest_pb": 4.98
+   "latest_pe": 3.5527299925205686,
+   "latest_pb": 4.83
   },
   {
    "code": "5388",
    "name": "中磊",
-   "latest_pe": 9.289019772822884,
-   "latest_pb": 1.38
+   "latest_pe": 9.223842195540309,
+   "latest_pb": 1.35
   },
   {
    "code": "5392",
    "name": "能率",
-   "latest_pe": 60.0,
-   "latest_pb": 1.25
+   "latest_pe": 58.805970149253724,
+   "latest_pb": 1.22
   },
   {
    "code": "5425",
    "name": "台半",
-   "latest_pe": 29.774919614147908,
-   "latest_pb": 3.19
+   "latest_pe": 30.80385852090032,
+   "latest_pb": 3.3
   },
   {
    "code": "5434",
@@ -2164,13 +2164,13 @@
   {
    "code": "5439",
    "name": "高技",
-   "latest_pe": 14.537963507945852,
-   "latest_pb": 5.69
+   "latest_pe": 14.891112419070042,
+   "latest_pb": 5.83
   },
   {
    "code": "5443",
    "name": "均豪",
-   "latest_pe": 27.18204488778055,
+   "latest_pe": 27.306733167082296,
    "latest_pb": 0.89
   },
   {
@@ -2182,38 +2182,38 @@
   {
    "code": "5469",
    "name": "瀚宇博",
-   "latest_pe": 14.559999999999999,
-   "latest_pb": 0.57
+   "latest_pe": 14.719999999999999,
+   "latest_pb": 0.58
   },
   {
    "code": "5471",
    "name": "松翰",
-   "latest_pe": 25.665024630541875,
-   "latest_pb": 2.42
+   "latest_pe": 25.96059113300493,
+   "latest_pb": 2.45
   },
   {
    "code": "5475",
    "name": "德宏",
-   "latest_pe": 44.63840399002494,
-   "latest_pb": 20.89
+   "latest_pe": 45.01246882793018,
+   "latest_pb": 21.07
   },
   {
    "code": "5483",
    "name": "中美晶",
-   "latest_pe": 11.859582542694499,
-   "latest_pb": 2.35
+   "latest_pe": 11.954459203036054,
+   "latest_pb": 2.37
   },
   {
    "code": "5498",
    "name": "凱崴",
-   "latest_pe": 52.857142857142854,
-   "latest_pb": 4.57
+   "latest_pe": 50.86734693877551,
+   "latest_pb": 4.4
   },
   {
    "code": "5522",
    "name": "遠雄",
-   "latest_pe": 10.097402597402597,
-   "latest_pb": 1.02
+   "latest_pe": 9.853896103896105,
+   "latest_pb": 1
   },
   {
    "code": "5534",
@@ -2224,14 +2224,14 @@
   {
    "code": "5536",
    "name": "聖暉*",
-   "latest_pe": 13.730543242964643,
-   "latest_pb": 6.63
+   "latest_pe": 13.94701577156994,
+   "latest_pb": 6.73
   },
   {
    "code": "5871",
    "name": "中租-KY",
-   "latest_pe": 9.515717926932881,
-   "latest_pb": 1.14
+   "latest_pe": 9.090909090909092,
+   "latest_pb": 1.09
   },
   {
    "code": "5876",
@@ -2248,8 +2248,8 @@
   {
    "code": "5904",
    "name": "寶雅*",
-   "latest_pe": 3.85286783042394,
-   "latest_pb": 10.58
+   "latest_pe": 3.6765229782686144,
+   "latest_pb": 10.09
   },
   {
    "code": "6005",
@@ -2260,188 +2260,188 @@
   {
    "code": "6104",
    "name": "創惟",
-   "latest_pe": 15.831873905429072,
-   "latest_pb": 3.81
+   "latest_pe": 15.936952714535902,
+   "latest_pb": 3.84
   },
   {
    "code": "6116",
    "name": "彩晶",
-   "latest_pe": -46.66666666666667,
-   "latest_pb": 1.07
+   "latest_pe": -49.66666666666667,
+   "latest_pb": 1.14
   },
   {
    "code": "6121",
    "name": "新普",
-   "latest_pe": 10.036019810895993,
-   "latest_pb": 1.73
+   "latest_pe": 10.252138676271949,
+   "latest_pb": 1.77
   },
   {
    "code": "6127",
    "name": "九豪",
-   "latest_pe": -23.94607843137255,
-   "latest_pb": 4.62
+   "latest_pe": -25.0,
+   "latest_pb": 4.83
   },
   {
    "code": "6138",
    "name": "茂達",
-   "latest_pe": 17.164179104477615,
-   "latest_pb": 5.56
+   "latest_pe": 17.319651741293534,
+   "latest_pb": 5.61
   },
   {
    "code": "6139",
    "name": "亞翔",
-   "latest_pe": 9.947975571137752,
-   "latest_pb": 8.34
+   "latest_pe": 9.934403980999774,
+   "latest_pb": 8.33
   },
   {
    "code": "6147",
    "name": "頎邦",
-   "latest_pe": 32.01304753028891,
-   "latest_pb": 2.91
+   "latest_pe": 29.147250698974837,
+   "latest_pb": 2.65
   },
   {
    "code": "6153",
    "name": "嘉聯益",
-   "latest_pe": -8.5,
-   "latest_pb": 1.26
+   "latest_pe": -8.825,
+   "latest_pb": 1.31
   },
   {
    "code": "6155",
    "name": "鈞寶",
-   "latest_pe": 38.37837837837838,
-   "latest_pb": 3.06
+   "latest_pe": 43.24324324324324,
+   "latest_pb": 3.45
   },
   {
    "code": "6166",
    "name": "凌華",
-   "latest_pe": 14.270876609887827,
-   "latest_pb": 4.04
+   "latest_pe": 16.825924387203987,
+   "latest_pb": 4.77
   },
   {
    "code": "6173",
    "name": "信昌電",
-   "latest_pe": 41.97860962566845,
-   "latest_pb": 5.3
+   "latest_pe": 26.980048367593714,
+   "latest_pb": 5.02
   },
   {
    "code": "6175",
    "name": "立敦",
-   "latest_pe": 20.93093093093093,
-   "latest_pb": 2.47
+   "latest_pe": 20.78078078078078,
+   "latest_pb": 2.45
   },
   {
    "code": "6176",
    "name": "瑞儀",
-   "latest_pe": 10.045296167247386,
-   "latest_pb": 0.96
+   "latest_pe": 9.428571428571429,
+   "latest_pb": 0.9
   },
   {
    "code": "6182",
    "name": "合晶",
-   "latest_pe": 232.0,
-   "latest_pb": 4.55
+   "latest_pe": 242.0,
+   "latest_pb": 4.75
   },
   {
    "code": "6187",
    "name": "萬潤",
-   "latest_pe": 33.03091693825421,
-   "latest_pb": 14.39
+   "latest_pe": 34.61640095129041,
+   "latest_pb": 15.09
   },
   {
    "code": "6188",
    "name": "廣明",
-   "latest_pe": 25.975103734439834,
-   "latest_pb": 1.37
+   "latest_pe": 25.560165975103732,
+   "latest_pb": 1.35
   },
   {
    "code": "6190",
    "name": "萬泰科",
-   "latest_pe": 17.734241908006815,
-   "latest_pb": 3.4
+   "latest_pe": 17.70868824531516,
+   "latest_pb": 3.39
   },
   {
    "code": "6191",
    "name": "精成科",
-   "latest_pe": 17.2972972972973,
+   "latest_pe": 17.276507276507278,
    "latest_pb": 1.13
   },
   {
    "code": "6196",
    "name": "帆宣",
-   "latest_pe": 16.952699874424447,
-   "latest_pb": 6.66
+   "latest_pe": 17.078275429049814,
+   "latest_pb": 6.71
   },
   {
    "code": "6197",
    "name": "佳必琪",
-   "latest_pe": 16.140674836327012,
-   "latest_pb": 7.08
+   "latest_pe": 16.065133456437806,
+   "latest_pb": 7.05
   },
   {
    "code": "6202",
    "name": "盛群",
-   "latest_pe": 22.40963855421687,
-   "latest_pb": 3.18
+   "latest_pe": 23.453815261044177,
+   "latest_pb": 3.33
   },
   {
    "code": "6206",
    "name": "飛捷",
-   "latest_pe": 11.994803695150114,
-   "latest_pb": 3.78
+   "latest_pe": 12.384526558891455,
+   "latest_pb": 3.9
   },
   {
    "code": "6207",
    "name": "雷科",
-   "latest_pe": 35.869565217391305,
-   "latest_pb": 3.85
+   "latest_pe": 42.70186335403727,
+   "latest_pb": 4.58
   },
   {
    "code": "6209",
    "name": "今國光",
-   "latest_pe": 24.0,
-   "latest_pb": 3.96
+   "latest_pe": 24.328358208955223,
+   "latest_pb": 4.02
   },
   {
    "code": "6213",
    "name": "聯茂",
-   "latest_pe": 20.398545846236704,
-   "latest_pb": 8.13
+   "latest_pe": 23.64607170099161,
+   "latest_pb": 9.98
   },
   {
    "code": "6214",
    "name": "精誠",
-   "latest_pe": 17.480527261833434,
-   "latest_pb": 2.88
+   "latest_pe": 16.986219292989812,
+   "latest_pb": 2.8
   },
   {
    "code": "6215",
    "name": "和椿",
-   "latest_pe": 26.390374331550802,
-   "latest_pb": 4.88
+   "latest_pe": 25.989304812834224,
+   "latest_pb": 4.8
   },
   {
    "code": "6217",
    "name": "中探針",
-   "latest_pe": 175.0,
-   "latest_pb": 7.14
+   "latest_pe": 169.6078431372549,
+   "latest_pb": 6.92
   },
   {
    "code": "6223",
    "name": "旺矽",
-   "latest_pe": 53.92172053673804,
-   "latest_pb": 35.74
+   "latest_pe": 48.20415879017013,
+   "latest_pb": 31.95
   },
   {
    "code": "6226",
    "name": "光鼎",
-   "latest_pe": 507.7777777777778,
-   "latest_pb": 4.21
+   "latest_pe": 506.1111111111111,
+   "latest_pb": 4.2
   },
   {
    "code": "6239",
    "name": "力成",
-   "latest_pe": 17.559769167353664,
-   "latest_pb": 3.77
+   "latest_pe": 17.374278647980212,
+   "latest_pb": 3.73
   },
   {
    "code": "6245",
@@ -2452,38 +2452,38 @@
   {
    "code": "6257",
    "name": "矽格",
-   "latest_pe": 20.346740638002775,
-   "latest_pb": 4.69
+   "latest_pe": 19.232854432095422,
+   "latest_pb": 4.53
   },
   {
    "code": "6265",
    "name": "方土昶",
-   "latest_pe": 6.125621890547264,
-   "latest_pb": 2.64
+   "latest_pe": 5.945273631840796,
+   "latest_pb": 2.56
   },
   {
    "code": "6269",
    "name": "台郡",
-   "latest_pe": -25.881561238223412,
-   "latest_pb": 1.01
+   "latest_pe": -26.204576043068638,
+   "latest_pb": 1.02
   },
   {
    "code": "6271",
    "name": "同欣電",
-   "latest_pe": 20.95890410958904,
-   "latest_pb": 1.76
+   "latest_pe": 20.730593607305934,
+   "latest_pb": 1.74
   },
   {
    "code": "6274",
    "name": "台燿",
-   "latest_pe": 23.356253906915953,
-   "latest_pb": 16.98
+   "latest_pe": 25.31681536625561,
+   "latest_pb": 18.4
   },
   {
    "code": "6278",
    "name": "台表科",
-   "latest_pe": 11.375507835171213,
-   "latest_pb": 2.48
+   "latest_pe": 12.536273940800928,
+   "latest_pb": 2.73
   },
   {
    "code": "6279",
@@ -2494,104 +2494,104 @@
   {
    "code": "6282",
    "name": "康舒",
-   "latest_pe": 42.85,
+   "latest_pe": 42.8,
    "latest_pb": 1.61
   },
   {
    "code": "6284",
    "name": "佳邦",
-   "latest_pe": 37.810945273631845,
-   "latest_pb": 1.31
+   "latest_pe": 38.30845771144279,
+   "latest_pb": 1.33
   },
   {
    "code": "6285",
    "name": "啟碁",
-   "latest_pe": 15.671641791044777,
-   "latest_pb": 3.07
+   "latest_pe": 15.698852126941256,
+   "latest_pb": 3.14
   },
   {
    "code": "6290",
    "name": "良維",
-   "latest_pe": 24.875256824185502,
-   "latest_pb": 6.07
+   "latest_pe": 23.730554740240684,
+   "latest_pb": 5.79
   },
   {
    "code": "6291",
    "name": "沛亨",
-   "latest_pe": 25.079770261646456,
-   "latest_pb": 15.48
+   "latest_pe": 23.883216336949584,
+   "latest_pb": 14.74
   },
   {
    "code": "6409",
    "name": "旭隼",
-   "latest_pe": 24.360579502772314,
-   "latest_pb": 10.08
+   "latest_pe": 23.528885709175462,
+   "latest_pb": 9.74
   },
   {
    "code": "6412",
    "name": "群電",
-   "latest_pe": 11.727416798732172,
+   "latest_pe": 11.743264659270999,
    "latest_pb": 1.92
   },
   {
    "code": "6414",
    "name": "樺漢",
-   "latest_pe": 11.548000413351247,
-   "latest_pb": 2.05
+   "latest_pe": 12.338534669835695,
+   "latest_pb": 2.19
   },
   {
    "code": "6415",
    "name": "矽力*-KY",
-   "latest_pe": 29.73493429995469,
-   "latest_pb": 4.25
+   "latest_pe": 27.7979157227005,
+   "latest_pb": 3.97
   },
   {
    "code": "6426",
    "name": "統新",
-   "latest_pe": 68.53211009174312,
-   "latest_pb": 14.39
+   "latest_pe": 64.95412844036697,
+   "latest_pb": 13.64
   },
   {
    "code": "6435",
    "name": "大中",
-   "latest_pe": 16.173570019723865,
-   "latest_pb": 4.11
+   "latest_pe": 16.60092044707429,
+   "latest_pb": 4.22
   },
   {
    "code": "6442",
    "name": "光聖",
-   "latest_pe": 45.798197150334396,
-   "latest_pb": 9.46
+   "latest_pe": 43.61733061936609,
+   "latest_pb": 9.01
   },
   {
    "code": "6443",
    "name": "元晶",
-   "latest_pe": -25.757575757575758,
-   "latest_pb": 3.92
+   "latest_pe": -27.77777777777778,
+   "latest_pb": 4.23
   },
   {
    "code": "6446",
    "name": "藥華藥",
-   "latest_pe": 31.823085221143476,
-   "latest_pb": 13.59
+   "latest_pe": 32.22761596548005,
+   "latest_pb": 13.76
   },
   {
    "code": "6449",
    "name": "鈺邦",
-   "latest_pe": 18.138757314015045,
-   "latest_pb": 2.88
+   "latest_pe": 17.177486765115628,
+   "latest_pb": 2.73
   },
   {
    "code": "6451",
    "name": "訊芯-KY",
-   "latest_pe": 307.98611111111114,
-   "latest_pb": 6.11
+   "latest_pe": 289.23611111111114,
+   "latest_pb": 5.74
   },
   {
    "code": "6456",
    "name": "GIS-KY",
-   "latest_pe": -46.82577565632459,
-   "latest_pb": 0.75
+   "latest_pe": -64.00954653937947,
+   "latest_pb": 1.02
   },
   {
    "code": "6462",
@@ -2602,92 +2602,92 @@
   {
    "code": "6472",
    "name": "保瑞",
-   "latest_pe": 16.565217391304348,
-   "latest_pb": 3.75
+   "latest_pe": 15.753169276659209,
+   "latest_pb": 3.57
   },
   {
    "code": "6488",
    "name": "環球晶",
-   "latest_pe": 28.600282771157342,
-   "latest_pb": 4.67
+   "latest_pe": 29.927161406101554,
+   "latest_pb": 3.51
   },
   {
    "code": "6491",
    "name": "晶碩",
-   "latest_pe": 13.628541929562925,
-   "latest_pb": 2.67
+   "latest_pe": 13.972697028794311,
+   "latest_pb": 2.74
   },
   {
    "code": "6505",
    "name": "台塑化",
-   "latest_pe": 15.309734513274336,
-   "latest_pb": 1.69
+   "latest_pe": 15.804469273743017,
+   "latest_pb": 1.84
   },
   {
    "code": "6510",
    "name": "精測",
-   "latest_pe": 35.95138392401185,
-   "latest_pb": 11.44
+   "latest_pe": 32.070268614033296,
+   "latest_pb": 10.2
   },
   {
    "code": "6515",
    "name": "穎崴",
-   "latest_pe": 39.09952606635071,
-   "latest_pb": 27.17
+   "latest_pe": 34.548885912577624,
+   "latest_pb": 23.96
   },
   {
    "code": "6525",
    "name": "捷敏-KY",
-   "latest_pe": 16.979949874686717,
-   "latest_pb": 3.71
+   "latest_pe": 16.729323308270676,
+   "latest_pb": 3.65
   },
   {
    "code": "6526",
    "name": "達發",
-   "latest_pe": 27.023856081345325,
-   "latest_pb": 6.14
+   "latest_pe": 31.83418068048494,
+   "latest_pb": 7.23
   },
   {
    "code": "6531",
    "name": "愛普*",
-   "latest_pe": 35.891731553578055,
-   "latest_pb": 12.57
+   "latest_pe": 34.44568038561365,
+   "latest_pb": 12.06
   },
   {
    "code": "6533",
    "name": "晶心科",
-   "latest_pe": 72.5201072386059,
-   "latest_pb": 2.77
+   "latest_pe": 81.36729222520107,
+   "latest_pb": 3.11
   },
   {
    "code": "6538",
    "name": "倉和",
-   "latest_pe": 26.454545454545457,
-   "latest_pb": 7.79
+   "latest_pe": 24.44318181818182,
+   "latest_pb": 7.2
   },
   {
    "code": "6547",
    "name": "高端疫苗",
-   "latest_pe": 663.3333333333334,
-   "latest_pb": 5.53
+   "latest_pe": 676.6666666666666,
+   "latest_pb": 5.65
   },
   {
    "code": "6548",
    "name": "長科*",
-   "latest_pe": 13.749999999999998,
-   "latest_pb": 5.49
+   "latest_pe": 13.198529411764705,
+   "latest_pb": 5.27
   },
   {
    "code": "6584",
    "name": "南俊國際",
-   "latest_pe": 26.58052607291186,
-   "latest_pb": 11.05
+   "latest_pe": 25.057683433317948,
+   "latest_pb": 10.41
   },
   {
    "code": "6588",
    "name": "東典光電",
-   "latest_pe": 136.62790697674419,
-   "latest_pb": 5.21
+   "latest_pe": 125.0,
+   "latest_pb": 4.77
   },
   {
    "code": "6613",
@@ -2698,110 +2698,110 @@
   {
    "code": "6640",
    "name": "均華",
-   "latest_pe": 29.853263619497383,
-   "latest_pb": 6.63
+   "latest_pe": 26.31135098667566,
+   "latest_pb": 5.84
   },
   {
    "code": "6643",
    "name": "M31",
-   "latest_pe": 44.45163377547719,
-   "latest_pb": 9.45
+   "latest_pe": 51.54814562776455,
+   "latest_pb": 10.42
   },
   {
    "code": "6658",
    "name": "聯策",
-   "latest_pe": 19.673055242390078,
-   "latest_pb": 3.95
+   "latest_pe": 20.40586245772266,
+   "latest_pb": 4.1
   },
   {
    "code": "6664",
    "name": "群翊",
-   "latest_pe": 17.765567765567766,
-   "latest_pb": 4.96
+   "latest_pe": 18.781725888324875,
+   "latest_pb": 5.4
   },
   {
    "code": "6669",
    "name": "緯穎",
-   "latest_pe": 5.600139567341242,
-   "latest_pb": 8.94
+   "latest_pe": 5.6705670567056705,
+   "latest_pb": 8.78
   },
   {
    "code": "6670",
    "name": "復盛應用",
-   "latest_pe": 9.784538889546585,
-   "latest_pb": 2.47
+   "latest_pe": 9.695749970403694,
+   "latest_pb": 2.45
   },
   {
    "code": "6672",
    "name": "騰輝電子-KY",
-   "latest_pe": 21.768380586256605,
-   "latest_pb": 5.17
+   "latest_pe": 17.50130412102243,
+   "latest_pb": 5.74
   },
   {
    "code": "6683",
    "name": "雍智科技",
-   "latest_pe": 59.856630824372765,
-   "latest_pb": 16.3
+   "latest_pe": 52.867383512544805,
+   "latest_pb": 14.4
   },
   {
    "code": "6691",
    "name": "洋基工程",
-   "latest_pe": 15.820217426577965,
-   "latest_pb": 11.79
+   "latest_pe": 13.074770091963213,
+   "latest_pb": 11.86
   },
   {
    "code": "6693",
    "name": "廣閎科",
-   "latest_pe": 31.04906937394247,
-   "latest_pb": 6.72
+   "latest_pe": 36.88663282571912,
+   "latest_pb": 7.99
   },
   {
    "code": "6706",
    "name": "惠特",
-   "latest_pe": -37.848101265822784,
-   "latest_pb": 3.16
+   "latest_pe": -38.22784810126582,
+   "latest_pb": 3.2
   },
   {
    "code": "6715",
    "name": "嘉基",
-   "latest_pe": 214.35643564356437,
-   "latest_pb": 5.81
+   "latest_pe": 223.76237623762376,
+   "latest_pb": 6.06
   },
   {
    "code": "6719",
    "name": "力智",
-   "latest_pe": 19.690501600853786,
+   "latest_pe": 19.637139807897544,
    "latest_pb": 1.38
   },
   {
    "code": "6727",
    "name": "亞泰金屬",
-   "latest_pe": 26.37660227477884,
-   "latest_pb": 9
+   "latest_pe": 26.159956670879218,
+   "latest_pb": 8.93
   },
   {
    "code": "6739",
    "name": "竹陞科技",
-   "latest_pe": 23.321841411478403,
-   "latest_pb": 26.08
+   "latest_pe": 22.814844859054958,
+   "latest_pb": 25.51
   },
   {
    "code": "6753",
    "name": "龍德造船",
-   "latest_pe": 12.821734985700667,
-   "latest_pb": 2.96
+   "latest_pe": 12.631077216396568,
+   "latest_pb": 2.92
   },
   {
    "code": "6757",
    "name": "台灣虎航",
-   "latest_pe": 9.010011123470523,
-   "latest_pb": 3.15
+   "latest_pe": 8.909899888765295,
+   "latest_pb": 3.11
   },
   {
    "code": "6770",
    "name": "力積電",
-   "latest_pe": 10.068027210884354,
-   "latest_pb": 2.82
+   "latest_pe": 9.83673469387755,
+   "latest_pb": 2.76
   },
   {
    "code": "6781",
@@ -2812,86 +2812,86 @@
   {
    "code": "6788",
    "name": "華景電",
-   "latest_pe": 11.731363792511164,
-   "latest_pb": 5.01
+   "latest_pe": 11.83442116111302,
+   "latest_pb": 5.05
   },
   {
    "code": "6789",
    "name": "采鈺",
-   "latest_pe": 65.92539454806312,
-   "latest_pb": 7.93
+   "latest_pe": 68.65136298421807,
+   "latest_pb": 8.25
   },
   {
    "code": "6805",
    "name": "富世達",
-   "latest_pe": 25.955666138882606,
-   "latest_pb": 18.85
+   "latest_pe": 27.492348054219505,
+   "latest_pb": 20.65
   },
   {
    "code": "6829",
    "name": "千附精密",
-   "latest_pe": 29.9466429524233,
-   "latest_pb": 6.95
+   "latest_pe": 27.81236104935527,
+   "latest_pb": 6.46
   },
   {
    "code": "6830",
    "name": "汎銓",
-   "latest_pe": 229.79591836734693,
-   "latest_pb": 5.34
+   "latest_pe": 217.55102040816325,
+   "latest_pb": 5.06
   },
   {
    "code": "6831",
    "name": "邁科",
-   "latest_pe": 20.42764413898435,
-   "latest_pb": 13.16
+   "latest_pe": 19.573000928258853,
+   "latest_pb": 12.1
   },
   {
    "code": "6834",
    "name": "天二科技",
-   "latest_pe": 39.18439716312057,
-   "latest_pb": 6.34
+   "latest_pe": 39.8936170212766,
+   "latest_pb": 6.45
   },
   {
    "code": "6861",
    "name": "睿生光電",
-   "latest_pe": 25.815523059617547,
-   "latest_pb": 6.13
+   "latest_pe": 32.05849268841395,
+   "latest_pb": 7.61
   },
   {
    "code": "6890",
    "name": "來億-KY",
-   "latest_pe": 12.300495321959273,
-   "latest_pb": 1.6
+   "latest_pe": 12.13538800220143,
+   "latest_pb": 1.58
   },
   {
    "code": "6903",
    "name": "巨漢",
-   "latest_pe": 8.191216753556597,
-   "latest_pb": 5.66
+   "latest_pe": 8.071927189184414,
+   "latest_pb": 5.58
   },
   {
    "code": "6907",
    "name": "雅特力-KY",
-   "latest_pe": 20.814732142857142,
-   "latest_pb": 7.21
+   "latest_pe": 20.145089285714285,
+   "latest_pb": 6.98
   },
   {
    "code": "6919",
    "name": "康霈*",
-   "latest_pe": -2860.0,
-   "latest_pb": 14.5
+   "latest_pe": -2650.0,
+   "latest_pb": 13.44
   },
   {
    "code": "6937",
    "name": "天虹",
-   "latest_pe": 37.5,
-   "latest_pb": 5.79
+   "latest_pe": 38.056013179571664,
+   "latest_pb": 5.88
   },
   {
    "code": "6944",
    "name": "兆聯實業",
-   "latest_pe": 14.785938043856596,
-   "latest_pb": 9.11
+   "latest_pe": 16.206056387051863,
+   "latest_pb": 9.98
   },
   {
    "code": "6957",
@@ -2902,116 +2902,116 @@
   {
    "code": "7610",
    "name": "聯友金屬-創",
-   "latest_pe": 21.396355102489824,
-   "latest_pb": 53.76
+   "latest_pe": 19.031205309669613,
+   "latest_pb": 47.82
   },
   {
    "code": "7711",
    "name": "永擎",
-   "latest_pe": 13.927349731226586,
-   "latest_pb": 7.53
+   "latest_pe": 13.340935005701256,
+   "latest_pb": 7.21
   },
   {
    "code": "7717",
    "name": "萊德光電-KY",
-   "latest_pe": 47.16981132075472,
-   "latest_pb": 14.23
+   "latest_pe": 46.540880503144656,
+   "latest_pb": 14.04
   },
   {
    "code": "7734",
    "name": "印能科技",
-   "latest_pe": 30.280119457150423,
-   "latest_pb": 11.17
+   "latest_pe": 30.393528144255857,
+   "latest_pb": 11.21
   },
   {
    "code": "7750",
    "name": "新代",
-   "latest_pe": 19.569144309894963,
-   "latest_pb": 10.41
+   "latest_pe": 19.669498896099554,
+   "latest_pb": 10.47
   },
   {
    "code": "7751",
    "name": "竑騰",
-   "latest_pe": 20.272115034583184,
-   "latest_pb": 16.93
+   "latest_pe": 21.22770294867128,
+   "latest_pb": 17.72
   },
   {
    "code": "7769",
    "name": "鴻勁",
-   "latest_pe": 34.64288867308202,
-   "latest_pb": 20.71
+   "latest_pe": 29.584179394367442,
+   "latest_pb": 17.69
   },
   {
    "code": "7777",
    "name": "能率亞洲",
-   "latest_pe": 24.290540540540544,
-   "latest_pb": 2.89
+   "latest_pe": 24.054054054054056,
+   "latest_pb": 2.87
   },
   {
    "code": "7788",
    "name": "松川精密",
-   "latest_pe": 17.297612114152592,
-   "latest_pb": 3.79
+   "latest_pe": 16.744321490972627,
+   "latest_pb": 3.67
   },
   {
    "code": "7795",
    "name": "長廣",
-   "latest_pe": 38.16614420062696,
-   "latest_pb": 13.5
+   "latest_pe": 38.87147335423197,
+   "latest_pb": 13.75
   },
   {
    "code": "7799",
    "name": "禾榮科",
-   "latest_pe": 116.75675675675676,
-   "latest_pb": 7.14
+   "latest_pe": 149.5426829268293,
+   "latest_pb": 6.95
   },
   {
    "code": "8016",
    "name": "矽創",
-   "latest_pe": 11.760602678571429,
-   "latest_pb": 2.55
+   "latest_pe": 11.928013392857142,
+   "latest_pb": 2.59
   },
   {
    "code": "8021",
    "name": "尖點",
-   "latest_pe": 27.873156937992324,
-   "latest_pb": 10.74
+   "latest_pe": 26.920919798093102,
+   "latest_pb": 11.21
   },
   {
    "code": "8027",
    "name": "鈦昇",
-   "latest_pe": 77.80979827089337,
-   "latest_pb": 7.02
+   "latest_pe": 87.31988472622479,
+   "latest_pb": 7.9
   },
   {
    "code": "8028",
    "name": "昇陽半導體",
-   "latest_pe": 29.36024371667936,
-   "latest_pb": 7.75
+   "latest_pe": 33.015993907083015,
+   "latest_pb": 8.72
   },
   {
    "code": "8033",
    "name": "雷虎",
-   "latest_pe": 141.39344262295083,
-   "latest_pb": 8.8
+   "latest_pe": 138.52459016393442,
+   "latest_pb": 8.62
   },
   {
    "code": "8039",
    "name": "台虹",
-   "latest_pe": 77.22063037249283,
-   "latest_pb": 6.35
+   "latest_pe": 78.36676217765043,
+   "latest_pb": 6.44
   },
   {
    "code": "8042",
    "name": "金山電",
-   "latest_pe": 28.9002557544757,
-   "latest_pb": 3.3
+   "latest_pe": 30.464480874316937,
+   "latest_pb": 2.91
   },
   {
    "code": "8043",
    "name": "蜜望實",
-   "latest_pe": 44.333333333333336,
-   "latest_pb": 3.74
+   "latest_pe": 43.833333333333336,
+   "latest_pb": 3.7
   },
   {
    "code": "8044",
@@ -3022,92 +3022,92 @@
   {
    "code": "8046",
    "name": "南電",
-   "latest_pe": 31.23521060104117,
-   "latest_pb": 14.43
+   "latest_pe": 36.06247042120208,
+   "latest_pb": 16.66
   },
   {
    "code": "8050",
    "name": "廣積",
-   "latest_pe": 13.23660714285714,
-   "latest_pb": 1.63
+   "latest_pe": 14.665178571428571,
+   "latest_pb": 1.8
   },
   {
    "code": "8054",
    "name": "安國",
-   "latest_pe": -183.47826086956522,
-   "latest_pb": 3.32
+   "latest_pe": -189.56521739130434,
+   "latest_pb": 3.43
   },
   {
    "code": "8064",
    "name": "東捷",
-   "latest_pe": 114.28571428571429,
-   "latest_pb": 5.95
+   "latest_pe": 118.9075630252101,
+   "latest_pb": 6.19
   },
   {
    "code": "8069",
    "name": "元太",
-   "latest_pe": 11.327319587628867,
-   "latest_pb": 2.23
+   "latest_pe": 11.018041237113403,
+   "latest_pb": 2.17
   },
   {
    "code": "8070",
    "name": "長華*",
-   "latest_pe": 220.43478260869566,
-   "latest_pb": 1.39
+   "latest_pe": 216.08695652173913,
+   "latest_pb": 1.36
   },
   {
    "code": "8081",
    "name": "致新",
-   "latest_pe": 12.393860222077073,
-   "latest_pb": 2.69
+   "latest_pe": 12.516329196603527,
+   "latest_pb": 2.71
   },
   {
    "code": "8086",
    "name": "宏捷科",
-   "latest_pe": 20.0,
-   "latest_pb": 2.57
+   "latest_pe": 19.81981981981982,
+   "latest_pb": 2.55
   },
   {
    "code": "8091",
    "name": "翔名",
-   "latest_pe": 17.565359477124186,
-   "latest_pb": 2.92
+   "latest_pe": 17.97385620915033,
+   "latest_pb": 2.98
   },
   {
    "code": "8096",
    "name": "擎亞",
-   "latest_pe": 11.76,
-   "latest_pb": 4.25
+   "latest_pe": 11.826666666666666,
+   "latest_pb": 4.27
   },
   {
    "code": "8103",
    "name": "瀚荃",
-   "latest_pe": 13.241308793456033,
-   "latest_pb": 2.51
+   "latest_pe": 11.96319018404908,
+   "latest_pb": 2.26
   },
   {
    "code": "8105",
    "name": "凌巨",
-   "latest_pe": 14.8,
-   "latest_pb": 0.8
+   "latest_pe": 14.9,
+   "latest_pb": 0.81
   },
   {
    "code": "8110",
    "name": "華東",
-   "latest_pe": 14.766355140186915,
-   "latest_pb": 1.27
+   "latest_pe": 15.077881619937694,
+   "latest_pb": 1.3
   },
   {
    "code": "8111",
    "name": "立碁",
-   "latest_pe": 106.84931506849315,
-   "latest_pb": 6.16
+   "latest_pe": 109.17808219178083,
+   "latest_pb": 6.29
   },
   {
    "code": "8112",
    "name": "至上",
-   "latest_pe": 5.2002503128911135,
-   "latest_pb": 1.97
+   "latest_pe": 5.175219023779725,
+   "latest_pb": 1.96
   },
   {
    "code": "8114",
@@ -3118,20 +3118,20 @@
   {
    "code": "8131",
    "name": "福懋科",
-   "latest_pe": 11.493749999999999,
-   "latest_pb": 1.76
+   "latest_pe": 11.593475533249686,
+   "latest_pb": 1.77
   },
   {
    "code": "8150",
    "name": "南茂",
-   "latest_pe": 15.367847411444142,
-   "latest_pb": 2.66
+   "latest_pe": 17.08446866485014,
+   "latest_pb": 2.96
   },
   {
    "code": "8155",
    "name": "博智",
-   "latest_pe": 17.532115071467345,
-   "latest_pb": 5.27
+   "latest_pe": 16.609372172969064,
+   "latest_pb": 4.99
   },
   {
    "code": "8163",
@@ -3142,74 +3142,74 @@
   {
    "code": "8210",
    "name": "勤誠",
-   "latest_pe": 14.928007943951012,
-   "latest_pb": 9.06
+   "latest_pe": 14.51265927519444,
+   "latest_pb": 8.81
   },
   {
    "code": "8227",
    "name": "巨有科技",
-   "latest_pe": 36.470588235294116,
-   "latest_pb": 9.18
+   "latest_pe": 44.052287581699346,
+   "latest_pb": 11.09
   },
   {
    "code": "8255",
    "name": "朋程",
-   "latest_pe": 19.364024679639297,
-   "latest_pb": 1.51
+   "latest_pe": 21.065375302663437,
+   "latest_pb": 1.61
   },
   {
    "code": "8261",
    "name": "富鼎",
-   "latest_pe": 24.906191369606002,
-   "latest_pb": 3.69
+   "latest_pe": 24.835834896810503,
+   "latest_pb": 3.68
   },
   {
    "code": "8271",
    "name": "宇瞻",
-   "latest_pe": 2.450805008944544,
-   "latest_pb": 2.8
+   "latest_pe": 2.379248658318426,
+   "latest_pb": 2.72
   },
   {
    "code": "8299",
    "name": "群聯",
-   "latest_pe": 5.567745236629173,
-   "latest_pb": 4.64
+   "latest_pe": 5.388626558412882,
+   "latest_pb": 4.58
   },
   {
    "code": "8358",
    "name": "金居",
-   "latest_pe": 26.37739834536173,
-   "latest_pb": 13.57
+   "latest_pe": 26.298186938919205,
+   "latest_pb": 13.52
   },
   {
    "code": "8383",
    "name": "千附",
-   "latest_pe": 13.672654690618764,
-   "latest_pb": 2.05
+   "latest_pe": 13.493013972055888,
+   "latest_pb": 2.02
   },
   {
    "code": "8422",
    "name": "可寧衛*",
-   "latest_pe": 34.48051948051948,
-   "latest_pb": 3.51
+   "latest_pe": 33.116883116883116,
+   "latest_pb": 3.37
   },
   {
    "code": "8436",
    "name": "大江",
-   "latest_pe": 10.454545454545455,
-   "latest_pb": 1.59
+   "latest_pe": 10.656565656565656,
+   "latest_pb": 1.62
   },
   {
    "code": "8454",
    "name": "富邦媒",
-   "latest_pe": 22.358575276863213,
-   "latest_pb": 7.95
+   "latest_pe": 21.191260101765938,
+   "latest_pb": 7.53
   },
   {
    "code": "8464",
    "name": "億豐",
-   "latest_pe": 14.263685427910564,
-   "latest_pb": 3.76
+   "latest_pe": 14.360061680801852,
+   "latest_pb": 3.79
   },
   {
    "code": "8478",
@@ -3220,50 +3220,50 @@
   {
    "code": "8926",
    "name": "台汽電",
-   "latest_pe": 9.966666666666667,
-   "latest_pb": 2.5
+   "latest_pe": 9.716666666666667,
+   "latest_pb": 2.44
   },
   {
    "code": "8932",
    "name": "智通*",
-   "latest_pe": 12.127937336814622,
-   "latest_pb": 16.12
+   "latest_pe": 12.193211488250654,
+   "latest_pb": 16.21
   },
   {
    "code": "8996",
    "name": "高力",
-   "latest_pe": 43.24596774193548,
-   "latest_pb": 26.13
+   "latest_pe": 47.731379241116244,
+   "latest_pb": 28.96
   },
   {
    "code": "9904",
    "name": "寶成",
-   "latest_pe": 6.355060034305317,
+   "latest_pe": 6.3807890222984565,
    "latest_pb": 0.39
   },
   {
    "code": "9910",
    "name": "豐泰",
-   "latest_pe": 14.75197699496765,
-   "latest_pb": 2.86
+   "latest_pe": 14.902947519769949,
+   "latest_pb": 2.88
   },
   {
    "code": "9914",
    "name": "美利達",
-   "latest_pe": 11.522727272727273,
-   "latest_pb": 1.04
+   "latest_pe": 11.4375,
+   "latest_pb": 1.03
   },
   {
    "code": "9921",
    "name": "巨大",
-   "latest_pe": 19.223712067748764,
-   "latest_pb": 1.05
+   "latest_pe": 19.536332179930795,
+   "latest_pb": 1.08
   },
   {
    "code": "9933",
    "name": "中鼎",
-   "latest_pe": 7.5,
-   "latest_pb": 1.82
+   "latest_pe": 7.154255319148937,
+   "latest_pb": 1.74
   },
   {
    "code": "9938",
@@ -3274,26 +3274,26 @@
   {
    "code": "9939",
    "name": "宏全",
-   "latest_pe": 10.214477211796249,
-   "latest_pb": 1.9
+   "latest_pe": 10.013404825737267,
+   "latest_pb": 1.86
   },
   {
    "code": "9941",
    "name": "裕融",
-   "latest_pe": 10.363636363636365,
-   "latest_pb": 1.36
+   "latest_pe": 10.168831168831169,
+   "latest_pb": 1.33
   },
   {
    "code": "9945",
    "name": "潤泰新",
-   "latest_pe": 6.433333333333334,
-   "latest_pb": 0.51
+   "latest_pe": 6.455555555555556,
+   "latest_pb": 0.52
   },
   {
    "code": "9958",
    "name": "世紀鋼",
-   "latest_pe": 9.343936381709742,
-   "latest_pb": 1.87
+   "latest_pe": 9.155069582504971,
+   "latest_pb": 1.83
   }
  ]
 }
