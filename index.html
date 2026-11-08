@@ -228,7 +228,7 @@
 
   <div class="grid" id="chartGrid" style="display:none;">
     <div class="card"><h3>PE Band（過去三年周資料滾動）<span class="hint" id="peBandHint"></span></h3><canvas id="chart_peband"></canvas></div>
-    <div class="card"><h3>Fwd. PE 走勢<span class="hint">目標PE可自行調整 <input class="target-input" id="targetPeInput" type="number" step="0.1"></span></h3><canvas id="chart_fwdpe"></canvas></div>
+    <div class="card"><h3>Fwd. PE 走勢<span class="hint">目標PE可自行調整（與評價試算器 PE 法同步） <input class="target-input" id="targetPeInput" type="number" step="0.1"></span></h3><canvas id="chart_fwdpe"></canvas></div>
     <div class="card"><h3>PB<span class="hint" id="pbHint"></span></h3><canvas id="chart_pb"></canvas></div>
     <div class="card"><h3>月營收</h3><canvas id="chart_rev"></canvas></div>
     <div class="card"><h3>Margin<span class="hint" id="marginHint"></span></h3><canvas id="chart_margin"></canvas></div>
@@ -518,9 +518,11 @@ function renderAll(d){
   if(switchedStock){
     document.getElementById('valPeMultInput').value = '';
     document.getElementById('valPbMultInput').value = '';
+    delete document.getElementById('targetPeInput').dataset.userSet;
   }
   const eff = computeEffective(d);
   currentEff = eff;
+  syncTargetPe(eff);
 
   document.getElementById('statBar').innerHTML = `
     <span><b>${d.name}</b> (${d.code})</span>
@@ -856,14 +858,40 @@ function updateValuationCalc(eff){
   setPair('valPeTarget','valPeReturn', peMult, eff.epsLatest);
   setPair('valPbTarget','valPbReturn', pbMult, eff.bvps);
 }
-document.getElementById('valPeMultInput').addEventListener('input', ()=>{ if(currentEff) updateValuationCalc(currentEff); });
+/* ---- 目標 PE：「Fwd. PE 走勢」的目標PE 與「評價試算器」PE 法目標倍數是同一個值 ----
+   使用者沒動過時預設＝近三年 PE 中位數（會隨 EPS 基準／自填 EPS／手動股價重算）；
+   任一邊改了，另一邊同步，Fwd. PE 圖的目標線與試算器的目標價／報酬率一起更新。換股票就回到預設。 */
+const targetPeInput = document.getElementById('targetPeInput');
+const valPeMultInput = document.getElementById('valPeMultInput');
+let redrawFwdPe = null;
+
+function syncTargetPe(eff){
+  if(!targetPeInput.dataset.userSet){
+    const def = eff.pe_band_med_x ?? eff.fwd_pe;
+    const v = (def!=null && isFinite(def)) ? def.toFixed(1) : '';
+    targetPeInput.value = v;
+    valPeMultInput.value = v;
+  }else if(valPeMultInput.value !== targetPeInput.value){
+    valPeMultInput.value = targetPeInput.value;
+  }
+}
+function onTargetPeEdit(src, other){
+  targetPeInput.dataset.userSet = '1';
+  other.value = src.value;
+  if(src.value.trim()===''){ delete targetPeInput.dataset.userSet; if(currentEff) syncTargetPe(currentEff); }
+  if(redrawFwdPe) redrawFwdPe();
+  if(currentEff) updateValuationCalc(currentEff);
+}
+targetPeInput.addEventListener('input', ()=>onTargetPeEdit(targetPeInput, valPeMultInput));
+valPeMultInput.addEventListener('input', ()=>onTargetPeEdit(valPeMultInput, targetPeInput));
 document.getElementById('valPbMultInput').addEventListener('input', ()=>{ if(currentEff) updateValuationCalc(currentEff); });
 
 function renderPeBand(d, eff){
   const w = d.weekly;
+  const adj = [eff.overridden ? '手動股價' : null, eff.epsOverridden ? `自填EPS ${fmtNum(eff.epsLatest,2)}` : null].filter(Boolean);
   document.getElementById('peBandHint').textContent =
-    `${epsModeLabel(eff)}｜Min ${fmtNum(eff.pe_band_min_x,1)}x / Med ${fmtNum(eff.pe_band_med_x,1)}x / Max ${fmtNum(eff.pe_band_max_x,1)}x` +
-    (eff.overridden ? '（依手動股價重算最新一點）' : '');
+    `${epsModeLabel(eff)}｜目前PER ${fmtNum(eff.fwd_pe,1)}x｜Min ${fmtNum(eff.pe_band_min_x,1)}x / Med ${fmtNum(eff.pe_band_med_x,1)}x / Max ${fmtNum(eff.pe_band_max_x,1)}x` +
+    (adj.length ? `（依${adj.join('＋')}重算最新一點）` : '');
   upsertChart('chart_peband', {
     type:'line',
     data:{ labels:w.dates, datasets:[
@@ -879,12 +907,9 @@ function renderPeBand(d, eff){
 function renderFwdPe(d, eff){
   const w = d.weekly;
   const latestPe = eff.fwd_pe;
-  const targetInput = document.getElementById('targetPeInput');
-  if(!targetInput.dataset.userSet){
-    targetInput.value = eff.pe_band_med_x ? eff.pe_band_med_x.toFixed(1) : (latestPe||0).toFixed(1);
-  }
   const draw = () => {
-    const target = parseFloat(targetInput.value) || latestPe;
+    const t = parseFloat(targetPeInput.value);
+    const target = isNaN(t) ? latestPe : t;
     upsertChart('chart_fwdpe', {
       type:'line',
       data:{ labels:w.dates, datasets:[
@@ -895,7 +920,7 @@ function renderFwdPe(d, eff){
       options: baseOpts()
     });
   };
-  targetInput.oninput = () => { targetInput.dataset.userSet='1'; draw(); };
+  redrawFwdPe = draw;
   draw();
 }
 

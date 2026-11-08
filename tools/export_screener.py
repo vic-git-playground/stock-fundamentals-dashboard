@@ -17,6 +17,7 @@
   Fwd. PB  (O)   = 收盤價 / (每股淨值 + 今年EPS − 預估配息)
   PE 歷史位階 (P) = Fwd. PE 在該股「每週 Fwd. PE」歷史序列中的 PERCENTRANK × 100
                    每週 Fwd. PE = 周收 / 該週所屬月份的加權 EPS（同「FwdPE_周」sheet 的算法）
+  PE 近3年/近5年位階 = 同上，但歷史序列只取最新一週往回 3 / 5 年內的週資料（新增欄位）
   PB 歷史位階 (Q) = Fwd. PB 在「PB」sheet 該股每週 PB 歷史序列中的 PERCENTRANK × 100
   累積近4Q EPS YoY (R) = Bwd.EPS 最新一個季底欄 vs 去年同季 −1（×100）
   今年Est. EPS YoY (S) = 預估今年EPS成長 最新一欄
@@ -56,6 +57,8 @@ COLUMNS = [
     ('fwd_pe',      'Fwd. PE',        'num'),
     ('fwd_pb',      'Fwd. PB',        'num'),
     ('pe_rank',     'PE 歷史位階',     'num'),
+    ('pe_rank_3y',  'PE 近3年位階',    'num'),
+    ('pe_rank_5y',  'PE 近5年位階',    'num'),
     ('pb_rank',     'PB 歷史位階',     'num'),
     ('eps_yoy_4q',  '累積近4Q EPS YoY', 'num'),
     ('eps_yoy_cur', '今年Est. EPS YoY', 'num'),
@@ -338,6 +341,11 @@ def compute(extract_dir, log=print):
         if k < 3:
             mg_blocks[k].append(cn)          # 每個區塊內由新到舊
 
+    # 近 3 年 / 近 5 年位階的起始日：以周收最新一週往回推 3 / 5 年
+    latest_wk = max(wk_cols.values())
+    cutoff_3y = latest_wk - 30000            # 20261106 -> 20231106
+    cutoff_5y = latest_wk - 50000
+
     rows = []
     for code in codes_order:
         b = base[code]
@@ -362,7 +370,7 @@ def compute(extract_dir, log=print):
         # PE 歷史位階：每週 Fwd. PE 序列
         wk = r_wk.get(code, {})
         ty_row, ny_row = r_ty.get(code, {}), r_ny.get(code, {})
-        pe_hist = []
+        pe_hist = []                         # [(yyyymmdd, PE)]
         for cn, ymd in wk_cols.items():
             px = num(wk.get(cn))
             ym = ymd // 100
@@ -373,8 +381,11 @@ def compute(extract_dir, log=print):
             e = weighted_eps(t, n, ym % 100)
             pe = safe_div(px, e)
             if pe is not None:
-                pe_hist.append(pe)
-        pe_rank = position_pct(pe_hist, fwd_pe)
+                pe_hist.append((ymd, pe))
+        pe_hist.sort(reverse=True)           # 由新到舊
+        pe_rank = position_pct([v for _, v in pe_hist], fwd_pe)
+        pe_rank_3y = position_pct([v for d, v in pe_hist if d >= cutoff_3y], fwd_pe)
+        pe_rank_5y = position_pct([v for d, v in pe_hist if d >= cutoff_5y], fwd_pe)
 
         # PB 歷史位階
         pbr = r_pb.get(code, {})
@@ -417,6 +428,8 @@ def compute(extract_dir, log=print):
             'fwd_pe': fwd_pe,
             'fwd_pb': fwd_pb,
             'pe_rank': pe_rank,
+            'pe_rank_3y': pe_rank_3y,
+            'pe_rank_5y': pe_rank_5y,
             'pb_rank': pb_rank,
             'eps_yoy_4q': eps_yoy_4q,
             'eps_yoy_cur': eps_yoy_cur,
